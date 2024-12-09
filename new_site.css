@@ -140,3 +140,63 @@ footer {
         filter: drop-shadow(0px 0px 30px #ff9999);
     }
 }
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    .hero .logo {
+        width: 250px; /* Scale down logo for tablets and phones */
+    }
+
+    .main h2 {
+        font-size: 2rem; /* Adjust heading size */
+    }
+
+    .offerings {
+        grid-template-columns: 1fr; /* Single-column layout for services on small screens */
+        gap: 20px; /* Reduce gap for better spacing */
+    }
+
+    .offering img {
+        max-width: 60px; /* Scale down icons */
+    }
+
+    .offering h3 {
+        font-size: 1rem; /* Reduce font size for service titles */
+    }
+
+    .offering p {
+        font-size: 0.8rem; /* Reduce description size for readability */
+    }
+
+    .contact h2 {
+        font-size: 1.8rem; /* Smaller heading for contact section */
+    }
+
+    .contact form {
+        gap: 10px; /* Adjust spacing for inputs */
+    }
+
+    .contact input,
+    .contact textarea {
+        max-width: 300px; /* Reduce input widths for smaller screens */
+    }
+
+    footer {
+        padding: 20px 10px; /* Reduce footer padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero .logo {
+        width: 200px; /* Further reduce logo size for very small screens */
+    }
+
+    .main h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact input,
+    .contact textarea {
+        width: 90%; /* Maximize input fields to fit viewport */
+    }
+}
