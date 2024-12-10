@@ -1,202 +1,121 @@
-/* General Reset */
-* {
+/* General Styles */
+body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: #ddd;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-    background: linear-gradient(135deg, #1a1a1a, #000);
-    overflow-x: hidden;
+/* Landing Section */
+.landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000;
+    text-align: center;
+}
+
+.logo-container img {
+    width: 400px;
+    animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px #ff7f50, 0 0 40px #ff6347;
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px #ff4500, 0 0 50px #ff4500;
+    }
+}
+
+/* What We Offer */
+.offer-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.offer-item {
+    text-align: center;
+    max-width: 250px;
+}
+
+.offer-item img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-item:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 127, 80, 0.6);
+}
+
+/* Service Details */
+.services-detail .service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+}
+
+.services-detail .service:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.service-text {
+    max-width: 50%;
+    font-size: 1.2rem;
     line-height: 1.6;
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    background: radial-gradient(circle at center, #1e1e1e, #000);
-    padding: 20px;
-}
-
-.hero .logo {
-    width: 350px;
-    animation: pulse 2s infinite alternate;
-}
-
-/* Main Section */
-.main {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #111;
-}
-
-.main h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-}
-
-.offerings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-}
-
-.offering {
-    background-color: #222;
-    padding: 30px;
+.service-image img {
+    max-width: 250px;
     border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.offering:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+/* Carousel */
+.carousel {
+    overflow: hidden;
+    position: relative;
 }
 
-.offering img {
-    max-width: 80px;
-    margin-bottom: 15px;
+.clients-logos {
+    display: flex;
+    gap: 20px;
+    animation: carousel 10s linear infinite;
 }
 
-.offering h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.offering p {
-    font-size: 0.9rem;
-    color: #ccc;
+.clients-logos img {
+    max-width: 150px;
 }
 
 /* Contact Section */
 .contact {
-    padding: 50px 20px;
-    background-color: #222;
     text-align: center;
+    padding: 20px;
+    background: #111;
+    border-radius: 10px;
+    color: white;
 }
 
-.contact h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.contact form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.contact input,
-.contact textarea {
-    width: 100%;
+.contact input, .contact textarea {
+    width: 80%;
     max-width: 400px;
+    margin: 10px auto;
     padding: 10px;
-    background-color: #333;
-    border: none;
-    color: #fff;
+    background: #333;
+    color: white;
     border-radius: 5px;
-}
-
-.contact button {
-    padding: 10px 20px;
-    background-color: #b11e4b;
-    color: #fff;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.contact button:hover {
-    background-color: #d41e4b;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #111;
-    color: #fff;
-}
-
-/* Animations */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        filter: drop-shadow(0px 0px 15px #ff6666);
-    }
-    100% {
-        transform: scale(1.05);
-        filter: drop-shadow(0px 0px 30px #ff9999);
-    }
-}
-
-/* Mobile Styling */
-@media (max-width: 768px) {
-    .hero .logo {
-        width: 250px; /* Scale down logo for tablets and phones */
-    }
-
-    .main h2 {
-        font-size: 2rem; /* Adjust heading size */
-    }
-
-    .offerings {
-        grid-template-columns: 1fr; /* Single-column layout for services on small screens */
-        gap: 20px; /* Reduce gap for better spacing */
-    }
-
-    .offering img {
-        max-width: 60px; /* Scale down icons */
-    }
-
-    .offering h3 {
-        font-size: 1rem; /* Reduce font size for service titles */
-    }
-
-    .offering p {
-        font-size: 0.8rem; /* Reduce description size for readability */
-    }
-
-    .contact h2 {
-        font-size: 1.8rem; /* Smaller heading for contact section */
-    }
-
-    .contact form {
-        gap: 10px; /* Adjust spacing for inputs */
-    }
-
-    .contact input,
-    .contact textarea {
-        max-width: 300px; /* Reduce input widths for smaller screens */
-    }
-
-    footer {
-        padding: 20px 10px; /* Reduce footer padding */
-    }
-}
-
-@media (max-width: 480px) {
-    .hero .logo {
-        width: 200px; /* Further reduce logo size for very small screens */
-    }
-
-    .main h2 {
-        font-size: 1.8rem;
-    }
-
-    .contact input,
-    .contact textarea {
-        width: 90%; /* Maximize input fields to fit viewport */
-    }
 }
