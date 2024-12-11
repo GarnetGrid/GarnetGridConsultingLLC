@@ -1,0 +1,301 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: #ddd;
+}
+
+/* Landing Section */
+.landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000;
+    text-align: center;
+}
+
+.logo-container img {
+    width: 400px;
+    animation: pulse 7s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px #ff7f50, 0 0 40px #ff6347;
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px #ff4500, 0 0 50px #ff4500;
+    }
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+}
+
+/* What We Offer */
+.offer-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.offer-item {
+    text-align: center;
+    max-width: 250px;
+}
+
+.offer-item img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-item:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 127, 80, 0.6);
+}
+
+/* Service Details */
+.services-detail .service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+}
+
+.services-detail .service:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.service-text {
+    max-width: 50%;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    position: relative;
+}
+
+.service-image img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* General Container Styling */
+.services-detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Add space between sections */
+    margin: 40px auto; /* Center the section on the page */
+    max-width: 1200px; /* Restrict width for better readability */
+}
+
+/* Individual Service Section */
+.service-container {
+    display: flex;
+    flex-direction: column; /* Stack text and image vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center-align text */
+    background: #f9f9f9; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 10px; /* Add subtle rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+/* Text Styling */
+.service-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333; /* Dark text color for readability */
+}
+
+.service-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555; /* Slightly lighter text color */
+    margin-bottom: 20px; /* Space below text */
+}
+
+/* Image Styling */
+.service-container img {
+    max-width: 100%;
+    max-height: 200px; /* Restrict image size */
+    object-fit: contain; /* Maintain image proportions */
+    border-radius: 8px; /* Add subtle rounding to match design */
+}
+
+/* Carousel for Advanced Analytics */
+.service-carousel {
+    max-width: 300px;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+}
+
+.carousel-images {
+    display: flex;
+    animation: carousel 10s infinite;
+}
+
+.carousel-images:hover {
+    animation-play-state: paused;
+}
+
+.carousel-images img {
+    width: 300px;
+    height: auto;
+    flex-shrink: 0;
+    margin: 0 10px;
+    border-radius: 8px;
+}
+
+/* Asynchronous Animations */
+.carousel1 .carousel-images {
+    animation-delay: 3s;
+}
+.carousel2 .carousel-images {
+    animation-delay: 5s;
+}
+.carousel3 .carousel-images {
+    animation-delay: 4s;
+}
+.carousel4 .carousel-images {
+    animation-delay: 6s;
+}
+
+@keyframes carousel {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-300px); }
+    66% { transform: translateX(-600px); }
+    100% { transform: translateX(0); }
+}
+
+/* Alternate Layouts */
+.service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+}
+
+.service:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.service-text {
+    max-width: 50%;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.service-image img {
+    max-width: 250px;
+    border-radius: 10px;
+}
+
+/* Previous Clients Section */
+.previous-clients {
+    text-align: center;
+    padding: 40px 20px;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.previous-clients .section-header {
+    margin-bottom: 20px;
+}
+
+.clients-carousel {
+    overflow: hidden; /* Hide overflowing images */
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Adjust width */
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-clientimages {
+    display: flex;
+    gap: 10px; /* Add space between images */
+    animation: scroll-carousel 20s linear infinite; /* Continuous scrolling */
+}
+
+.carousel-clientimages img {
+    max-height: 120px; /* Restrict image height */
+    flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+/* Keyframe for smooth scrolling */
+@keyframes scroll-carousel {
+    from {
+        transform: translateX(0); /* Start at initial position */
+    }
+    to {
+        transform: translateX(-100%); /* Scroll to the left */
+    }
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.contact form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact input, .contact textarea {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.contact button {
+    padding: 10px 20px;
+    border: none;
+    background: #444;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact button:hover {
+    background: #666;
+}
+
+.footer-content {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
+}
