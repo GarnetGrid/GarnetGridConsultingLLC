@@ -33,6 +33,14 @@ body {
     }
 }
 
+.tagline {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+}
+
 /* Section Headers */
 .section-header {
     text-align: center;
@@ -293,6 +301,11 @@ body {
     background: #666;
 }
 
+button, a {
+    padding: 10px;
+    margin: 10px;
+}
+
 .footer-content {
     text-align: center;
     margin-top: 20px;
@@ -301,6 +314,9 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        font-size: 90%;
+    }
     /* Landing Section */
     .landing .logo-container img {
         width: 60%;
