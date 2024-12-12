@@ -33,14 +33,6 @@ body {
     }
 }
 
-.tagline {
-    font-size: 1.2rem;
-    color: #ffffff;
-    text-align: center;
-    margin-top: 10px;
-    font-style: italic;
-}
-
 /* Section Headers */
 .section-header {
     text-align: center;
@@ -222,7 +214,7 @@ body {
 .previous-clients {
     text-align: center;
     padding: 40px 20px;
-    background: #1a1a1a;
+    background: #2a2a2a;
     color: #fff;
 }
 
@@ -231,24 +223,26 @@ body {
 }
 
 .clients-carousel {
-    overflow: hidden; /* Hide overflowing images */
-    width: 100%; /* Full width */
-    max-width: 1200px; /* Adjust width */
-    margin: 0 auto;
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 150px; /* Adjust height */
+    background: #2a2a2a; /* Slightly lighter shade for the background */
+    padding: 10px 0;
 }
 
 .carousel-clientimages {
     display: flex;
-    gap: 10px; /* Add space between images */
-    animation: scroll-carousel 20s linear infinite; /* Continuous scrolling */
+    animation: scroll-carousel 15s linear infinite; /* Smooth infinite scrolling */
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px; /* Add space between logos */
 }
 
 .carousel-clientimages img {
-    max-height: 120px; /* Restrict image height */
-    flex-shrink: 0;
-    border-radius: 10px;
-    object-fit: contain;
+    height: 120px; /* Ensure uniform logo size */
+    max-width: 150px; /* Prevent logos from becoming too wide */
+    object-fit: contain; /* Maintain aspect ratio */
 }
 
 /* Keyframe for smooth scrolling */
@@ -301,11 +295,6 @@ body {
     background: #666;
 }
 
-button, a {
-    padding: 10px;
-    margin: 10px;
-}
-
 .footer-content {
     text-align: center;
     margin-top: 20px;
@@ -314,9 +303,6 @@ button, a {
 }
 
 @media (max-width: 768px) {
-    body {
-        font-size: 90%;
-    }
     /* Landing Section */
     .landing .logo-container img {
         width: 60%;
