@@ -295,6 +295,12 @@ body {
     background: #666;
 }
 
+#formResponse {
+    text-align: center;
+    margin-top: 20px;
+    color: #28a745;
+}
+
 .footer-content {
     text-align: center;
     margin-top: 20px;
