@@ -341,18 +341,5 @@ body {
         width: 80%;
     }
 
-    /* Previous Clients Section */
-    .clients-carousel {
-        max-width: 100%;
-    }
 
-    .carousel-clientimages img {
-        max-width: 80%;
-        margin: 0 5px;
-    }
-
-    /* Contact Section */
-    .contact form {
-        width: 90%;
-    }
 }
