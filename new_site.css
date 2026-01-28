@@ -240,29 +240,130 @@ section {
     line-height: 1.8;
 }
 
-/* What We Offer */
-.offer-container {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 20px;
+/* What We Offer (Enhanced Cards) */
+.offer-grid{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:16px;
+  margin: 18px auto 0;
 }
 
-.offer-item {
-    text-align: center;
-    max-width: 250px;
+.offer-card{
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  overflow:hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  position:relative;
 }
 
-.offer-item img {
-    width: 100%;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.offer-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(800px 240px at 20% 0%, rgba(255,127,80,0.22), transparent 55%);
+  opacity:.55;
+  pointer-events:none;
 }
 
-.offer-item:hover img {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 127, 80, 0.6);
+.offer-media{
+  position:relative;
+  background: #0b0b0b;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.offer-media img{
+  width:100%;
+  height: 170px;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 260ms ease, filter 260ms ease;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.offer-body{
+  padding: 16px 16px 14px;
+  position:relative;
+}
+
+.offer-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size: 12px;
+  letter-spacing: .25px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 6px;
+}
+
+.offer-body h3{
+  margin: 0 0 8px;
+  color:#fff;
+  font-size: 16px;
+}
+
+.offer-body p{
+  margin: 0 0 12px;
+  color: rgba(255,255,255,0.74);
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.offer-tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom: 12px;
+}
+
+.tag{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.86);
+}
+
+.offer-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  letter-spacing:.15px;
+  color:#fff;
+  background: rgba(255,127,80,0.18);
+  border: 1px solid rgba(255,127,80,0.40);
+  padding: 10px 12px;
+  border-radius: 14px;
+  width: fit-content;
+}
+
+.offer-card:hover{
+  transform: translateY(-3px);
+  border-color: rgba(255,127,80,0.35);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+
+.offer-card:hover .offer-media img{
+  transform: scale(1.06);
+}
+
+/* Responsive for What We Offer */
+@media (max-width: 980px){
+  .offer-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .offer-media img{ height: 190px; }
+}
+
+@media (max-width: 560px){
+  .offer-grid{ grid-template-columns:1fr; }
+  .offer-media img{ height: 200px; }
+  .offer-body{ padding: 16px; }
 }
 
 /* Service Details */
@@ -813,3 +914,316 @@ input, textarea, select, button {
     border-radius: 12px;
   }
 }
+
+
+
+/* === Services Expanded === */
+.services-expanded { max-width: 1200px; margin: 0 auto; }
+
+.svc-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.svc-card{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.svc-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: radial-gradient(600px 220px at 10% 0%, rgba(255,127,80,0.18), transparent 60%);
+  opacity: 0.9;
+  pointer-events:none;
+}
+
+.svc-top{ position:relative; }
+.svc-card h3{ margin: 0 0 8px; color:#fff; font-size: 18px; letter-spacing: .2px; }
+.svc-summary{ margin:0 0 12px; color: rgba(255,255,255,0.74); line-height:1.6; }
+
+.chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin: 10px 0 0;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.18);
+  color: rgba(255,255,255,0.82);
+  font-size: 12px;
+}
+
+.svc-acc{ position:relative; margin-top: 14px; display:flex; flex-direction:column; gap:10px; }
+.acc-item{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.20);
+  border-radius: 14px;
+  padding: 0;
+  overflow:hidden;
+}
+
+.acc-item summary{
+  cursor:pointer;
+  padding: 12px 12px;
+  list-style:none;
+  color:#fff;
+  font-weight:700;
+  font-size: 14px;
+}
+
+.acc-item summary::-webkit-details-marker{ display:none; }
+
+.acc-item summary::after{
+  content:"＋";
+  float:right;
+  opacity: .8;
+}
+
+.acc-item[open] summary::after{ content:"—"; }
+
+.acc-body{
+  padding: 0 12px 12px;
+  color: rgba(255,255,255,0.74);
+}
+
+.acc-body ul{ margin: 8px 0 0; padding-left: 18px; }
+.acc-body li{ margin: 6px 0; }
+
+.svc-cta-row{
+  position:relative;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top: 14px;
+}
+
+.services-expanded .btn{ border-radius: 14px; }
+
+/* Responsive */
+@media (max-width: 900px){
+  .svc-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px){
+  .svc-card{ padding: 16px; }
+  .svc-card h3{ font-size: 17px; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .svc-card::before{ opacity: .6; }
+}
+
+
+
+/* === Landing Tweaks === */
+.logo-container{ margin-bottom: 18px; }
+.hero-actions{ margin-top: 26px; }
+
+/* Cleaner pulse (less aggressive scale + softer glow) */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 14px rgba(255,127,80,0.55), 0 0 26px rgba(255,99,71,0.35);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 18px rgba(255,69,0,0.60), 0 0 32px rgba(255,69,0,0.28);
+  }
+}
+
+/* Mobile: show only logo on landing until first scroll */
+@media (max-width: 768px){
+  body:not(.landing-revealed) .hero-copy,
+  body:not(.landing-revealed) .hero-actions{
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  body:not(.landing-revealed) .landing{
+    padding-top: 84px;
+    padding-bottom: 84px;
+  }
+
+  body.landing-revealed .hero-copy,
+  body.landing-revealed .hero-actions{
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    height: auto;
+    overflow: visible;
+    transition: opacity 350ms ease, transform 350ms ease;
+  }
+}
+
+/* === Services Media === */
+.svc-media{
+  position: relative;
+  margin: 14px 0 6px;
+}
+
+.svc-img{
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+}
+
+/* Make existing carousel components look good inside svc cards */
+.services-expanded .service-carousel{
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+}
+
+.services-expanded .carousel-images img{
+  border-radius: 12px;
+}
+
+/* Slightly reduce motion intensity for inside-cards */
+@media (prefers-reduced-motion: no-preference){
+  .services-expanded .carousel-images{ animation-duration: 12s; }
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .svc-img, .services-expanded .service-carousel{ max-width: 100%; }
+}
+
+/* === Services Media Carousel Fix === */
+/* Use percentage-based animation for services carousels so they scale with container size */
+.services-expanded .service-carousel{ overflow:hidden; }
+.services-expanded .service-carousel .carousel-images{
+  gap: 0 !important;
+  width: 300% !important; /* 3 slides */
+}
+
+/* Each slide fills the visible frame */
+.services-expanded .service-carousel .carousel-images img{
+  width: 33.3333% !important;
+  max-width: 33.3333% !important;
+  flex: 0 0 33.3333% !important;
+  margin: 0 !important;
+}
+
+/* Override old pixel-based @keyframes carousel for these cards */
+@keyframes svcCarousel3 {
+  0%, 22%   { transform: translateX(0%); }
+  33%, 55%  { transform: translateX(-33.3333%); }
+  66%, 88%  { transform: translateX(-66.6666%); }
+  100%      { transform: translateX(0%); }
+}
+
+.services-expanded .service-carousel .carousel-images{
+  animation-name: svcCarousel3 !important;
+}
+
+/* =================================================
+   Logo-only landing until scroll (DESKTOP + MOBILE)
+   ================================================= */
+
+body:not(.landing-revealed) .hero-copy,
+body:not(.landing-revealed) .hero-actions{
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+body:not(.landing-revealed) .logo-container{
+  margin-bottom: 0 !important;
+}
+
+body.landing-revealed .hero-copy,
+body.landing-revealed .hero-actions{
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  height: auto;
+  overflow: visible;
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+body:not(.landing-revealed) .landing{
+  min-height: 100svh;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+body:not(.landing-revealed) .logo-container img{
+  animation-duration: 7.5s;
+}
+
+/* === Scroll Hint === */
+.scroll-hint{
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.scroll-hint-inner{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  color: rgba(255,255,255,0.82);
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
+
+.scroll-chevron{
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(255,255,255,0.70);
+  border-bottom: 2px solid rgba(255,255,255,0.70);
+  transform: rotate(45deg);
+  margin-top: -2px;
+  animation: hintBreathe 1.6s ease-in-out infinite;
+}
+
+@keyframes hintBreathe{
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.75; }
+  50% { transform: rotate(45deg) translateY(3px); opacity: 1; }
+}
+
+/* Hide hint once landing is revealed */
+body.landing-revealed .scroll-hint{
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+
+.landing{ position: relative; }
