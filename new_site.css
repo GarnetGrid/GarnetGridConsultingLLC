@@ -1362,3 +1362,64 @@ body.landing-locked{
     box-shadow: 0 0 26px rgba(255,69,0,0.72), 0 0 44px rgba(255,69,0,0.65);
   }
 }
+
+
+
+/* ===============================
+   MOBILE LANDING + CONTACT FIX
+   =============================== */
+@media (max-width: 768px) {
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    padding-top: 0 !important;
+  }
+
+  .landing {
+    min-height: 100svh;
+    height: auto;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-container {
+    margin-top: 0 !important;
+  }
+
+  .logo-container img {
+    width: min(300px, 80vw);
+  }
+
+  .contact {
+    padding: 32px 16px;
+    border-radius: 14px;
+  }
+
+  .contact form,
+  .contact-form {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .contact input,
+  .contact textarea {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  .contact button {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
