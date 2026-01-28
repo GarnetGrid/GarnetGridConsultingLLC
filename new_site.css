@@ -1222,3 +1222,64 @@ body.landing-revealed .scroll-hint{
 }
 
 .landing{ position: relative; }
+
+/* === Landing Lock (logo-only until scroll) === */
+/* Default state: lock landing to logo-only (desktop + mobile) */
+body:not(.landing-revealed) .top-nav{
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* Hide hero copy + buttons until reveal */
+body:not(.landing-revealed) .hero-copy,
+body:not(.landing-revealed) .hero-actions{
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* If your landing uses a header layout (older markup), hide its CTA/buttons too */
+body:not(.landing-revealed) header.landing .hero-actions,
+body:not(.landing-revealed) header.landing .scroll-indicator{
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Center the logo on the screen when locked */
+body:not(.landing-revealed) .landing,
+body:not(.landing-revealed) header.landing{
+  min-height: 100svh;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+/* Smooth reveal */
+body.landing-revealed .top-nav{
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+body.landing-revealed .hero-copy,
+body.landing-revealed .hero-actions{
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  height: auto;
+  overflow: visible;
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+/* Optional: slightly slower pulse while locked */
+body:not(.landing-revealed) .logo-container img{
+  animation-duration: 7.5s;
+}
