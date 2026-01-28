@@ -1286,17 +1286,20 @@ body:not(.landing-revealed) .logo-container img{
 
 
 /* ===============================
-   LANDING LOCK PATCH (grey bar fix)
+   LANDING COMBO PATCH
+   - Removes grey bar before scroll (nav hidden off-canvas)
    - Logo-only until first scroll
-   - Hides nav off-canvas to remove top grey strip
-   - Smooth reveal on desktop + mobile
+   - Removes scroll indicator (handled in HTML)
+   - Adds space between logo and buttons
+   - Cleaner pulse (slightly reduced expansion)
    =============================== */
 
+/* Smooth nav reveal */
 .top-nav{
   transition: transform .35s ease, opacity .35s ease, background .35s ease;
 }
 
-/* LOCKED: nav is fully hidden (no space reserved) */
+/* LOCKED: hide nav completely (prevents top grey strip) */
 body.landing-locked .top-nav{
   position: fixed !important;
   top: 0; left: 0; right: 0;
@@ -1305,7 +1308,7 @@ body.landing-locked .top-nav{
   pointer-events: none;
 }
 
-/* UNLOCKED: nav fixed + visible */
+/* UNLOCKED: show nav fixed */
 body.landing-unlocked .top-nav{
   position: fixed !important;
   top: 0; left: 0; right: 0;
@@ -1314,7 +1317,7 @@ body.landing-unlocked .top-nav{
   pointer-events: auto;
 }
 
-/* Only add top padding AFTER unlock so content doesn't jump under fixed nav */
+/* Add top spacing ONLY after unlock */
 body.landing-unlocked{
   padding-top: 62px;
 }
@@ -1322,25 +1325,40 @@ body.landing-unlocked{
   body.landing-unlocked{ padding-top: 94px; }
 }
 
-/* Logo-only: hide buttons + hint until first scroll */
-body.landing-locked .hero-actions,
-body.landing-locked .scroll-indicator,
-body.landing-locked .scroll-hint{
+/* Logo-only: hide hero buttons until scroll (your site uses hero-actions) */
+body.landing-locked .hero-actions{
   opacity: 0 !important;
   transform: translateY(10px);
   pointer-events: none !important;
 }
-
-body.landing-unlocked .hero-actions,
-body.landing-unlocked .scroll-indicator,
-body.landing-unlocked .scroll-hint{
+body.landing-unlocked .hero-actions{
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
   transition: opacity .35s ease, transform .35s ease;
 }
 
-/* Prevent iOS overscroll showing a top band */
+/* Space between logo + buttons */
+.hero-actions-spaced{
+  margin-top: 42px;
+}
+@media (max-width: 768px){
+  .hero-actions-spaced{ margin-top: 36px; }
+}
+
+/* Prevent iOS overscroll top band */
 body.landing-locked{
   background: #000;
+}
+
+/* Cleaner pulse: slightly smaller expansion + softer glow */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(255,127,80,0.60), 0 0 32px rgba(255,99,71,0.55);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 26px rgba(255,69,0,0.72), 0 0 44px rgba(255,69,0,0.65);
+  }
 }
