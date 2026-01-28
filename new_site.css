@@ -1283,3 +1283,64 @@ body.landing-revealed .hero-actions{
 body:not(.landing-revealed) .logo-container img{
   animation-duration: 7.5s;
 }
+
+
+/* ===============================
+   LANDING LOCK PATCH (grey bar fix)
+   - Logo-only until first scroll
+   - Hides nav off-canvas to remove top grey strip
+   - Smooth reveal on desktop + mobile
+   =============================== */
+
+.top-nav{
+  transition: transform .35s ease, opacity .35s ease, background .35s ease;
+}
+
+/* LOCKED: nav is fully hidden (no space reserved) */
+body.landing-locked .top-nav{
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  transform: translateY(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* UNLOCKED: nav fixed + visible */
+body.landing-unlocked .top-nav{
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Only add top padding AFTER unlock so content doesn't jump under fixed nav */
+body.landing-unlocked{
+  padding-top: 62px;
+}
+@media (max-width: 768px){
+  body.landing-unlocked{ padding-top: 94px; }
+}
+
+/* Logo-only: hide buttons + hint until first scroll */
+body.landing-locked .hero-actions,
+body.landing-locked .scroll-indicator,
+body.landing-locked .scroll-hint{
+  opacity: 0 !important;
+  transform: translateY(10px);
+  pointer-events: none !important;
+}
+
+body.landing-unlocked .hero-actions,
+body.landing-unlocked .scroll-indicator,
+body.landing-unlocked .scroll-hint{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+/* Prevent iOS overscroll showing a top band */
+body.landing-locked{
+  background: #000;
+}
