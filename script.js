@@ -253,7 +253,7 @@ function scrollToSection(sectionId) {
 })();
 
 
-/* LANDING_LOCK_PATCH: logo-only landing until first scroll/touch/wheel */
+/* LANDING_COMBO_PATCH: logo-only landing until first scroll/touch/wheel */
 (() => {
   const body = document.body;
   if (!body) return;
