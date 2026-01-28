@@ -204,3 +204,50 @@ function scrollToSection(sectionId) {
 
   window.addEventListener("load", init);
 })();
+
+
+// === Landing lock (logo-only until scroll) ===
+(function () {
+  let revealed = false;
+
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
+    document.body.classList.add("landing-revealed");
+    cleanup();
+  };
+
+  const onScroll = () => {
+    if (window.scrollY > 8) reveal();
+  };
+
+  const onWheel = () => reveal();
+  const onTouchMove = () => reveal();
+  const onKey = (e) => {
+    if (["ArrowDown", "PageDown", " ", "Spacebar"].includes(e.key)) reveal();
+  };
+
+  const cleanup = () => {
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("wheel", onWheel);
+    window.removeEventListener("touchmove", onTouchMove);
+    window.removeEventListener("keydown", onKey);
+  };
+
+  const init = () => {
+    // Always start locked at top
+    if (window.scrollY <= 8) {
+      document.body.classList.remove("landing-revealed");
+      revealed = false;
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("wheel", onWheel, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+      window.addEventListener("keydown", onKey);
+    } else {
+      document.body.classList.add("landing-revealed");
+      revealed = true;
+    }
+  };
+
+  window.addEventListener("load", init);
+})();
