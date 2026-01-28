@@ -84,3 +84,126 @@ function scrollToSection(sectionId) {
     window.location.href = mailto;
   });
 })();
+
+
+// === Services Expanded Enhancements ===
+(function(){
+  // Exclusive accordion: only one <details> open per svc card (optional, feels premium)
+  document.querySelectorAll('.svc-card').forEach(card => {
+    const details = card.querySelectorAll('details.acc-item');
+    details.forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (!d.open) return;
+        details.forEach(other => { if (other !== d) other.open = false; });
+      });
+    });
+  });
+
+  // Smooth scroll with sticky header offset
+  const header = document.querySelector('.top-nav');
+  const headerOffset = () => header ? header.getBoundingClientRect().height + 8 : 16;
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (!id || id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset();
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.pushState(null, '', id);
+    });
+  });
+})();
+
+
+// === Mobile Landing Reveal ===
+(function(){
+  const isMobile = () => window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+  let revealed = false;
+
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
+    document.body.classList.add('landing-revealed');
+    window.removeEventListener('scroll', onScroll, { passive: true });
+    window.removeEventListener('touchmove', onScroll, { passive: true });
+  };
+
+  const onScroll = () => {
+    if (window.scrollY > 8) reveal();
+  };
+
+  const init = () => {
+    if (!isMobile()) return;
+    // Start hidden (logo-only) at top
+    if (window.scrollY <= 8) {
+      document.body.classList.remove('landing-revealed');
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('touchmove', onScroll, { passive: true });
+    } else {
+      reveal();
+    }
+  };
+
+  // Run on load and on resize
+  window.addEventListener('load', init);
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      document.body.classList.add('landing-revealed'); // ensureiveal on desktop
+      revealed = true;
+    } else {
+      // If not revealed yet, re-init
+      if (!revealed) init();
+    }
+  });
+})();
+
+
+// === Landing: logo-only until scroll (desktop + mobile) ===
+(function () {
+  let revealed = false;
+
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
+    document.body.classList.add("landing-revealed");
+    cleanup();
+  };
+
+  const onScroll = () => {
+    if (window.scrollY > 8) reveal();
+  };
+
+  const onWheel = () => reveal();
+  const onTouchMove = () => reveal();
+  const onKey = (e) => {
+    if (["ArrowDown", "PageDown", " ", "Spacebar"].includes(e.key)) reveal();
+  };
+
+  const cleanup = () => {
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("wheel", onWheel);
+    window.removeEventListener("touchmove", onTouchMove);
+    window.removeEventListener("keydown", onKey);
+  };
+
+  const init = () => {
+    if (window.scrollY > 8) {
+      document.body.classList.add("landing-revealed");
+      revealed = true;
+      return;
+    }
+
+    document.body.classList.remove("landing-revealed");
+    revealed = false;
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("keydown", onKey);
+  };
+
+  window.addEventListener("load", init);
+})();
