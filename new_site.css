@@ -706,7 +706,6 @@ section {
         grid-template-columns: 1fr;
     }
 
-
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -915,8 +914,6 @@ input, textarea, select, button {
   }
 }
 
-
-
 /* === Services Expanded === */
 .services-expanded { max-width: 1200px; margin: 0 auto; }
 
@@ -1027,8 +1024,6 @@ input, textarea, select, button {
 @media (prefers-reduced-motion: reduce){
   .svc-card::before{ opacity: .6; }
 }
-
-
 
 /* === Landing Tweaks === */
 .logo-container{ margin-bottom: 18px; }
