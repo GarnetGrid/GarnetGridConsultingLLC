@@ -1423,3 +1423,30 @@ body.landing-locked{
     margin-top: 8px;
   }
 }
+
+
+/* ===============================
+   MOBILE LANDING: LOGO UP A BIT
+   (prevents "too low on load")
+   =============================== */
+@media (max-width: 768px) {
+  /* Nudge the landing content upward slightly */
+  .landing {
+    justify-content: flex-start !important;
+    padding-top: calc(env(safe-area-inset-top) + 10px) !important;
+  }
+
+  /* Move logo block up (safe even if one selector doesn't exist) */
+  .logoStage,
+  .logo-container {
+    transform: translateY(-34px) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .logoStage,
+  .logo-container {
+    transform: translateY(-42px) !important;
+  }
+}
+
