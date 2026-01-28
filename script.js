@@ -251,3 +251,42 @@ function scrollToSection(sectionId) {
 
   window.addEventListener("load", init);
 })();
+
+
+/* LANDING_LOCK_PATCH: logo-only landing until first scroll/touch/wheel */
+(() => {
+  const body = document.body;
+  if (!body) return;
+
+  // Ensure initial state exists
+  if (!body.classList.contains('landing-locked') && !body.classList.contains('landing-unlocked')) {
+    body.classList.add('landing-locked');
+  }
+
+  let unlocked = false;
+  const unlock = () => {
+    if (unlocked) return;
+    unlocked = true;
+    body.classList.remove('landing-locked');
+    body.classList.add('landing-unlocked');
+    window.removeEventListener('scroll', onScroll, { passive: true });
+    window.removeEventListener('wheel', onWheel, { passive: true });
+    window.removeEventListener('touchmove', onTouch, { passive: true });
+    window.removeEventListener('keydown', onKey);
+  };
+
+  const onScroll = () => { if (window.scrollY > 2) unlock(); };
+  const onWheel  = () => unlock();
+  const onTouch  = () => unlock();
+  const onKey = (e) => {
+    if (['ArrowDown','PageDown',' ','Enter'].includes(e.key)) unlock();
+  };
+
+  // If loaded already scrolled, unlock immediately
+  if (window.scrollY > 2) { unlock(); return; }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('wheel', onWheel, { passive: true });
+  window.addEventListener('touchmove', onTouch, { passive: true });
+  window.addEventListener('keydown', onKey);
+})();
