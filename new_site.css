@@ -1363,89 +1363,25 @@ body.landing-locked{
   }
 }
 
-
-
 /* ===============================
-   MOBILE LANDING + CONTACT FIX
+   MOBILE LANDING: LOGO POSITION TUNE
+   - reduces excess top space on load
    =============================== */
 @media (max-width: 768px) {
-
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-
-  body {
-    padding-top: 0 !important;
-  }
-
   .landing {
-    min-height: 100svh;
-    height: auto;
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: calc(env(safe-area-inset-top) + 12px) !important;
+    padding-bottom: 28px !important;
+    justify-content: center !important;
   }
-
-  .logo-container {
+  .logo-container,
+  .logoStage {
     margin-top: 0 !important;
-  }
-
-  .logo-container img {
-    width: min(300px, 80vw);
-  }
-
-  .contact {
-    padding: 32px 16px;
-    border-radius: 14px;
-  }
-
-  .contact form,
-  .contact-form {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .contact input,
-  .contact textarea {
-    width: 100%;
-    font-size: 16px;
-    padding: 12px;
-    box-sizing: border-box;
-  }
-
-  .contact button {
-    width: 100%;
-    margin-top: 8px;
+    transform: translateY(clamp(-64px, -8vh, -28px)) !important;
   }
 }
-
-
-/* ===============================
-   MOBILE LANDING: LOGO UP A BIT
-   (prevents "too low on load")
-   =============================== */
-@media (max-width: 768px) {
-  /* Nudge the landing content upward slightly */
-  .landing {
-    justify-content: flex-start !important;
-    padding-top: calc(env(safe-area-inset-top) + 10px) !important;
-  }
-
-  /* Move logo block up (safe even if one selector doesn't exist) */
-  .logoStage,
-  .logo-container {
-    transform: translateY(-34px) !important;
-  }
-}
-
 @media (max-width: 380px) {
-  .logoStage,
-  .logo-container {
-    transform: translateY(-42px) !important;
+  .logo-container,
+  .logoStage {
+    transform: translateY(clamp(-78px, -10vh, -40px)) !important;
   }
 }
