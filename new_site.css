@@ -616,3 +616,189 @@ section {
         scroll-behavior: auto !important;
     }
 }
+/* ============================
+   FINAL MOBILE FIX (paste last)
+   ============================ */
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make images never overflow their containers */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* iOS: prevent input focus zoom + ensure proper sizing */
+input, textarea, select, button {
+  font-size: 16px;
+}
+
+/* NAV: stack nicely on small screens */
+@media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    flex: 1 1 auto;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .nav-links .nav-cta {
+    border: 1px solid rgba(255, 127, 80, 0.35);
+    background: rgba(255, 127, 80, 0.18);
+  }
+}
+
+/* HERO: stop 100vh weirdness on mobile browsers (Safari URL bar issue) */
+@media (max-width: 768px) {
+  .landing {
+    height: auto;              /* override 100vh */
+    min-height: 100svh;        /* better mobile viewport */
+    padding: 64px 16px 44px;
+  }
+
+  .logo-container img {
+    width: min(320px, 85vw);
+  }
+
+  .hero-copy p {
+    font-size: 1rem;
+  }
+}
+
+/* STEPS + ABOUT: already stacking, just tighten spacing */
+@media (max-width: 768px) {
+  section {
+    padding: 34px 16px;
+  }
+
+  .steps {
+    gap: 12px;
+  }
+
+  .about-grid {
+    gap: 12px;
+  }
+}
+
+/* WHAT WE OFFER: make cards consistent */
+@media (max-width: 768px) {
+  .offer-container {
+    margin: 16px 0;
+    gap: 16px;
+  }
+
+  .offer-item {
+    max-width: 520px;
+    width: 100%;
+  }
+
+  .offer-item img {
+    width: 100%;
+  }
+}
+
+/* SERVICE DETAILS: force vertical stacking + kill alternating reverse on mobile */
+@media (max-width: 768px) {
+  .services-detail .service,
+  .service {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .services-detail .service:nth-child(even),
+  .service:nth-child(even) {
+    flex-direction: column !important;
+  }
+
+  .service-text {
+    max-width: 100% !important;
+    font-size: 1.05rem;
+    padding: 0 6px;
+  }
+
+  .service-image img {
+    max-width: min(320px, 85vw) !important;
+  }
+}
+
+/* IMPORTANT: your .service-container currently forces LIGHT background + dark text.
+   That looks "weird" on mobile because it's inconsistent with the rest of the site.
+   This override keeps your dark luxury theme. */
+@media (max-width: 768px) {
+  .service-container {
+    background: #222 !important;
+    color: #ddd !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+  }
+
+  .service-container h2 {
+    color: #fff !important;
+  }
+
+  .service-container p {
+    color: rgba(255,255,255,0.72) !important;
+  }
+}
+
+/* CAROUSEL: prevent overflow + keep images sized */
+@media (max-width: 768px) {
+  .service-carousel {
+    max-width: min(320px, 85vw);
+  }
+
+  .carousel-images img {
+    width: min(280px, 80vw) !important;
+    margin: 0 8px;
+  }
+}
+
+/* CONTACT: make form full-width, consistent, and readable */
+@media (max-width: 768px) {
+  .contact {
+    padding: 34px 16px;
+    border-radius: 14px;
+  }
+
+  .contact form,
+  .contact-form {
+    max-width: 100% !important;
+  }
+
+  .contact input,
+  .contact textarea {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact button {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+}
