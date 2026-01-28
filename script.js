@@ -85,7 +85,6 @@ function scrollToSection(sectionId) {
   });
 })();
 
-
 // === Services Expanded Enhancements ===
 (function(){
   // Exclusive accordion: only one <details> open per svc card (optional, feels premium)
@@ -116,7 +115,6 @@ function scrollToSection(sectionId) {
     });
   });
 })();
-
 
 // === Mobile Landing Reveal ===
 (function(){
@@ -159,7 +157,6 @@ function scrollToSection(sectionId) {
     }
   });
 })();
-
 
 // === Landing: logo-only until scroll (desktop + mobile) ===
 (function () {
