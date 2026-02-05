@@ -5251,3 +5251,59 @@ footer {
         left: 0;
     }
 }
+/* Certifications Section */
+.certifications-section {
+    padding: 8rem 0;
+    position: relative;
+    background: var(--bg-obsidian-soft);
+    border-top: 1px solid var(--glass-border);
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.cert-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-med);
+}
+
+.cert-card:hover {
+    border-color: var(--garnet-main);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.cert-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px var(--garnet-glow));
+}
+
+.cert-details h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.cert-issuer {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+}
