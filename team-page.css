@@ -1,0 +1,899 @@
+/* ========================================
+   THE TEAM PAGE - INTRICATE STYLING
+   The most special page on the site
+   ======================================== */
+
+/* Page-wide Background System */
+.team-page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+
+    /* Radial mesh with DNA helix pattern */
+    background:
+        /* Central spotlight */
+        radial-gradient(ellipse at 50% 20%, rgba(220, 20, 60, 0.15) 0%, transparent 50%),
+        /* Floating orbs */
+        radial-gradient(circle at 15% 40%, rgba(199, 21, 133, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 85% 60%, rgba(138, 43, 226, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 30% 80%, rgba(220, 20, 60, 0.06) 0%, transparent 15%),
+        radial-gradient(circle at 70% 30%, rgba(199, 21, 133, 0.06) 0%, transparent 15%);
+    animation: teamBackgroundFloat 50s ease-in-out infinite;
+}
+
+@keyframes teamBackgroundFloat {
+
+    0%,
+    100% {
+        background-position: 50% 20%, 15% 40%, 85% 60%, 30% 80%, 70% 30%;
+    }
+
+    50% {
+        background-position: 50% 25%, 20% 45%, 80% 55%, 35% 75%, 65% 35%;
+    }
+}
+
+/* Geometric overlay */
+.team-page-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(90deg, rgba(220, 20, 60, 0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(220, 20, 60, 0.02) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: gridShift 30s linear infinite;
+}
+
+@keyframes gridShift {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+/* Vignette */
+.team-page-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow:
+        inset 0 0 300px rgba(0, 0, 0, 0.4),
+        inset 0 0 150px rgba(220, 20, 60, 0.05);
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.team-hero {
+    padding: 12rem 0 8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
+    animation: heroPulse 8s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.team-hero h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin: 2rem 0;
+    background: linear-gradient(135deg, #fff 0%, rgba(220, 20, 60, 0.9) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   PROFILE SHOWCASE
+   ======================================== */
+.profile-showcase {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Profile Card */
+.profile-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg,
+            transparent 0deg,
+            transparent 170deg,
+            rgba(220, 20, 60, 0.1) 180deg,
+            transparent 190deg,
+            transparent 360deg);
+    animation: profileCardRotate 10s linear infinite;
+}
+
+@keyframes profileCardRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-image-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 2rem;
+}
+
+.profile-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.3) 0%, transparent 70%);
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.profile-image {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.2), rgba(138, 43, 226, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(220, 20, 60, 0.5);
+    z-index: 2;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Animated Rings */
+.profile-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(220, 20, 60, 0.3);
+    border-radius: 50%;
+    animation: ringExpand 6s ease-out infinite;
+}
+
+.ring-1 {
+    width: 260px;
+    height: 260px;
+    animation-delay: 0s;
+}
+
+.ring-2 {
+    width: 280px;
+    height: 280px;
+    animation-delay: 2s;
+}
+
+.ring-3 {
+    width: 300px;
+    height: 300px;
+    animation-delay: 4s;
+}
+
+@keyframes ringExpand {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Profile Info */
+.profile-info {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #fff 0%, rgba(220, 20, 60, 0.9) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-title {
+    font-size: 1.3rem;
+    color: var(--garnet);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.profile-tagline {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2rem;
+}
+
+/* Profile Stats */
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 2rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(220, 20, 60, 0.2);
+    border-bottom: 1px solid rgba(220, 20, 60, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--garnet);
+    font-family: 'Outfit', sans-serif;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
+}
+
+/* LinkedIn Button */
+.linkedin-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--garnet), var(--magenta));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.linkedin-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
+}
+
+/* Philosophy Panel */
+.philosophy-panel {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.philosophy-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.05) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.philosophy-panel h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--garnet);
+}
+
+.philosophy-content {
+    position: relative;
+    z-index: 1;
+}
+
+.philosophy-content blockquote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    border-left: 4px solid var(--garnet);
+    padding-left: 2rem;
+    margin: 0 0 2rem 0;
+}
+
+.philosophy-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+/* ========================================
+   EXPERTISE CONSTELLATION
+   ======================================== */
+.expertise-constellation {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.constellation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.skill-node {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: 15px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    animation-delay: var(--delay, 0s);
+}
+
+.skill-node:hover {
+    transform: translateY(-10px);
+    border-color: var(--garnet);
+    box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
+}
+
+.skill-node::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.skill-node:hover::before {
+    opacity: 1;
+}
+
+.node-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px rgba(220, 20, 60, 0.5));
+}
+
+.skill-node h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--garnet);
+}
+
+.skill-node p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* ========================================
+   SOLO ADVANTAGE SECTION
+   ======================================== */
+.solo-advantage {
+    padding: 8rem 0;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.advantage-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.advantage-intro {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+}
+
+.advantage-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.advantage-item {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.advantage-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--garnet);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1;
+    opacity: 0.3;
+}
+
+.advantage-text h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.advantage-text p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* Brain Visualization */
+.advantage-visual {
+    position: relative;
+    height: 500px;
+}
+
+.brain-visualization {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brain-core {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.3) 0%, rgba(138, 43, 226, 0.2) 100%);
+    border-radius: 50%;
+    position: relative;
+    animation: brainPulse 3s ease-in-out infinite;
+    box-shadow: 0 0 60px rgba(220, 20, 60, 0.5);
+}
+
+@keyframes brainPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.neural-network {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.neuron {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 20px;
+    height: 20px;
+    background: var(--garnet);
+    border-radius: 50%;
+    animation: neuronPulse 2s ease-in-out infinite;
+    animation-delay: var(--delay);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.8);
+}
+
+@keyframes neuronPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   JOURNEY TIMELINE
+   ======================================== */
+.journey-timeline {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 4rem auto 0;
+    padding-left: 4rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            var(--garnet) 10%,
+            var(--garnet) 90%,
+            transparent 100%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.timeline-item:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -4rem;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--garnet);
+    border-radius: 50%;
+    border: 4px solid var(--bg-dark);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.6);
+    animation: markerPulse 2s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(220, 20, 60, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(220, 20, 60, 1);
+    }
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.timeline-content h4 {
+    font-size: 1.5rem;
+    color: var(--garnet);
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* ========================================
+   TEAM CTA SECTION
+   ======================================== */
+.team-cta {
+    padding: 8rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.15) 0%, transparent 70%);
+    animation: ctaPulse 10s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.8;
+    }
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.team-cta h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-cta p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-button.primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, var(--garnet), var(--magenta));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(220, 20, 60, 0.5);
+}
+
+.cta-button.secondary {
+    padding: 1.2rem 2.5rem;
+    background: transparent;
+    color: white;
+    text-decoration: none;
+    border: 2px solid var(--garnet);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-button.secondary:hover {
+    background: var(--garnet);
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 1024px) {
+
+    .profile-grid,
+    .advantage-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .constellation-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-hero {
+        padding: 8rem 0 4rem;
+    }
+
+    .team-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .constellation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .advantage-visual {
+        height: 300px;
+    }
+
+    .brain-core {
+        width: 150px;
+        height: 150px;
+    }
+
+    .timeline {
+        padding-left: 3rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .team-cta h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Performance Optimizations */
+.team-page-background,
+.profile-glow,
+.brain-core {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
