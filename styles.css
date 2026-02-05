@@ -5601,3 +5601,19 @@ footer {
         padding: 0.75rem;
     }
 }
+
+/* Legal Links */
+.legal .separator {
+    opacity: 0.5;
+    margin: 0 0.5rem;
+}
+
+.legal a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.legal a:hover {
+    color: var(--garnet-main);
+}

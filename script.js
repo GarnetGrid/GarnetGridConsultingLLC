@@ -346,13 +346,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => banner.remove(), 500);
         });
     }
-});
 setTimeout(() => {
     document.getElementById('name').focus();
 }, 500);
-                }
-            });
-        }
 
 // Animate stats on scroll
 const statValues = document.querySelectorAll('.cta-stat-value');
