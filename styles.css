@@ -305,6 +305,16 @@ header.main-nav.scrolled {
 }
 
 /* Testimonials & Metrics */
+/* Testimonials Section - Data Stream Flare */
+.testimonials {
+    position: relative;
+    background: linear-gradient(rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.85)),
+        url('assets/images/garnet-data-stream.png') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 8rem 0;
+}
+
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
