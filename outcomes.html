@@ -44,131 +44,376 @@
 
     <main>
         <!-- Hero -->
-        <section class="page-hero" style="padding-top: 12rem; padding-bottom: 4rem;">
+        <section class="outcomes-hero">
+            <div class="outcomes-hero-bg"></div>
             <div class="container">
-                <div class="section-header reveal">
-                    <span
-                        style="color: var(--garnet-main); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem;">Value
-                        Delivered</span>
-                    <h1 style="font-size: 4rem; margin: 1rem 0;">Outcomes</h1>
-                    <p>Moving from technical debt and data instability to strategic architectural confidence.</p>
+                <div class="section-header reveal" style="text-align: center;">
+                    <span class="hero-label">Value Delivered</span>
+                    <h1 style="font-size: 4.5rem; margin: 1rem 0;">Measurable Outcomes</h1>
+                    <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">From technical debt and data
+                        instability to strategic architectural confidence.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Before/After Section -->
-        <section class="outcomes-comparison">
+        <!-- Transformation Journey -->
+        <section class="transformation-journey">
             <div class="container">
-                <div class="ba-grid reveal">
-                    <div class="ba-card before">
-                        <span class="ba-tag">The Fragmented State</span>
-                        <h3>Before</h3>
-                        <ul class="deliverables-list">
-                            <li>Manual, error-prone data exports</li>
-                            <li>Conflicting metrics across departments</li>
-                            <li>Performance bottlenecks in large models</li>
-                            <li>"Black box" reporting with no lineage</li>
-                        </ul>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem;">The Transformation Journey</h2>
+                    <p>Moving from chaos to clarity, step by step.</p>
+                </div>
+
+                <div class="journey-timeline">
+                    <!-- Before State -->
+                    <div class="journey-card before-card reveal">
+                        <div class="journey-icon before-icon">⚠️</div>
+                        <div class="journey-badge">Before</div>
+                        <h3>The Fragmented State</h3>
+                        <div class="journey-problems">
+                            <div class="problem-item">
+                                <span class="problem-icon">❌</span>
+                                <div>
+                                    <h4>Manual Data Exports</h4>
+                                    <p>Error-prone, time-consuming processes</p>
+                                </div>
+                            </div>
+                            <div class="problem-item">
+                                <span class="problem-icon">❌</span>
+                                <div>
+                                    <h4>Conflicting Metrics</h4>
+                                    <p>Departments can't agree on numbers</p>
+                                </div>
+                            </div>
+                            <div class="problem-item">
+                                <span class="problem-icon">❌</span>
+                                <div>
+                                    <h4>Performance Bottlenecks</h4>
+                                    <p>Reports take minutes to load</p>
+                                </div>
+                            </div>
+                            <div class="problem-item">
+                                <span class="problem-icon">❌</span>
+                                <div>
+                                    <h4>"Black Box" Reporting</h4>
+                                    <p>No transparency or data lineage</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ba-card after">
-                        <span class="ba-tag">The Garnet Standard</span>
-                        <h3>After</h3>
-                        <ul class="deliverables-list">
-                            <li>Automated, high-fidelity pipelines</li>
-                            <li>Single, governed source of truth</li>
-                            <li>Sub-second report responsiveness</li>
-                            <li>Transparent, traceable data lineage</li>
-                        </ul>
+
+                    <!-- Transformation Arrow -->
+                    <div class="journey-arrow reveal">
+                        <div class="arrow-line"></div>
+                        <div class="arrow-head">→</div>
+                        <div class="arrow-label">Garnet Grid Transformation</div>
+                    </div>
+
+                    <!-- After State -->
+                    <div class="journey-card after-card reveal">
+                        <div class="journey-icon after-icon">✨</div>
+                        <div class="journey-badge success-badge">After</div>
+                        <h3>The Garnet Standard</h3>
+                        <div class="journey-solutions">
+                            <div class="solution-item">
+                                <span class="solution-icon">✓</span>
+                                <div>
+                                    <h4>Automated Pipelines</h4>
+                                    <p>High-fidelity, zero-touch data flows</p>
+                                </div>
+                            </div>
+                            <div class="solution-item">
+                                <span class="solution-icon">✓</span>
+                                <div>
+                                    <h4>Single Source of Truth</h4>
+                                    <p>Governed, consistent metrics everywhere</p>
+                                </div>
+                            </div>
+                            <div class="solution-item">
+                                <span class="solution-icon">✓</span>
+                                <div>
+                                    <h4>Sub-Second Response</h4>
+                                    <p>Instant insights, real-time decisions</p>
+                                </div>
+                            </div>
+                            <div class="solution-item">
+                                <span class="solution-icon">✓</span>
+                                <div>
+                                    <h4>Transparent Lineage</h4>
+                                    <p>Full traceability from source to visual</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Measurable Gains -->
-        <section class="measurable-gains" style="padding-top: 4rem;">
+        <!-- Impact Metrics -->
+        <section class="impact-metrics">
             <div class="container">
-                <div class="card-grid">
-                    <div class="glass-card reveal">
-                        <h4 style="color: var(--garnet-main); margin-bottom: 1rem;">Efficiency</h4>
-                        <p>Eliminate manual reconciliation cycles. We typically see a 70% reduction in time spent on
-                            data preparation.</p>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem;">Measurable Impact</h2>
+                    <p>Real numbers from real implementations.</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card reveal">
+                        <div class="metric-icon">⚡</div>
+                        <div class="metric-value" data-target="70">0</div>
+                        <div class="metric-unit">%</div>
+                        <div class="metric-label">Reduction in Data Prep Time</div>
+                        <p class="metric-desc">Eliminate manual reconciliation cycles</p>
                     </div>
-                    <div class="glass-card reveal">
-                        <h4 style="color: var(--garnet-main); margin-bottom: 1rem;">Trust</h4>
+
+                    <div class="metric-card reveal">
+                        <div class="metric-icon">🎯</div>
+                        <div class="metric-value" data-target="99.9">0</div>
+                        <div class="metric-unit">%</div>
+                        <div class="metric-label">Data Accuracy</div>
+                        <p class="metric-desc">Build executive confidence through consistency</p>
+                    </div>
+
+                    <div class="metric-card reveal">
+                        <div class="metric-icon">🚀</div>
+                        <div class="metric-value" data-target="10">0</div>
+                        <div class="metric-unit">x</div>
+                        <div class="metric-label">Scalability Headroom</div>
+                        <p class="metric-desc">Future-proof for the next expansion</p>
+                    </div>
+
+                    <div class="metric-card reveal">
+                        <div class="metric-icon">💰</div>
+                        <div class="metric-value" data-target="40">0</div>
+                        <div class="metric-unit">%</div>
+                        <div class="metric-label">Cost Reduction</div>
+                        <p class="metric-desc">Optimize infrastructure and licensing</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Pillars -->
+        <section class="value-pillars">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem;">Three Pillars of Value</h2>
+                    <p>How we transform your data ecosystem.</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">01</div>
+                        <div class="pillar-icon-large">⚡</div>
+                        <h3>Efficiency</h3>
+                        <p>Eliminate manual reconciliation cycles and reduce time spent on data preparation by 70%.
+                            Automated pipelines free your team to focus on insights, not data wrangling.</p>
+                        <ul class="pillar-benefits">
+                            <li>Automated data validation</li>
+                            <li>Self-service analytics</li>
+                            <li>Reduced IT dependency</li>
+                            <li>Faster time-to-insight</li>
+                        </ul>
+                    </div>
+
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">02</div>
+                        <div class="pillar-icon-large">🛡️</div>
+                        <h3>Trust</h3>
                         <p>When figures match across every dashboard, executive confidence scales. Build a culture of
-                            data certainty.</p>
+                            data certainty where decisions are made with conviction, not hesitation.</p>
+                        <ul class="pillar-benefits">
+                            <li>Single source of truth</li>
+                            <li>Governed metrics</li>
+                            <li>Audit-ready lineage</li>
+                            <li>Consistent reporting</li>
+                        </ul>
                     </div>
-                    <div class="glass-card reveal">
-                        <h4 style="color: var(--garnet-main); margin-bottom: 1rem;">Scalability</h4>
+
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">03</div>
+                        <div class="pillar-icon-large">📈</div>
+                        <h3>Scalability</h3>
                         <p>Architectures that don't crumble as your data grows. Future-proof your environment for the
-                            next 10x expansion.</p>
+                            next 10x expansion with enterprise-grade design patterns.</p>
+                        <ul class="pillar-benefits">
+                            <li>Modular architecture</li>
+                            <li>Performance optimization</li>
+                            <li>Cloud-native design</li>
+                            <li>Elastic scalability</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Case Studies -->
-        <section class="case-studies" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+        <section class="case-studies-luxury">
             <div class="container">
-                <div class="section-header reveal">
-                    <h2 style="color: var(--garnet-main);">Operational Case Studies</h2>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem; color: var(--garnet-main);">Operational Case Studies</h2>
                     <p>High-fidelity implementations for industry leaders.</p>
                 </div>
-                <div class="card-grid">
-                    <div class="glass-card reveal">
-                        <img src="assets/images/case-studies/healthcare.png" alt="Healthcare Case Study"
-                            class="case-study-img">
-                        <h3>Healthcare Logistics</h3>
-                        <p>Optimizing supply chain visibility for a major regional medical provider. 40% reduction in
-                            inventory drift via automated audit trails.</p>
+
+                <div class="case-studies-grid">
+                    <div class="case-study-card reveal">
+                        <div class="case-study-image">
+                            <img src="assets/images/case-studies/healthcare.png" alt="Healthcare Case Study"
+                                loading="lazy">
+                            <div class="case-study-overlay">
+                                <span class="case-study-industry">Healthcare</span>
+                            </div>
+                        </div>
+                        <div class="case-study-content">
+                            <h3>Healthcare Logistics Optimization</h3>
+                            <p class="case-study-desc">Optimizing supply chain visibility for a major regional medical
+                                provider.</p>
+                            <div class="case-study-stat">
+                                <span class="stat-value">40%</span>
+                                <span class="stat-label">Reduction in inventory drift via automated audit trails</span>
+                            </div>
+                            <div class="case-study-tags">
+                                <span class="tag">D365 F&O</span>
+                                <span class="tag">Power BI</span>
+                                <span class="tag">SQL</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="glass-card reveal">
-                        <img src="assets/images/case-studies/manufacturing.png" alt="Manufacturing Case Study"
-                            class="case-study-img">
-                        <h3>Industrial Performance</h3>
-                        <p>Streamlining floor-to-cloud reporting for a global Tier-1 automotive supplier. Real-time OEE
-                            dashboards with sub-second latency.</p>
+
+                    <div class="case-study-card reveal">
+                        <div class="case-study-image">
+                            <img src="assets/images/case-studies/manufacturing.png" alt="Manufacturing Case Study"
+                                loading="lazy">
+                            <div class="case-study-overlay">
+                                <span class="case-study-industry">Manufacturing</span>
+                            </div>
+                        </div>
+                        <div class="case-study-content">
+                            <h3>Industrial Performance Dashboard</h3>
+                            <p class="case-study-desc">Streamlining floor-to-cloud reporting for a global Tier-1
+                                automotive supplier.</p>
+                            <div class="case-study-stat">
+                                <span class="stat-value">
+                                    <1s< /span>
+                                        <span class="stat-label">Real-time OEE dashboards with sub-second latency</span>
+                            </div>
+                            <div class="case-study-tags">
+                                <span class="tag">X++</span>
+                                <span class="tag">Azure</span>
+                                <span class="tag">Real-time</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How We Engage -->
-        <section class="how-we-engage">
+        <!-- Engagement Models -->
+        <section class="engagement-models">
             <div class="container">
-                <div class="section-header reveal">
-                    <h2>How We Engage</h2>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem;">How We Engage</h2>
                     <p>Structured models tailored for your current maturity stage.</p>
                 </div>
 
-                <div class="tier-grid">
-                    <div class="glass-card tier-card reveal">
-                        <div class="tier-num">01</div>
+                <div class="engagement-grid">
+                    <div class="engagement-card reveal">
+                        <div class="engagement-header">
+                            <div class="engagement-number">01</div>
+                            <div class="engagement-icon">🎯</div>
+                        </div>
                         <h3>Advisory</h3>
-                        <p>High-level architectural roadmapping, governance audits, and strategic technical guidance.
-                        </p>
+                        <p class="engagement-desc">High-level architectural roadmapping, governance audits, and
+                            strategic technical guidance.</p>
+                        <div class="engagement-details">
+                            <h4>Ideal For:</h4>
+                            <ul>
+                                <li>Organizations with existing teams</li>
+                                <li>Strategic planning initiatives</li>
+                                <li>Architecture reviews</li>
+                            </ul>
+                            <h4>Deliverables:</h4>
+                            <ul>
+                                <li>Technical roadmaps</li>
+                                <li>Governance frameworks</li>
+                                <li>Best practice guides</li>
+                            </ul>
+                        </div>
+                        <div class="engagement-duration">
+                            <span class="duration-label">Typical Duration:</span>
+                            <span class="duration-value">2-4 weeks</span>
+                        </div>
                     </div>
-                    <div class="glass-card tier-card reveal">
-                        <div class="tier-num">02</div>
+
+                    <div class="engagement-card featured-engagement reveal">
+                        <div class="featured-badge">Most Popular</div>
+                        <div class="engagement-header">
+                            <div class="engagement-number">02</div>
+                            <div class="engagement-icon">🚀</div>
+                        </div>
                         <h3>Build + Deliver</h3>
-                        <p>Direct implementation of models, pipelines, and reporting systems. Turnkey execution.</p>
+                        <p class="engagement-desc">Direct implementation of models, pipelines, and reporting systems.
+                            Turnkey execution from design to deployment.</p>
+                        <div class="engagement-details">
+                            <h4>Ideal For:</h4>
+                            <ul>
+                                <li>Rapid transformation needs</li>
+                                <li>Resource-constrained teams</li>
+                                <li>Complex integrations</li>
+                            </ul>
+                            <h4>Deliverables:</h4>
+                            <ul>
+                                <li>Production-ready systems</li>
+                                <li>Documentation & training</li>
+                                <li>Ongoing support</li>
+                            </ul>
+                        </div>
+                        <div class="engagement-duration">
+                            <span class="duration-label">Typical Duration:</span>
+                            <span class="duration-value">8-16 weeks</span>
+                        </div>
                     </div>
-                    <div class="glass-card tier-card reveal">
-                        <div class="tier-num">03</div>
+
+                    <div class="engagement-card reveal">
+                        <div class="engagement-header">
+                            <div class="engagement-number">03</div>
+                            <div class="engagement-icon">💎</div>
+                        </div>
                         <h3>Productize</h3>
-                        <p>Transforming your internal knowledge and workflows into proprietary tools like JGPT.</p>
+                        <p class="engagement-desc">Transforming your internal knowledge and workflows into proprietary
+                            tools and platforms.</p>
+                        <div class="engagement-details">
+                            <h4>Ideal For:</h4>
+                            <ul>
+                                <li>Unique business processes</li>
+                                <li>Competitive differentiation</li>
+                                <li>IP development</li>
+                            </ul>
+                            <h4>Deliverables:</h4>
+                            <ul>
+                                <li>Custom applications</li>
+                                <li>AI-powered tools</li>
+                                <li>Scalable platforms</li>
+                            </ul>
+                        </div>
+                        <div class="engagement-duration">
+                            <span class="duration-label">Typical Duration:</span>
+                            <span class="duration-value">12-24 weeks</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="cta-banner">
+        <!-- Final CTA -->
+        <section class="outcomes-cta">
+            <div class="outcomes-cta-bg"></div>
             <div class="container">
-                <div class="section-header reveal">
-                    <h2>Ready to map your system?</h2>
-                    <p>Let's find the friction and ship the improvements.</p>
-                    <a href="contact.html" class="btn-primary" style="margin-top: 2.5rem;">Start the Conversation</a>
+                <div class="cta-content reveal">
+                    <h2 style="font-size: 3rem; margin-bottom: 1rem;">Ready to Transform Your Architecture?</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 3rem;">Let's map your system, find the friction, and
+                        ship the improvements.</p>
+                    <a href="contact.html" class="btn-primary btn-large">Start the Conversation</a>
                 </div>
             </div>
         </section>

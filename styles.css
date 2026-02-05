@@ -2217,3 +2217,705 @@ footer {
         text-align: center;
     }
 }
+
+/* ========================================
+   OUTCOMES PAGE - LUXURY DESIGN
+   ======================================== */
+
+/* Outcomes Hero */
+.outcomes-hero {
+    position: relative;
+    padding: 12rem 0 6rem;
+    overflow: hidden;
+}
+
+.outcomes-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 30%, 
+        rgba(220, 20, 60, 0.2), 
+        transparent 60%);
+    animation: pulseGlow 10s ease-in-out infinite;
+}
+
+.hero-label {
+    display: inline-block;
+    color: var(--garnet-main);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Transformation Journey */
+.transformation-journey {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.journey-timeline {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.journey-card {
+    padding: 3rem;
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.journey-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.before-icon {
+    filter: grayscale(100%) brightness(0.7);
+}
+
+.after-icon {
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.1); filter: brightness(1.3); }
+}
+
+.journey-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    align-self: flex-start;
+}
+
+.success-badge {
+    background: rgba(220, 20, 60, 0.1);
+    border-color: var(--garnet-main);
+    color: var(--garnet-main);
+}
+
+.journey-card h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.journey-problems,
+.journey-solutions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.problem-item,
+.solution-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.problem-icon,
+.solution-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.problem-icon {
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.solution-icon {
+    background: rgba(220, 20, 60, 0.2);
+    color: var(--garnet-main);
+}
+
+.problem-item h4,
+.solution-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.problem-item p,
+.solution-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Journey Arrow */
+.journey-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.arrow-line {
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(180deg, 
+        transparent, 
+        var(--garnet-main), 
+        transparent);
+}
+
+.arrow-head {
+    font-size: 3rem;
+    color: var(--garnet-main);
+    animation: arrowPulse 2s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+    0%, 100% { transform: translateX(0); opacity: 0.7; }
+    50% { transform: translateX(10px); opacity: 1; }
+}
+
+.arrow-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--garnet-main);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+/* Impact Metrics */
+.impact-metrics {
+    padding: 6rem 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.metric-card {
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(220, 20, 60, 0.3);
+}
+
+.metric-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-value {
+    font-size: 4rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: var(--garnet-main);
+    line-height: 1;
+    display: inline-block;
+}
+
+.metric-unit {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--garnet-main);
+    margin-left: 0.25rem;
+}
+
+.metric-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 1rem 0 0.5rem;
+}
+
+.metric-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Value Pillars */
+.value-pillars {
+    padding: 6rem 0;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.pillar-card {
+    padding: 3rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-5px);
+}
+
+.pillar-number {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 6rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: rgba(220, 20, 60, 0.1);
+    line-height: 1;
+}
+
+.pillar-icon-large {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.pillar-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--garnet-main);
+}
+
+.pillar-card > p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.pillar-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pillar-benefits li {
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.pillar-benefits li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--garnet-main);
+    font-weight: 700;
+}
+
+/* Case Studies Luxury */
+.case-studies-luxury {
+    padding: 6rem 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.case-study-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.case-study-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--garnet-main);
+    box-shadow: 0 20px 50px rgba(220, 20, 60, 0.3);
+}
+
+.case-study-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.case-study-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.case-study-card:hover .case-study-image img {
+    transform: scale(1.1);
+}
+
+.case-study-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        transparent 50%, 
+        rgba(0, 0, 0, 0.8) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.case-study-industry {
+    padding: 0.5rem 1.5rem;
+    background: rgba(220, 20, 60, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: white;
+}
+
+.case-study-content {
+    padding: 2.5rem;
+}
+
+.case-study-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.case-study-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.case-study-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: rgba(220, 20, 60, 0.05);
+    border-left: 3px solid var(--garnet-main);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: var(--garnet-main);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.case-study-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Engagement Models */
+.engagement-models {
+    padding: 6rem 0;
+}
+
+.engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.engagement-card {
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.engagement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(220, 20, 60, 0.2);
+}
+
+.featured-engagement {
+    background: linear-gradient(135deg, 
+        rgba(220, 20, 60, 0.1), 
+        rgba(199, 21, 133, 0.05));
+    border-color: var(--garnet-main);
+    transform: scale(1.05);
+}
+
+.featured-engagement:hover {
+    transform: scale(1.08) translateY(-5px);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(135deg, var(--garnet-main), #c71585);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: white;
+    box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+}
+
+.engagement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.engagement-number {
+    font-size: 4rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: rgba(220, 20, 60, 0.3);
+    line-height: 1;
+}
+
+.engagement-icon {
+    font-size: 3rem;
+}
+
+.engagement-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--garnet-main);
+}
+
+.engagement-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.engagement-details {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.engagement-details h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--garnet-main);
+    margin: 1.5rem 0 0.75rem;
+}
+
+.engagement-details h4:first-child {
+    margin-top: 0;
+}
+
+.engagement-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.engagement-details li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.engagement-details li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--garnet-main);
+}
+
+.engagement-duration {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(220, 20, 60, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.duration-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.duration-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--garnet-main);
+}
+
+/* Outcomes CTA */
+.outcomes-cta {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.outcomes-cta-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, 
+        rgba(220, 20, 60, 0.15), 
+        transparent 70%);
+    animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.btn-large {
+    padding: 1.25rem 3rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .journey-timeline {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .journey-arrow {
+        flex-direction: row;
+        transform: rotate(90deg);
+    }
+    
+    .arrow-label {
+        writing-mode: horizontal-tb;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .engagement-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-engagement {
+        transform: scale(1);
+    }
+    
+    .featured-engagement:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .outcomes-hero h1 {
+        font-size: 3rem !important;
+    }
+    
+    .journey-card {
+        min-height: auto;
+        padding: 2rem;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .case-studies-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metric-value {
+        font-size: 3rem;
+    }
+    
+    .pillar-number {
+        font-size: 4rem;
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .journey-icon {
+        font-size: 3rem;
+    }
+    
+    .engagement-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .engagement-number {
+        font-size: 3rem;
+    }
+    
+    .engagement-icon {
+        font-size: 2rem;
+    }
+}

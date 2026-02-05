@@ -382,4 +382,56 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.head.appendChild(style);
     }
+
+    // ========================================
+    // OUTCOMES PAGE - ANIMATED METRICS
+    // ========================================
+    const metricCards = document.querySelectorAll('.metric-card');
+
+    if (metricCards.length > 0) {
+        const animateCounter = (element, target, duration = 2000) => {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    // Handle decimal values
+                    if (target % 1 !== 0) {
+                        element.textContent = current.toFixed(1);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    // Final value
+                    if (target % 1 !== 0) {
+                        element.textContent = target.toFixed(1);
+                    } else {
+                        element.textContent = target;
+                    }
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+        };
+
+        const metricsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const valueElement = entry.target.querySelector('.metric-value');
+                    if (valueElement && !valueElement.classList.contains('animated')) {
+                        const target = parseFloat(valueElement.dataset.target);
+                        valueElement.classList.add('animated');
+                        animateCounter(valueElement, target);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        metricCards.forEach(card => metricsObserver.observe(card));
+    }
 });
