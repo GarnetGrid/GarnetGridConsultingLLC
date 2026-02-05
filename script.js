@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Header Scroll Logic
+    // 1. Header Scroll Logic (Disabled per user request)
+    /*
     const header = document.querySelector('.main-nav');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+    */
 
     // 2. Scroll Reveal Observer
     const revealOptions = {
@@ -346,26 +348,26 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => banner.remove(), 500);
         });
     }
-setTimeout(() => {
-    document.getElementById('name').focus();
-}, 500);
+    setTimeout(() => {
+        document.getElementById('name').focus();
+    }, 500);
 
-// Animate stats on scroll
-const statValues = document.querySelectorAll('.cta-stat-value');
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'statPulse 0.6s ease';
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
+    // Animate stats on scroll
+    const statValues = document.querySelectorAll('.cta-stat-value');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'statPulse 0.6s ease';
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
 
-statValues.forEach(stat => statsObserver.observe(stat));
+    statValues.forEach(stat => statsObserver.observe(stat));
 
-// Add CSS for stat animation and toast
-const style = document.createElement('style');
-style.textContent = `
+    // Add CSS for stat animation and toast
+    const style = document.createElement('style');
+    style.textContent = `
             @keyframes statPulse {
                 0% { transform: scale(0.8); opacity: 0; }
                 50% { transform: scale(1.1); }
@@ -427,58 +429,152 @@ style.textContent = `
                 }
             }
         `;
-document.head.appendChild(style);
-    }
+    document.head.appendChild(style);
 
-// ========================================
-// OUTCOMES PAGE - ANIMATED METRICS
-// ========================================
-const metricCards = document.querySelectorAll('.metric-card');
 
-if (metricCards.length > 0) {
-    const animateCounter = (element, target, duration = 2000) => {
-        const start = 0;
-        const increment = target / (duration / 16);
-        let current = start;
+    // ========================================
+    // OUTCOMES PAGE - ANIMATED METRICS
+    // ========================================
+    const metricCards = document.querySelectorAll('.metric-card');
 
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                // Handle decimal values
-                if (target % 1 !== 0) {
-                    element.textContent = current.toFixed(1);
+    if (metricCards.length > 0) {
+        const animateCounter = (element, target, duration = 2000) => {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    // Handle decimal values
+                    if (target % 1 !== 0) {
+                        element.textContent = current.toFixed(1);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                    requestAnimationFrame(updateCounter);
                 } else {
-                    element.textContent = Math.floor(current);
+                    // Final value
+                    if (target % 1 !== 0) {
+                        element.textContent = target.toFixed(1);
+                    } else {
+                        element.textContent = target;
+                    }
                 }
-                requestAnimationFrame(updateCounter);
-            } else {
-                // Final value
-                if (target % 1 !== 0) {
-                    element.textContent = target.toFixed(1);
-                } else {
-                    element.textContent = target;
-                }
-            }
+            };
+
+            requestAnimationFrame(updateCounter);
         };
 
-        requestAnimationFrame(updateCounter);
-    };
-
-    const metricsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const valueElement = entry.target.querySelector('.metric-value');
-                if (valueElement && !valueElement.classList.contains('animated')) {
-                    const target = parseFloat(valueElement.dataset.target);
-                    valueElement.classList.add('animated');
-                    animateCounter(valueElement, target);
+        const metricsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const valueElement = entry.target.querySelector('.metric-value');
+                    if (valueElement && !valueElement.classList.contains('animated')) {
+                        const target = parseFloat(valueElement.dataset.target);
+                        valueElement.classList.add('animated');
+                        animateCounter(valueElement, target);
+                    }
                 }
-            }
+            });
+        }, {
+            threshold: 0.5
         });
-    }, {
-        threshold: 0.5
-    });
 
-    metricCards.forEach(card => metricsObserver.observe(card));
-}
+        metricCards.forEach(card => metricsObserver.observe(card));
+    }
+});
+
+/* ========================================
+   SYSTEM PRELOADER LOGIC
+   ======================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.getElementById('system-preloader');
+    if (preloader) {
+        const textElement = preloader.querySelector('.boot-text');
+        const statusElement = preloader.querySelector('.status-text');
+        const progressFill = preloader.querySelector('.progress-fill');
+
+        const sequence = [
+            { text: 'GARNET_GRID: INITIALIZING', status: 'LOADING CORE MODULES...', progress: '20%', time: 500 },
+            { text: 'SYSTEM: SECURE', status: 'VERIFYING SECURITY TOKENS...', progress: '45%', time: 1000 },
+            { text: 'VISUALS: OPTIMIZING', status: 'OPTIMIZING VFX ENGINE...', progress: '75%', time: 1800 },
+            { text: 'ACCESS_GRANTED', status: 'SYSTEM READY', progress: '100%', time: 2400 }
+        ];
+
+        let currentIndex = 0;
+
+        function runSequence() {
+            if (currentIndex < sequence.length) {
+                const step = sequence[currentIndex];
+
+                setTimeout(() => {
+                    textElement.innerText = step.text;
+                    statusElement.innerText = step.status;
+                    progressFill.style.width = step.progress;
+
+                    if (step.text === 'ACCESS_GRANTED') {
+                        textElement.style.color = '#39ff14'; // Neon Green success
+                        textElement.style.textShadow = '0 0 15px #39ff14';
+                    }
+
+                    currentIndex++;
+                    runSequence();
+                }, currentIndex === 0 ? 100 : sequence[currentIndex - 1].time / 2); // Simple timing logic
+            } else {
+                // Finish
+                setTimeout(() => {
+                    preloader.classList.add('preloader-hidden');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 800);
+                }, 800);
+            }
+        }
+
+        // Start sequence
+        runSequence();
+    }
+});
+
+/* ========================================
+   THEME TOGGLE LOGIC (Light/Dark)
+   ======================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    // Inject Toggle Button
+    const toggleBtn = document.createElement('button');
+    toggleBtn.id = 'theme-toggle';
+    toggleBtn.ariaLabel = 'Toggle Light/Dark Mode';
+    toggleBtn.innerHTML = `
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    `;
+    document.body.appendChild(toggleBtn);
+
+    // Logic
+    const body = document.body;
+    const sunIcon = toggleBtn.querySelector('.sun-icon');
+    const moonIcon = toggleBtn.querySelector('.moon-icon');
+
+    // Check saved preference
+    if (localStorage.getItem('theme') === 'light') {
+        body.classList.add('light-mode');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+        sunIcon.style.display = isLight ? 'none' : 'block';
+        moonIcon.style.display = isLight ? 'block' : 'none';
+    });
 });

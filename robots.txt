@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://garnetgrid.com/sitemap.xml
