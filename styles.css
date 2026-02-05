@@ -381,6 +381,49 @@ header.main-nav.scrolled {
     letter-spacing: 0.1em;
 }
 
+/* Immersive Expertise Tiles */
+.tile-bg {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-obsidian-soft) !important;
+    /* Base for contrast */
+}
+
+.tile-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--tile-img);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    filter: saturate(0.5) brightness(0.8);
+    transition: var(--transition-med);
+    z-index: 0;
+}
+
+.tile-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(5, 5, 5, 0.2) 0%,
+            rgba(5, 5, 5, 0.7) 40%,
+            #050505 100%);
+    z-index: 1;
+}
+
+.tile-bg>* {
+    position: relative;
+    z-index: 2;
+}
+
+.tile-bg:hover::before {
+    opacity: 0.3;
+    transform: scale(1.1);
+    filter: saturate(1) brightness(1);
+}
+
 /* UI Elements */
 .card-icon {
     width: 60px;
