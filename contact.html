@@ -43,95 +43,246 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="page-hero">
+        <!-- Hero with Animated Background -->
+        <section class="contact-hero">
+            <div class="contact-hero-bg"></div>
             <div class="container">
-                <div class="section-header reveal">
-                    <h1>Initiate Engagement</h1>
-                    <p>Securing your architectural future starts with a conversation.</p>
+                <div class="section-header reveal" style="text-align: center; position: relative; z-index: 2;">
+                    <span class="hero-label">Let's Connect</span>
+                    <h1 style="font-size: 4.5rem; margin: 1.5rem 0;">Initiate Engagement</h1>
+                    <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">Transform your enterprise
+                        architecture. Start with a conversation.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="container" style="padding-bottom: 8rem;">
-            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem;">
-                <!-- Sidebar -->
-                <div class="reveal">
-                    <div class="glass-card" style="margin-bottom: 2rem;">
-                        <h3>Office</h3>
-                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">New York, NY<br>Support Worldwide
-                        </p>
-                    </div>
-                    <div class="glass-card" style="margin-bottom: 2rem;">
-                        <h3>Email</h3>
-                        <p style="color: var(--garnet-main); margin-top: 0.5rem; font-weight: 600;">
-                            intelligence@garnetgrid.com</p>
-                    </div>
-                    <div style="padding: 1rem;">
-                        <h4
-                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">
-                            Trust & Security</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">All inquiries are
-                            handled with strict NDA protocols. We prioritize data privacy and professional discretion in
-                            every engagement.</p>
+        <!-- Main Contact Section -->
+        <section class="container contact-main-section">
+            <div class="contact-grid">
+                <!-- Contact Form - Premium Glass Card -->
+                <div class="contact-form-wrapper reveal">
+                    <div class="glass-card contact-form-card">
+                        <div class="form-header">
+                            <h2>Send a Message</h2>
+                            <p>We'll respond within 24 hours</p>
+                        </div>
+
+                        <form class="contact-form-luxury" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group-luxury">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" class="form-input-luxury" placeholder="John Doe"
+                                        required>
+                                    <span class="input-focus-border"></span>
+                                </div>
+                                <div class="form-group-luxury">
+                                    <label for="email">Corporate Email</label>
+                                    <input type="email" id="email" class="form-input-luxury"
+                                        placeholder="john@company.com" required>
+                                    <span class="input-focus-border"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group-luxury">
+                                    <label for="company">Company</label>
+                                    <input type="text" id="company" class="form-input-luxury"
+                                        placeholder="Enterprise Corp">
+                                    <span class="input-focus-border"></span>
+                                </div>
+                                <div class="form-group-luxury">
+                                    <label for="type">Inquiry Type</label>
+                                    <select id="type" class="form-select-luxury">
+                                        <option value="">Select type...</option>
+                                        <option value="architecture">Architectural Review</option>
+                                        <option value="jgpt">JGPT Access / Trial</option>
+                                        <option value="powerbi">Power BI Optimization</option>
+                                        <option value="d365">D365 F&O Development</option>
+                                        <option value="sql">SQL & Data Engineering</option>
+                                        <option value="partnership">Strategic Partnership</option>
+                                        <option value="other">Other Inquiry</option>
+                                    </select>
+                                    <span class="input-focus-border"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group-luxury">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-textarea-luxury" rows="6"
+                                    placeholder="Tell us about your technical challenge or opportunity..."></textarea>
+                                <span class="input-focus-border"></span>
+                            </div>
+
+                            <button type="submit" class="btn-submit-luxury">
+                                <span class="btn-text">Submit Inquiry</span>
+                                <span class="btn-icon">→</span>
+                                <span class="btn-shimmer"></span>
+                            </button>
+                        </form>
                     </div>
                 </div>
 
-                <!-- Form -->
-                <div class="glass-card reveal" style="padding: 3rem;">
-                    <form class="contact-form">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" class="form-input" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Corporate Email</label>
-                                <input type="email" id="email" class="form-input" placeholder="john@company.com"
-                                    required>
-                            </div>
+                <!-- Contact Info Sidebar -->
+                <div class="contact-sidebar">
+                    <!-- Quick Contact Card -->
+                    <div class="glass-card contact-info-card reveal">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
                         </div>
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" class="form-input" placeholder="Enterprise Corp">
+                        <h3>Email</h3>
+                        <a href="mailto:intelligence@garnetgrid.com"
+                            class="contact-link">intelligence@garnetgrid.com</a>
+                        <p class="contact-note">Monitored 24/7 for urgent inquiries</p>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="glass-card contact-info-card reveal">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                         </div>
-                        <div class="form-group">
-                            <label for="type">Inquiry Type</label>
-                            <select id="type" class="form-select">
-                                <option value="architecture">Architectural Review</option>
-                                <option value="jgpt">JGPT Access / Trial</option>
-                                <option value="powerbi">Power BI Optimization</option>
-                                <option value="partnership">Strategic Partnership</option>
-                                <option value="other">Other Inquiry</option>
-                            </select>
+                        <h3>Headquarters</h3>
+                        <p class="contact-detail">New York, NY</p>
+                        <p class="contact-note">Global support • Remote-first</p>
+                    </div>
+
+                    <!-- Response Time Card -->
+                    <div class="glass-card contact-info-card reveal">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-textarea" rows="5"
-                                placeholder="Tell us about your technical challenge..."></textarea>
+                        <h3>Response Time</h3>
+                        <p class="contact-detail">
+                            <24 Hours</p>
+                                <p class="contact-note">For qualified enterprise inquiries</p>
+                    </div>
+
+                    <!-- Security Badge -->
+                    <div class="security-badge reveal">
+                        <div class="security-icon">🔒</div>
+                        <div class="security-text">
+                            <h4>Enterprise-Grade Security</h4>
+                            <p>All communications are encrypted and handled under strict NDA protocols.</p>
                         </div>
-                        <button type="submit" class="btn-primary"
-                            style="align-self: flex-start; margin-top: 1rem; padding: 1rem 3rem;">Submit
-                            Inquiry</button>
-                    </form>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- FAQ -->
-            <div class="faq-grid reveal">
-                <div class="faq-item">
-                    <h4>How fast can we start?</h4>
-                    <p>Initial discovery calls are typically scheduled within 48 hours for qualified enterprises.</p>
+        <!-- FAQ Section - Accordion Style -->
+        <section class="container faq-section">
+            <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about working with us</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-accordion-item reveal">
+                    <button class="faq-accordion-header">
+                        <span>How quickly can we start an engagement?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>Initial discovery calls are typically scheduled within 48 hours for qualified enterprises.
+                            For urgent architectural reviews or critical system issues, we can mobilize within 24 hours.
+                        </p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>Do you offer JGPT trials?</h4>
-                    <p>Yes, we provide sandbox access to limited datasets for architectural validation purposes.</p>
+
+                <div class="faq-accordion-item reveal">
+                    <button class="faq-accordion-header">
+                        <span>Do you offer JGPT trials or demos?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>Yes, we provide sandbox access with limited datasets for architectural validation. This
+                            allows your team to evaluate JGPT's capabilities in a controlled environment before full
+                            deployment.</p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>Remote or On-site?</h4>
-                    <p>We work comfortably in hybrid environments, providing global support with New York as our base.
-                    </p>
+
+                <div class="faq-accordion-item reveal">
+                    <button class="faq-accordion-header">
+                        <span>What industries do you specialize in?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>We work across manufacturing, distribution, retail, and professional services. Our D365 F&O
+                            expertise translates well to any enterprise running complex ERP operations with demanding
+                            data analytics requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item reveal">
+                    <button class="faq-accordion-header">
+                        <span>Remote, hybrid, or on-site engagements?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>We work comfortably in all three models. Our base is in New York, but we provide global
+                            support and can travel for critical on-site work when needed.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item reveal">
+                    <button class="faq-accordion-header">
+                        <span>What's your typical engagement size?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>We work with mid-market to enterprise organizations (50M+ revenue). Projects range from
+                            focused 2-week architectural reviews to multi-month transformation initiatives.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item reveal">
+                    <button class="faq-accordion-header">
+                        <span>How do you handle data security and NDAs?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-accordion-content">
+                        <p>All engagements begin with mutual NDAs. We follow enterprise-grade security protocols,
+                            including encrypted communications, secure file transfer, and strict data retention
+                            policies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container cta-final-section">
+            <div class="glass-card cta-final-card reveal">
+                <div class="cta-final-content">
+                    <h2>Ready to Transform Your Architecture?</h2>
+                    <p>Join the enterprises who've turned data chaos into strategic advantage.</p>
+                    <div class="cta-stats">
+                        <div class="cta-stat">
+                            <span class="cta-stat-value">500M+</span>
+                            <span class="cta-stat-label">Rows Optimized</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="cta-stat-value">99.9%</span>
+                            <span class="cta-stat-label">Uptime SLA</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="cta-stat-value">
+                                <24h< /span>
+                                    <span class="cta-stat-label">Response Time</span>
+                        </div>
+                    </div>
+                    <a href="#contactForm" class="btn-primary btn-large">Start the Conversation</a>
                 </div>
             </div>
         </section>
@@ -181,6 +332,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="contact.js"></script>
 </body>
 
 </html>
