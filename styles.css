@@ -36,6 +36,8 @@
 html {
     scroll-behavior: smooth;
     background-color: var(--bg-obsidian);
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -43,6 +45,11 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 h1,
@@ -4835,6 +4842,40 @@ footer {
     .server-rack-viz {
         min-height: 200px;
     }
+
+    /* Global Mobile Fixes */
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        word-wrap: break-word;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .ribbon-nav {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .nav-segment {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .glass-card {
+        width: 100%;
+        min-width: 0;
+    }
 }
 
 /* ========================================
@@ -5251,6 +5292,7 @@ footer {
         left: 0;
     }
 }
+
 /* Certifications Section */
 .certifications-section {
     padding: 8rem 0;
@@ -5281,7 +5323,7 @@ footer {
 .cert-card:hover {
     border-color: var(--garnet-main);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .cert-icon {
@@ -5316,6 +5358,7 @@ footer {
     overflow: hidden;
     background-color: #000;
 }
+
 .story-animation-frame {
     position: absolute;
     top: 0;
@@ -5326,14 +5369,65 @@ footer {
     opacity: 0;
     animation: storyCycle 12s infinite;
 }
-.story-animation-frame:nth-child(1) { animation-delay: 0s; }
-.story-animation-frame:nth-child(2) { animation-delay: 3s; }
-.story-animation-frame:nth-child(3) { animation-delay: 6s; }
-.story-animation-frame:nth-child(4) { animation-delay: 9s; }
+
+.story-animation-frame:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.story-animation-frame:nth-child(2) {
+    animation-delay: 3s;
+}
+
+.story-animation-frame:nth-child(3) {
+    animation-delay: 6s;
+}
+
+.story-animation-frame:nth-child(4) {
+    animation-delay: 9s;
+}
+
 @keyframes storyCycle {
-    0% { opacity: 0; transform: scale(1); }
-    5% { opacity: 1; }
-    25% { opacity: 1; transform: scale(1.05); }
-    30% { opacity: 0; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Mobile Optimization Fixes */
+@media (max-width: 768px) {
+    .ribbon-nav {
+        width: 100% !important;
+        min-width: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        margin-left: 0 !important;
+        border-radius: 0;
+    }
+
+    .glass-card {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .container {
+        padding: 0 1rem;
+        min-width: 0;
+    }
 }

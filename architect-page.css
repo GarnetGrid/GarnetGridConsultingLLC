@@ -552,9 +552,21 @@
 .constellation-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 3rem;
     max-width: 1100px;
     margin: 4rem auto 0;
+}
+
+@media (max-width: 992px) {
+    .mastery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .mastery-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .skill-node {
@@ -1502,5 +1514,52 @@
     .timeline {
         padding-left: 2.5rem;
         /* Slight adjustment */
+    }
+
+    .profile-showcase {
+        min-width: 100%;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .mastery-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Enhanced Mobile Adjustments */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .timeline::before {
+        left: 0.5rem;
+    }
+
+    .timeline-node {
+        width: auto;
+        max-width: 100%;
+        margin-left: 0;
+        padding-left: 2rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
+    }
+
+    .timeline-content {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .advantage-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-overlay {
+        display: none;
+        /* Often causes overflow issues on mobile */
     }
 }
