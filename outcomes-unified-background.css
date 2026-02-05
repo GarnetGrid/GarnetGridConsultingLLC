@@ -1,0 +1,386 @@
+/* ========================================
+   OUTCOMES PAGE - UNIFIED INTRICATE BACKGROUND
+   A single, massive CSS trick spanning the entire page
+   ======================================== */
+
+.outcomes-page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* ========================================
+   LAYER 1: Animated Mesh Gradient Base
+   ======================================== */
+.outcomes-page-background::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(ellipse at 20% 10%, rgba(220, 20, 60, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 20%, rgba(199, 21, 133, 0.12) 0%, transparent 45%),
+        radial-gradient(ellipse at 40% 40%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(220, 20, 60, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 30% 80%, rgba(199, 21, 133, 0.1) 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 90%, rgba(138, 43, 226, 0.12) 0%, transparent 50%);
+    animation: meshGradientFlow 40s ease-in-out infinite;
+}
+
+@keyframes meshGradientFlow {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(5%, -5%) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(-3%, 3%) rotate(-3deg);
+    }
+
+    75% {
+        transform: translate(3%, -2%) rotate(2deg);
+    }
+}
+
+/* ========================================
+   LAYER 2: Geometric Grid Pattern
+   ======================================== */
+.outcomes-page-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Primary grid */
+        linear-gradient(90deg, rgba(220, 20, 60, 0.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(220, 20, 60, 0.03) 1px, transparent 1px),
+        /* Secondary grid (offset) */
+        linear-gradient(90deg, rgba(199, 21, 133, 0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(199, 21, 133, 0.02) 1px, transparent 1px),
+        /* Diagonal lines */
+        repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(138, 43, 226, 0.015) 100px, rgba(138, 43, 226, 0.015) 101px),
+        repeating-linear-gradient(-45deg, transparent, transparent 100px, rgba(220, 20, 60, 0.015) 100px, rgba(220, 20, 60, 0.015) 101px);
+    background-size:
+        80px 80px,
+        80px 80px,
+        120px 120px,
+        120px 120px,
+        200px 200px,
+        200px 200px;
+    background-position:
+        0 0,
+        0 0,
+        40px 40px,
+        40px 40px,
+        0 0,
+        0 0;
+    animation: gridPulseFlow 20s ease-in-out infinite;
+}
+
+@keyframes gridPulseFlow {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.02);
+    }
+}
+
+/* ========================================
+   LAYER 3: Floating Orbs (using box-shadow trick)
+   ======================================== */
+.outcomes-page-background {
+    background:
+        /* Large floating orbs */
+        radial-gradient(circle at 15% 25%, rgba(220, 20, 60, 0.08) 0%, transparent 15%),
+        radial-gradient(circle at 85% 35%, rgba(199, 21, 133, 0.06) 0%, transparent 12%),
+        radial-gradient(circle at 45% 55%, rgba(138, 43, 226, 0.07) 0%, transparent 18%),
+        radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.05) 0%, transparent 10%),
+        radial-gradient(circle at 25% 85%, rgba(199, 21, 133, 0.08) 0%, transparent 14%),
+        /* Medium orbs */
+        radial-gradient(circle at 60% 20%, rgba(138, 43, 226, 0.04) 0%, transparent 8%),
+        radial-gradient(circle at 35% 45%, rgba(220, 20, 60, 0.05) 0%, transparent 9%),
+        radial-gradient(circle at 90% 60%, rgba(199, 21, 133, 0.04) 0%, transparent 7%),
+        radial-gradient(circle at 10% 70%, rgba(138, 43, 226, 0.06) 0%, transparent 11%),
+        /* Small accent orbs */
+        radial-gradient(circle at 50% 10%, rgba(220, 20, 60, 0.03) 0%, transparent 5%),
+        radial-gradient(circle at 20% 50%, rgba(199, 21, 133, 0.03) 0%, transparent 4%),
+        radial-gradient(circle at 80% 85%, rgba(138, 43, 226, 0.03) 0%, transparent 6%);
+    background-size:
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%;
+    animation: orbFloat 60s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+
+    0%,
+    100% {
+        background-position:
+            15% 25%, 85% 35%, 45% 55%, 75% 75%, 25% 85%,
+            60% 20%, 35% 45%, 90% 60%, 10% 70%,
+            50% 10%, 20% 50%, 80% 85%;
+    }
+
+    25% {
+        background-position:
+            20% 30%, 80% 40%, 50% 50%, 70% 70%, 30% 80%,
+            65% 25%, 40% 40%, 85% 65%, 15% 75%,
+            55% 15%, 25% 55%, 75% 80%;
+    }
+
+    50% {
+        background-position:
+            18% 35%, 82% 30%, 48% 60%, 72% 78%, 28% 88%,
+            58% 18%, 38% 48%, 88% 58%, 12% 68%,
+            52% 12%, 22% 48%, 78% 88%;
+    }
+
+    75% {
+        background-position:
+            12% 28%, 88% 38%, 42% 52%, 78% 72%, 22% 82%,
+            62% 22%, 32% 42%, 92% 62%, 8% 72%,
+            48% 8%, 18% 52%, 82% 82%;
+    }
+}
+
+/* ========================================
+   LAYER 4: Scanline Effect
+   ======================================== */
+.outcomes-page-background {
+    position: relative;
+}
+
+.outcomes-page-background::before {
+    /* Reusing ::before for scanline overlay */
+    box-shadow:
+        inset 0 0 100px rgba(0, 0, 0, 0.1),
+        inset 0 0 200px rgba(220, 20, 60, 0.02);
+}
+
+/* Create scanline using a pseudo-element on body */
+body.outcomes-page::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            transparent 20%,
+            rgba(220, 20, 60, 0.3) 40%,
+            rgba(220, 20, 60, 0.6) 50%,
+            rgba(220, 20, 60, 0.3) 60%,
+            transparent 80%,
+            transparent 100%);
+    animation: verticalScan 12s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+    filter: blur(2px);
+}
+
+@keyframes verticalScan {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 0.8;
+    }
+
+    95% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   LAYER 5: Noise Texture Overlay
+   ======================================== */
+.outcomes-page-background {
+    background-image:
+        /* Noise pattern using repeating gradients */
+        repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.01) 0px,
+            transparent 1px,
+            transparent 2px),
+        repeating-linear-gradient(90deg,
+            rgba(255, 255, 255, 0.01) 0px,
+            transparent 1px,
+            transparent 2px),
+        /* Orb gradients (from above) */
+        radial-gradient(circle at 15% 25%, rgba(220, 20, 60, 0.08) 0%, transparent 15%),
+        radial-gradient(circle at 85% 35%, rgba(199, 21, 133, 0.06) 0%, transparent 12%),
+        radial-gradient(circle at 45% 55%, rgba(138, 43, 226, 0.07) 0%, transparent 18%),
+        radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.05) 0%, transparent 10%),
+        radial-gradient(circle at 25% 85%, rgba(199, 21, 133, 0.08) 0%, transparent 14%),
+        radial-gradient(circle at 60% 20%, rgba(138, 43, 226, 0.04) 0%, transparent 8%),
+        radial-gradient(circle at 35% 45%, rgba(220, 20, 60, 0.05) 0%, transparent 9%),
+        radial-gradient(circle at 90% 60%, rgba(199, 21, 133, 0.04) 0%, transparent 7%),
+        radial-gradient(circle at 10% 70%, rgba(138, 43, 226, 0.06) 0%, transparent 11%),
+        radial-gradient(circle at 50% 10%, rgba(220, 20, 60, 0.03) 0%, transparent 5%),
+        radial-gradient(circle at 20% 50%, rgba(199, 21, 133, 0.03) 0%, transparent 4%),
+        radial-gradient(circle at 80% 85%, rgba(138, 43, 226, 0.03) 0%, transparent 6%);
+    background-size:
+        2px 2px,
+        2px 2px,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%;
+}
+
+/* ========================================
+   LAYER 6: Spotlight Sweep
+   ======================================== */
+.outcomes-page-background {
+    /* Add rotating spotlight using conic gradient */
+    background-image:
+        /* Rotating spotlight */
+        conic-gradient(from 0deg at 50% 50%,
+            transparent 0deg,
+            transparent 80deg,
+            rgba(220, 20, 60, 0.03) 90deg,
+            rgba(220, 20, 60, 0.06) 95deg,
+            rgba(220, 20, 60, 0.03) 100deg,
+            transparent 110deg,
+            transparent 360deg),
+        /* Noise */
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0px, transparent 1px, transparent 2px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.01) 0px, transparent 1px, transparent 2px),
+        /* All orbs */
+        radial-gradient(circle at 15% 25%, rgba(220, 20, 60, 0.08) 0%, transparent 15%),
+        radial-gradient(circle at 85% 35%, rgba(199, 21, 133, 0.06) 0%, transparent 12%),
+        radial-gradient(circle at 45% 55%, rgba(138, 43, 226, 0.07) 0%, transparent 18%),
+        radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.05) 0%, transparent 10%),
+        radial-gradient(circle at 25% 85%, rgba(199, 21, 133, 0.08) 0%, transparent 14%),
+        radial-gradient(circle at 60% 20%, rgba(138, 43, 226, 0.04) 0%, transparent 8%),
+        radial-gradient(circle at 35% 45%, rgba(220, 20, 60, 0.05) 0%, transparent 9%),
+        radial-gradient(circle at 90% 60%, rgba(199, 21, 133, 0.04) 0%, transparent 7%),
+        radial-gradient(circle at 10% 70%, rgba(138, 43, 226, 0.06) 0%, transparent 11%),
+        radial-gradient(circle at 50% 10%, rgba(220, 20, 60, 0.03) 0%, transparent 5%),
+        radial-gradient(circle at 20% 50%, rgba(199, 21, 133, 0.03) 0%, transparent 4%),
+        radial-gradient(circle at 80% 85%, rgba(138, 43, 226, 0.03) 0%, transparent 6%);
+    animation: spotlightRotate 30s linear infinite, orbFloat 60s ease-in-out infinite;
+}
+
+@keyframes spotlightRotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* ========================================
+   LAYER 7: Vignette & Depth
+   ======================================== */
+.outcomes-page-background {
+    box-shadow:
+        inset 0 0 200px rgba(0, 0, 0, 0.3),
+        inset 0 0 400px rgba(0, 0, 0, 0.2),
+        inset 0 0 100px rgba(220, 20, 60, 0.05);
+}
+
+/* ========================================
+   REMOVE OLD INDIVIDUAL SECTION EFFECTS
+   ======================================== */
+.outcomes-hero::before,
+.outcomes-hero::after,
+.transformation-journey::before,
+.impact-metrics::before,
+.impact-metrics::after,
+.value-pillars::before,
+.case-studies-luxury::before {
+    display: none !important;
+}
+
+/* ========================================
+   RESPONSIVE OPTIMIZATIONS
+   ======================================== */
+@media (max-width: 768px) {
+    .outcomes-page-background {
+        opacity: 0.7;
+    }
+
+    .outcomes-page-background::before,
+    .outcomes-page-background::after {
+        animation-duration: 60s;
+        /* Slower on mobile for performance */
+    }
+
+    body.outcomes-page::after {
+        display: none;
+        /* Disable scanline on mobile */
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .outcomes-page-background,
+    .outcomes-page-background::before,
+    .outcomes-page-background::after,
+    body.outcomes-page::after {
+        animation: none !important;
+    }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+.outcomes-page-background {
+    will-change: background-position, transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.outcomes-page-background::before,
+.outcomes-page-background::after {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
