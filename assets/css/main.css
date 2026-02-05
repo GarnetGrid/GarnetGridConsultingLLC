@@ -3408,10 +3408,10 @@ body.landing-unlocked .hero-actions {
     box-shadow: 0 0 15px rgba(255, 69, 0, 0.2);
 }
 
-/* --- Hero Section Specifics --- */
-background: black;
-/* Base */
-position: relative;
+.hero-section {
+    background: black;
+    /* Base */
+    position: relative;
 }
 
 .hero-content {
