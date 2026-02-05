@@ -633,6 +633,8 @@ section {
 .metrics-visual {
     text-align: center;
     margin-bottom: -2rem;
+    margin-top: 6rem;
+    /* Increased spacing from testimonials */
     position: relative;
     z-index: 1;
     height: 300px;
@@ -677,15 +679,11 @@ section {
    25% - 95%: Opacity 0 (Hide)
    100%: Opacity 1 (Loop back)
 
-   Total 16s. 4 slides. Each visible for 4s (25%).
-   Let's delay them by 0s, 4s, 8s, 12s.
-
-   At t=0s: Slide 1 starts. Opacity 1.
-   At t=3s: Slide 1 starts fade out (assume 5% fade).
-   At t=4s: Slide 2 starts. Opacity 1.
-
-   We need them to overlap.
-   Let's make visible duration 30% (4.8s) to allow overlap.
+   Animation Sequence (16s cycle -> 2s per slide)
+   8 Slides. 
+   Window = 12.5% per slide.
+   Slide duration: 2s.
+   Overlap: Slide holds solid until next slide fades in.
 */
 
 .slide-1 {
@@ -695,17 +693,37 @@ section {
 
 .slide-2 {
     animation: storyCycle 16s infinite;
-    animation-delay: 4s;
+    animation-delay: 2s;
 }
 
 .slide-3 {
     animation: storyCycle 16s infinite;
-    animation-delay: 8s;
+    animation-delay: 4s;
 }
 
 .slide-4 {
     animation: storyCycle 16s infinite;
+    animation-delay: 6s;
+}
+
+.slide-5 {
+    animation: storyCycle 16s infinite;
+    animation-delay: 8s;
+}
+
+.slide-6 {
+    animation: storyCycle 16s infinite;
+    animation-delay: 10s;
+}
+
+.slide-7 {
+    animation: storyCycle 16s infinite;
     animation-delay: 12s;
+}
+
+.slide-8 {
+    animation: storyCycle 16s infinite;
+    animation-delay: 14s;
 }
 
 @keyframes storyCycle {
@@ -721,21 +739,22 @@ section {
         z-index: 2;
     }
 
-    25% {
+    12.5% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1.02);
         z-index: 1;
     }
 
-    30% {
+    15% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1.05);
+        transform: translate(-50%, -50%) scale(1.03);
         z-index: 1;
     }
 
-    35% {
+    /* Hold */
+    15.1% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(1.05);
+        transform: translate(-50%, -50%) scale(1.03);
         z-index: 0;
     }
 
