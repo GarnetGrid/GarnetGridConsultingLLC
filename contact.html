@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Garnet Grid Consulting</title>
+    <!-- Security Optimization -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,6 +18,19 @@
 </head>
 
 <body>
+
+    <!-- Metatron Background Layer -->
+    <div class="metatron-bg-layer">
+        <div class="metatron-cube">
+            <div class="meta-circle meta-c-center"></div>
+            <div class="meta-circle meta-c-1"></div>
+            <div class="meta-circle meta-c-2"></div>
+            <div class="meta-circle meta-c-3"></div>
+            <div class="meta-circle meta-c-4"></div>
+            <div class="meta-circle meta-c-5"></div>
+            <div class="meta-circle meta-c-6"></div>
+        </div>
+    </div>
 
     <div class="aurora-bg"></div>
     <div class="gridfield">
@@ -39,6 +56,7 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html">Home</a>
+                <a href="team.html">The Architect</a>
                 <a href="expertise.html">Expertise</a>
                 <a href="outcomes.html">Outcomes</a>
                 <a href="showcase.html">Showcase</a>
@@ -274,26 +292,24 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="container cta-final-section">
-            <div class="glass-card cta-final-card reveal">
-                <div class="cta-final-content">
-                    <h2>Ready to Transform Your Architecture?</h2>
-                    <p>Join the enterprises who've turned data chaos into strategic advantage.</p>
-                    <div class="cta-stats">
-                        <div class="cta-stat">
-                            <span class="cta-stat-value">500M+</span>
-                            <span class="cta-stat-label">Rows Optimized</span>
-                        </div>
-                        <div class="cta-stat">
-                            <span class="cta-stat-value">99.9%</span>
-                            <span class="cta-stat-label">Uptime SLA</span>
-                        </div>
-                        <div class="cta-stat">
-                            <span class="cta-stat-value">&lt;24h</span>
-                            <span class="cta-stat-label">Response Time</span>
-                        </div>
+        <!-- CTA Slim -->
+        <section class="cta-slim-section">
+            <div class="container">
+                <div class="cta-slim-container reveal">
+                    <div class="cta-grid-bg"></div>
+                    <!-- 0xCAFEBABE: ARCHIGRAPH_V9 // JAKUB_REZAYEV_SIGNATURE -->
+                    <div class="cta-content-slim">
+                        <h2>Ready to Transform Your Architecture?</h2>
+                        <p>Join the enterprises who've turned data chaos into strategic advantage.</p>
                     </div>
-                    <a href="#contactForm" class="btn-primary btn-large">Start the Conversation</a>
+                    <a href="#contactForm" class="btn-wow pulse">
+                        <span>Initiate Protocol</span>
+                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>

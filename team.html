@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Team | Garnet Grid Consulting</title>
     <meta name="description"
-        content="Meet Jakub Dimitri Rezayev, the visionary architect and sole force behind Garnet Grid Consulting.">
+        content="Jakub Dimitri Rezayev: Enterprise Architect and Founder. A decade of D365, Power Platform, and Azure Data Engineering leadership.">
+    <!-- Security Optimization -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,6 +21,19 @@
 </head>
 
 <body class="team-page">
+
+    <!-- Metatron Background Layer -->
+    <div class="metatron-bg-layer">
+        <div class="metatron-cube">
+            <div class="meta-circle meta-c-center"></div>
+            <div class="meta-circle meta-c-1"></div>
+            <div class="meta-circle meta-c-2"></div>
+            <div class="meta-circle meta-c-3"></div>
+            <div class="meta-circle meta-c-4"></div>
+            <div class="meta-circle meta-c-5"></div>
+            <div class="meta-circle meta-c-6"></div>
+        </div>
+    </div>
 
     <div class="aurora-bg"></div>
     <div class="gridfield">
@@ -50,7 +67,7 @@
                 <a href="showcase.html">Showcase</a>
                 <a href="jGPT.html">JGPT</a>
                 <a href="pricing.html">Pricing</a>
-                
+
                 <a href="contact.html" class="btn-primary">Contact</a>
             </nav>
             <button class="mobile-toggle" aria-label="Toggle Menu">
@@ -248,16 +265,79 @@
                         </div>
                     </div>
 
-                    <div class="advantage-visual reveal">
-                        <div class="brain-visualization">
-                            <div class="brain-core"></div>
-                            <div class="neural-network">
-                                <div class="neuron" style="--x: 20%; --y: 30%; --delay: 0s"></div>
-                                <div class="neuron" style="--x: 80%; --y: 25%; --delay: 0.5s"></div>
-                                <div class="neuron" style="--x: 50%; --y: 50%; --delay: 1s"></div>
-                                <div class="neuron" style="--x: 30%; --y: 70%; --delay: 1.5s"></div>
-                                <div class="neuron" style="--x: 70%; --y: 75%; --delay: 2s"></div>
-                            </div>
+                    <!-- Right Side Visualization: Synapse Network (Aligned) -->
+                    <div class="advantage-visual reveal"
+                        style="display: flex; align-items: center; justify-content: center;">
+                        <div class="synapse-network"
+                            style="width: 100%; height: 500px; position: relative; border-radius: 12px; overflow: hidden; background: radial-gradient(circle at center, rgba(220, 20, 60, 0.05), transparent 70%); border: 1px solid var(--garnet-rim);">
+                            <div class="synapse-node"
+                                style="top: 50%; left: 50%; width: 20px; height: 20px; animation-delay: 0s;"></div>
+                            <div class="synapse-node" style="top: 20%; left: 20%; animation-delay: 0.5s;"></div>
+                            <div class="synapse-node" style="top: 80%; left: 80%; animation-delay: 1s;"></div>
+                            <div class="synapse-node" style="top: 20%; left: 80%; animation-delay: 1.5s;"></div>
+                            <div class="synapse-node" style="top: 80%; left: 20%; animation-delay: 2s;"></div>
+                            <!-- Implicit visual balance -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Journey Section (Task #2: Expanded & Intricate) -->
+        <section class="journey-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Architectural Evolution</h2>
+                    <p>From clean code to enterprise orchestration.</p>
+                </div>
+
+                <div class="timeline-container">
+                    <!-- 2018 Node -->
+                    <div class="timeline-node reveal">
+                        <div class="node-marker"></div>
+                        <div class="node-content">
+                            <span class="node-year">2018</span>
+                            <span class="node-role">SYSTEM GENESIS</span>
+                            <h3 class="node-title">Full Stack Foundations</h3>
+                            <p class="node-desc">Mastering the core principles of distributed systems. Building
+                                high-availability web applications and learning the unforgiving nature of production
+                                environments.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2020 Node -->
+                    <div class="timeline-node reveal">
+                        <div class="node-marker"></div>
+                        <div class="node-content">
+                            <span class="node-year">2020</span>
+                            <span class="node-role">ENTERPRISE SCALE</span>
+                            <h3 class="node-title">D365 & ERP Transformation</h3>
+                            <p class="node-desc">Leading multi-million dollar ERP implementations. Customizing X++ logic
+                                for Fortune 500 supply chains and integrating Power Platform for rapid extensions.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2023 Node -->
+                    <div class="timeline-node reveal">
+                        <div class="node-marker"></div>
+                        <div class="node-content">
+                            <span class="node-year">2023</span>
+                            <span class="node-role">DATA ARCHITECTURE</span>
+                            <h3 class="node-title">Azure Data & BI Engineering</h3>
+                            <p class="node-desc">Architecting petabyte-scale data lakes. Designing Star Schemas in Power
+                                BI to serve instant insights from billions of transactional rows.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2026 Node -->
+                    <div class="timeline-node reveal">
+                        <div class="node-marker" style="border-color: #fff;"></div>
+                        <div class="node-content" style="border-color: #fff;">
+                            <span class="node-year" style="background: #fff; color: #000;">NOW</span>
+                            <span class="node-role" style="color: #fff;">THE SINGULARITY</span>
+                            <h3 class="node-title">Garnet Grid Consulting</h3>
+                            <p class="node-desc">Unifying ERP, Data, and AI into a single engagement model. Delivering
+                                the output of an entire department through one high-velocity node.</p>
                         </div>
                     </div>
                 </div>
@@ -369,7 +449,7 @@
                     <div class="nav-segment">
                         <span class="segment-label">ACCESS:</span>
                         <a href="team.html">The Architect</a>
-                        
+
                         <a href="https://www.linkedin.com/in/jakub-rezayev/" target="_blank">LinkedIn</a>
                     </div>
                 </nav>

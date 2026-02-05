@@ -7,6 +7,10 @@
     <title>Outcomes | Garnet Grid Consulting</title>
     <meta name="description"
         content="Measurable business outcomes: 48-hour reduction in close times, 99.9% uptime, and millions saved in manual processing.">
+    <!-- Security Optimization -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +22,19 @@
 </head>
 
 <body class="outcomes-page">
+
+    <!-- Metatron Background Layer -->
+    <div class="metatron-bg-layer">
+        <div class="metatron-cube">
+            <div class="meta-circle meta-c-center"></div>
+            <div class="meta-circle meta-c-1"></div>
+            <div class="meta-circle meta-c-2"></div>
+            <div class="meta-circle meta-c-3"></div>
+            <div class="meta-circle meta-c-4"></div>
+            <div class="meta-circle meta-c-5"></div>
+            <div class="meta-circle meta-c-6"></div>
+        </div>
+    </div>
 
     <div class="aurora-bg"></div>
     <div class="gridfield">
@@ -43,12 +60,12 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html">Home</a>
+                <a href="team.html">The Architect</a>
                 <a href="expertise.html">Expertise</a>
                 <a href="outcomes.html" class="active">Outcomes</a>
                 <a href="showcase.html">Showcase</a>
                 <a href="jGPT.html">JGPT</a>
                 <a href="pricing.html">Pricing</a>
-
                 <a href="contact.html" class="btn-primary">Contact</a>
             </nav>
             <button class="mobile-toggle" aria-label="Toggle Menu">
@@ -512,14 +529,24 @@
         </div>
 
         <!-- Final CTA -->
-        <section class="outcomes-cta">
-            <div class="outcomes-cta-bg"></div>
+        <!-- Final CTA Slim -->
+        <section class="cta-slim-section">
             <div class="container">
-                <div class="cta-content reveal">
-                    <h2 style="font-size: 3rem; margin-bottom: 1rem;">Ready to Transform Your Architecture?</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 3rem;">Let's map your system, find the friction, and
-                        ship the improvements.</p>
-                    <a href="contact.html" class="btn-primary btn-large">Start the Conversation</a>
+                <div class="cta-slim-container reveal">
+                    <div class="cta-grid-bg"></div>
+                    <!-- 0xCAFEBABE: ARCHIGRAPH_V9 // JAKUB_REZAYEV_SIGNATURE -->
+                    <div class="cta-content-slim">
+                        <h2>Ready to Transform Your Architecture?</h2>
+                        <p>Let's map your system, find the friction, and ship the improvements.</p>
+                    </div>
+                    <a href="contact.html" class="btn-wow pulse">
+                        <span>Start the Conversation</span>
+                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>

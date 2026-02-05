@@ -4527,4 +4527,541 @@ footer {
     height: 200%;
     background: radial-gradient(circle, rgba(220, 20, 60, 0.2) 0%, transparent 70%);
     pointer-events: none;
+}/* ========================================
+   VISUALT ASSET: METATRON'S CUBE LAYER
+   ======================================== */
+.metatron-bg-layer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.03;
+    /* Subtle background presence */
+}
+
+.metatron-cube {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    animation: metatronRotate 60s linear infinite;
+}
+
+.meta-circle {
+    position: absolute;
+    border: 1px solid var(--garnet-main);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.2);
+}
+
+/* Central Circle */
+.meta-c-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Inner Ring (6 circles) */
+.meta-c-1 {
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.meta-c-2 {
+    top: 32.5%;
+    left: 80.3%;
+    transform: translate(-50%, -50%);
+}
+
+.meta-c-3 {
+    top: 67.5%;
+    left: 80.3%;
+    transform: translate(-50%, -50%);
+}
+
+.meta-c-4 {
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.meta-c-5 {
+    top: 67.5%;
+    left: 19.7%;
+    transform: translate(-50%, -50%);
+}
+
+.meta-c-6 {
+    top: 32.5%;
+    left: 19.7%;
+    transform: translate(-50%, -50%);
+}
+
+/* Connecting Lines (Sacred Geometry) */
+.meta-line {
+    position: absolute;
+    background: var(--garnet-main);
+    opacity: 0.3;
+    transform-origin: left center;
+}
+
+/* Animation */
+@keyframes metatronRotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* RESPONSIVE & MOBILE OPTIMIZATIONS (Task #4) */
+@media (max-width: 768px) {
+    .metatron-cube {
+        width: 400px;
+        height: 400px;
+        opacity: 0.05;
+        /* Slightly more visible on mobile to compensate for screen size */
+    }
+
+    .meta-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Header/Nav Mobile alignment */
+    .main-nav .nav-container {
+        padding: 0 1.5rem;
+    }
+
+    /* Stack pricing cards */
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Server Rack Viz scaling */
+    .server-rack-viz {
+        min-height: 200px;
+    }
+}/* ========================================
+   TEAM PAGE ENHANCEMENTS & JOURNEY
+   ======================================== */
+
+/* 1. Solo Advantage Alignment */
+.advantage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .advantage-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Visualization for the right side of Solo Advantage */
+.synapse-network {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: radial-gradient(circle at center, rgba(220, 20, 60, 0.05), transparent 70%);
+    border: 1px solid var(--garnet-rim);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.synapse-node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--garnet-main);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--garnet-main);
+    animation: pulseNode 3s infinite;
+}
+
+.synapse-connection {
+    position: absolute;
+    background: var(--garnet-main);
+    opacity: 0.2;
+    transform-origin: left center;
+}
+
+/* 2. Intricate Journey Timeline */
+.journey-section {
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* The vertical thread */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--garnet-main), transparent);
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.timeline-node {
+    position: relative;
+    width: 100%;
+    margin-bottom: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-node:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.node-marker {
+    position: absolute;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border: 2px solid var(--garnet-main);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+}
+
+.node-marker::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulseNode 2s infinite;
+}
+
+.node-content {
+    width: 45%;
+    padding: 2rem;
+    background: rgba(10, 10, 12, 0.8);
+    border: 1px solid var(--garnet-rim);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.timeline-node:nth-child(odd) .node-content {
+    margin-right: auto;
+    text-align: right;
+    border-right: 4px solid var(--garnet-main);
+    transform: translateX(-50px);
+    /* Initial position for animation */
+}
+
+.timeline-node:nth-child(even) .node-content {
+    margin-left: auto;
+    text-align: left;
+    border-left: 4px solid var(--garnet-main);
+    transform: translateX(50px);
+}
+
+.timeline-node:hover .node-content {
+    background: rgba(220, 20, 60, 0.1);
+    transform: translateX(0) scale(1.02);
+}
+
+
+.node-year {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    background: var(--garnet-main);
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.node-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.node-role {
+    font-size: 0.9rem;
+    color: var(--garnet-main);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.node-desc {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Asset decoration for nodes */
+.node-asset {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+@keyframes pulseNode {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Mobile Fixes for Timeline */
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 20px;
+    }
+
+    .timeline-node,
+    .timeline-node:nth-child(odd) {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 50px;
+        width: calc(100% - 50px);
+    }
+
+    .node-marker {
+        left: 20px;
+        transform: translateX(-50%);
+    }
+
+    .node-content,
+    .timeline-node:nth-child(odd) .node-content {
+        width: 100%;
+        text-align: left;
+        border-right: none;
+        border-left: 4px solid var(--garnet-main);
+        margin: 0;
+        transform: none;
+    }
+}/* ========================================
+   SLEEK SLIM CTA & WOW BUTTONS
+   ======================================== */
+
+/* 1. Slim CTA Section */
+.cta-slim-section {
+    padding: 6rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.cta-slim-container {
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 20px;
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-slim-container:hover {
+    border-color: var(--garnet-main);
+    transform: translateY(-2px);
+    box-shadow: 0 25px 60px rgba(220, 20, 60, 0.15);
+}
+
+.cta-slim-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--garnet-main);
+    box-shadow: 0 0 15px var(--garnet-main);
+}
+
+.cta-grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cta-content-slim {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.cta-content-slim h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #fff, #ff6b9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-heading);
+}
+
+.cta-content-slim p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* 2. WOW Button (Enhanced CTA) */
+.btn-wow {
+    position: relative;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--garnet-main), #a01030);
+    border: none;
+    border-radius: 50px;
+    /* Pill shape for modern look */
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+    box-shadow: 0 10px 20px rgba(220, 20, 60, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-wow:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 15px 30px rgba(220, 20, 60, 0.5), 0 0 20px rgba(255, 105, 180, 0.4);
+    background: linear-gradient(135deg, #ff1a4a, #c0123a);
+}
+
+.btn-wow::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+    transform: scale(0);
+    transition: transform 0.6s ease-out;
+    opacity: 0;
+}
+
+.btn-wow:hover::after {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0s;
+}
+
+.btn-wow span {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-arrow {
+    transition: transform 0.3s ease;
+}
+
+.btn-wow:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* Pulse animation for the button */
+@keyframes pulseBtn {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(220, 20, 60, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 20, 60, 0);
+    }
+}
+
+.btn-wow.pulse {
+    animation: pulseBtn 2s infinite;
+}
+
+/* Mobile Responsiveness for Slim CTA */
+@media (max-width: 992px) {
+    .cta-slim-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 2rem;
+        gap: 2rem;
+    }
+
+    .cta-slim-container::before {
+        width: 100%;
+        height: 4px;
+        top: 0;
+        left: 0;
+    }
 }

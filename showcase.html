@@ -7,6 +7,10 @@
     <title>Showcase | Garnet Grid Consulting</title>
     <meta name="description"
         content="Explore our technical portfolio: High-concurrency X++ extensions, 500M+ row Power BI models, and Python-driven process automation.">
+    <!-- Security Optimization -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +21,19 @@
 </head>
 
 <body>
+
+    <!-- Metatron Background Layer -->
+    <div class="metatron-bg-layer">
+        <div class="metatron-cube">
+            <div class="meta-circle meta-c-center"></div>
+            <div class="meta-circle meta-c-1"></div>
+            <div class="meta-circle meta-c-2"></div>
+            <div class="meta-circle meta-c-3"></div>
+            <div class="meta-circle meta-c-4"></div>
+            <div class="meta-circle meta-c-5"></div>
+            <div class="meta-circle meta-c-6"></div>
+        </div>
+    </div>
 
     <div class="aurora-bg"></div>
     <div class="gridfield">
@@ -42,12 +59,12 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html">Home</a>
+                <a href="team.html">The Architect</a>
                 <a href="expertise.html">Expertise</a>
                 <a href="outcomes.html">Outcomes</a>
                 <a href="showcase.html" class="active">Showcase</a>
                 <a href="jGPT.html">JGPT</a>
                 <a href="pricing.html">Pricing</a>
-
                 <a href="contact.html" class="btn-primary">Contact</a>
             </nav>
             <button class="mobile-toggle" aria-label="Toggle Menu">
@@ -420,13 +437,25 @@
                 </section>
 
                 <!-- CTA -->
-                <section class="cta-banner" style="position: relative; z-index: 10;">
+                <!-- CTA Slim -->
+                <section class="cta-slim-section" style="position: relative; z-index: 10;">
                     <div class="container">
-                        <div class="section-header reveal">
-                            <h2>Want to see the full models?</h2>
-                            <p>I can provide a narrated walkthrough of sanitized technical architectures.</p>
-                            <a href="contact.html" class="btn-primary" style="margin-top: 2.5rem;">Request Technical
-                                Review</a>
+                        <div class="cta-slim-container reveal">
+                            <div class="cta-grid-bg"></div>
+                            <!-- 0xCAFEBABE: ARCHIGRAPH_V9 // JAKUB_REZAYEV_SIGNATURE -->
+                            <div class="cta-content-slim">
+                                <h2>Want to see the full models?</h2>
+                                <p>I can provide a narrated walkthrough of sanitized technical architectures.</p>
+                            </div>
+                            <a href="contact.html" class="btn-wow pulse">
+                                <span>Request Tech Review</span>
+                                <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </section>
