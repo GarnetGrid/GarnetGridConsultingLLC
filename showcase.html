@@ -24,6 +24,7 @@
     <header class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="logo">
+                <img src="assets/images/logo-enhanced.png" alt="Garnet Grid">
                 <span>Garnet Grid</span>
             </a>
             <nav class="nav-links">
@@ -43,7 +44,7 @@
 
     <main>
         <!-- Hero -->
-        <section class="page-hero" style="padding-top: 12rem; padding-bottom: 4rem;">
+        <section class="showcase-content bg-nebula" style="padding: 6rem 0;">
             <div class="container">
                 <div class="section-header reveal">
                     <span
@@ -63,34 +64,23 @@
                     <p style="margin: 0;">Semantic modeling, high-concurrency DAX, and enterprise governance.</p>
                 </div>
 
-                <div class="glass-card reveal" style="margin-bottom: 4rem;">
-                    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start;">
-                        <div>
-                            <h3>Financial Consolidation Model</h3>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">Building a
-                                unified view for a global stakeholder group across 12 business units.</p>
-                            <ul class="deliverables-list" style="margin-top: 2rem;">
-                                <li>Complex Currency Translation</li>
-                                <li>Cross-Entity ELT Pipelines</li>
-                                <li>Dynamic RLS Hierarchies</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>The Result</h4>
-                            <p>Reduced monthly close reporting from 4 days to 3 hours. Implemented sub-second refresh
-                                responsiveness on 500M+ rows via VertiPaq partitioning.</p>
-                            <div class="stats-row">
+                <div class="glass-card reveal" style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
+                    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 0; align-items: stretch;">
+                        <img src="assets/images/showcase/pbi-real.png" alt="Power BI Dashboard"
+                            style="width: 100%; height: 100%; object-fit: cover; border-right: 1px solid var(--garnet-rim);">
+                        <div style="padding: 3rem;">
+                            <h3 style="color: var(--garnet-main);">Financial Consolidation Model</h3>
+                            <p style="font-size: 1rem; color: var(--text-secondary); margin: 1.5rem 0;">Building a
+                                unified view for a global stakeholder group across 12 business units. Reduced monthly
+                                close reporting from 4 days to 3 hours.</p>
+                            <div class="stats-row" style="margin-top: 2rem;">
                                 <div class="stat-box">
                                     <span class="stat-val">3h</span>
-                                    <span class="stat-label">Refresh Time</span>
+                                    <span class="stat-label">Close Time</span>
                                 </div>
                                 <div class="stat-box">
                                     <span class="stat-val">500M+</span>
-                                    <span class="stat-label">Row Count</span>
-                                </div>
-                                <div class="stat-box">
-                                    <span class="stat-val">98%</span>
-                                    <span class="stat-label">Adoption Rate</span>
+                                    <span class="stat-label">Rows</span>
                                 </div>
                             </div>
                         </div>
@@ -123,34 +113,27 @@
                                 <span class="code-keyword">final class</span> <span
                                     class="code-class">GGC_PurchTableType_Extension</span><br>
                                 {<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">public void</span> update()<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">next</span>
-                                update();<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span>
-                                (this.purchTable.Status == GGC_Status::SyncReady)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                    class="code-class">GGC_SyncService</span>::triggerExport(this.purchTable);<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                                }
+                                <div class="glass-card reveal"
+                                    style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
+                                    <div
+                                        style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; align-items: stretch;">
+                                        <div style="padding: 3rem;">
+                                            <h3 style="color: var(--garnet-main);">Performance-Tuned ERP Extensibility
+                                            </h3>
+                                            <p style="font-size: 1rem; color: var(--text-secondary); margin: 1.5rem 0;">
+                                                Utilizing Chain of Command (CoC) and Event Handlers to build
+                                                non-intrusive, upgrade-friendly extensions for D365 F&O.</p>
+                                            <ul class="deliverables-list">
+                                                <li>Custom Service Endpoints</li>
+                                                <li>High-Throughput Batch Logic</li>
+                                                <li>Transactional Integrity Guards</li>
+                                            </ul>
+                                        </div>
+                                        <img src="assets/images/showcase/d365-real.png" alt="D365 X++ Code"
+                                            style="width: 100%; height: 100%; object-fit: cover; border-left: 1px solid var(--garnet-rim);">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <h3>Typical Work Scope</h3>
-                            <ul class="deliverables-list">
-                                <li>Custom Service Endpoints</li>
-                                <li>Data Entity OData Performance</li>
-                                <li>Transactional Integrity Guards</li>
-                                <li>Error Handling & Log Silos</li>
-                            </ul>
-                            <a href="contact.html" class="btn-secondary"
-                                style="margin-top: 2rem; display: inline-block;">Request a Walkthrough</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- CTA -->
