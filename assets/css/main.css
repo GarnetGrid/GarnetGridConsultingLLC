@@ -3246,3 +3246,302 @@ body.landing-unlocked .hero-actions {
     box-shadow: 0 0 10px var(--coral-500);
     transition: width 0.1s linear;
 }
+
+/* ============================================
+   PHASE 2: DEEP GARNET REDESIGN
+   ============================================ */
+
+:root {
+    --deep-garnet: hsl(351, 100%, 25%);
+    --neon-garnet: hsl(14, 100%, 64%);
+    --garnet-dark: hsl(355, 60%, 15%);
+    --bg-deep: hsl(355, 40%, 6%);
+    --text-glow: 0 0 15px hsla(14, 100%, 64%, 0.4);
+    --grid-line: hsla(14, 100%, 64%, 0.1);
+}
+
+/* --- Section Utilities --- */
+.section-deep-garnet {
+    background: linear-gradient(to bottom, var(--bg-deep), black);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-deep-garnet::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.15;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    pointer-events: none;
+}
+
+.section-dark {
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-cta {
+    background: linear-gradient(135deg, var(--bg-deep), #000);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Typography Overrides --- */
+.text-gradient-garnet {
+    background: linear-gradient(135deg, white, var(--coral-300));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 100, 80, 0.2);
+}
+
+.glow-text {
+    text-shadow: var(--text-glow);
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--neon-garnet);
+    border-radius: 999px;
+    color: var(--neon-garnet);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 69, 0, 0.1);
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.2);
+}
+
+/* --- Hero Section Specifics --- */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 8rem;
+    /* Nav offset */
+    background: black;
+    /* Base */
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-3d-container {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    perspective: 1000px;
+}
+
+.garnet-cube {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--neon-garnet), var(--deep-garnet));
+    border-radius: 20px;
+    box-shadow: 0 0 60px var(--neon-garnet);
+    animation: floatCube 6s ease-in-out infinite;
+}
+
+@keyframes floatCube {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* --- JGPT / Feature Section --- */
+.feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .feature-block {
+        grid-template-columns: 1fr;
+    }
+}
+
+.jgpt-interface-mockup {
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.terminal-window {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #0f0;
+}
+
+.terminal-header {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1rem;
+}
+
+.terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+}
+
+.terminal-dot.red {
+    background: #ff5f56;
+}
+
+.terminal-dot.yellow {
+    background: #ffbd2e;
+}
+
+.terminal-dot.green {
+    background: #27c93f;
+}
+
+.command-line {
+    color: var(--neon-garnet);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.output-success {
+    color: #fff;
+    opacity: 0.8;
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-garnet);
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--neon-garnet);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* --- Value Grid --- */
+.grid-layout-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.grid-card {
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.grid-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--neon-garnet);
+}
+
+.gradient-border-box {
+    position: relative;
+    padding: 3rem;
+    background: #000;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+.gradient-border-box::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: 21px;
+    background: linear-gradient(135deg, var(--deep-garnet), var(--neon-garnet));
+}
+
+/* --- Animations --- */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reveal on Scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
