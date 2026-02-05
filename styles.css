@@ -1309,3 +1309,313 @@ footer {
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
+
+/* Enhanced Showcase Visuals */
+
+/* Animated gradient border for showcase cards */
+.showcase-content .glass-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        var(--garnet-main), 
+        #ff6b9d, 
+        var(--garnet-main), 
+        #c71585);
+    background-size: 300% 300%;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: gradientShift 4s ease infinite;
+}
+
+.showcase-content .glass-card:hover::before {
+    opacity: 0.6;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Code panel syntax highlighting enhancement */
+.code-panel {
+    position: relative;
+    overflow: hidden;
+}
+
+.code-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(220, 20, 60, 0.1), 
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.glass-card:hover .code-panel::after {
+    left: 100%;
+}
+
+/* Stats row enhancement with pulse effect */
+.stat-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-val {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: var(--garnet-main);
+    text-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover .stat-val {
+    transform: scale(1.1);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+}
+
+/* Tech grid stagger animation */
+.tech-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: techFadeIn 0.6s ease forwards;
+}
+
+.tech-item:nth-child(1) { animation-delay: 0.1s; }
+.tech-item:nth-child(2) { animation-delay: 0.2s; }
+.tech-item:nth-child(3) { animation-delay: 0.3s; }
+.tech-item:nth-child(4) { animation-delay: 0.4s; }
+.tech-item:nth-child(5) { animation-delay: 0.5s; }
+.tech-item:nth-child(6) { animation-delay: 0.6s; }
+.tech-item:nth-child(7) { animation-delay: 0.7s; }
+.tech-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes techFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Showcase section dividers with animated line */
+.showcase-divider {
+    position: relative;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--garnet-rim), 
+        transparent);
+    margin: 4rem 0;
+    overflow: hidden;
+}
+
+.showcase-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--garnet-main), 
+        transparent);
+    animation: dividerScan 3s ease-in-out infinite;
+}
+
+@keyframes dividerScan {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
+}
+
+/* Image hover zoom effect */
+.glass-card img {
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.glass-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1) saturate(1.2);
+}
+
+/* Section number badges */
+.section-header h2::before {
+    content: attr(data-number);
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--garnet-main), #c71585);
+    border-radius: 50%;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+}
+
+/* Deliverables list enhancement */
+.deliverables-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.deliverables-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.deliverables-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--garnet-main);
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.deliverables-list li:hover {
+    transform: translateX(5px);
+    color: var(--garnet-main);
+}
+
+.deliverables-list li:hover::before {
+    transform: translateX(-3px);
+}
+
+/* Floating particles background for showcase */
+.showcase-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--garnet-main);
+    border-radius: 50%;
+    animation: float 20s infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--garnet-main), #ff6b9d);
+    z-index: 9999;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+/* Enhanced stat boxes with glow */
+.stat-box {
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-box::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--garnet-main), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-box:hover::before {
+    opacity: 1;
+}
+
+/* Code panel line numbers */
+.code-panel {
+    position: relative;
+    counter-reset: line;
+}
+
+.code-panel br::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 2em;
+    margin-right: 1em;
+    color: var(--garnet-rim);
+    text-align: right;
+    user-select: none;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .section-header h2::before {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1rem;
+    }
+}
