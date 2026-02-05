@@ -12,4 +12,40 @@
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
+   <url>
+      <loc>https://garnetgrid.com/expertise.html</loc>
+      <lastmod>2026-02-04</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://garnetgrid.com/outcomes.html</loc>
+      <lastmod>2026-02-04</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://garnetgrid.com/jGPT.html</loc>
+      <lastmod>2026-02-04</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.9</priority>
+   </url>
+   <url>
+      <loc>https://garnetgrid.com/pricing.html</loc>
+      <lastmod>2026-02-04</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://garnetgrid.com/contact.html</loc>
+      <lastmod>2026-02-04</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://garnetgrid.com/architect.html</loc>
+      <lastmod>2026-02-04</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
 </urlset>

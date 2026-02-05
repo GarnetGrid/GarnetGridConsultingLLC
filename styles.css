@@ -854,6 +854,10 @@ footer {
     font-family: var(--font-heading);
 }
 
+.mobile-nav a.active {
+    color: var(--garnet-main);
+}
+
 /* Toolbelt Strip */
 .toolbelt {
     background: rgba(255, 255, 255, 0.02);
