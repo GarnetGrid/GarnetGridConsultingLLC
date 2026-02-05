@@ -5307,3 +5307,33 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Story Animation - Dynamic JGPT frames */
+.story-animation-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+.story-animation-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: storyCycle 12s infinite;
+}
+.story-animation-frame:nth-child(1) { animation-delay: 0s; }
+.story-animation-frame:nth-child(2) { animation-delay: 3s; }
+.story-animation-frame:nth-child(3) { animation-delay: 6s; }
+.story-animation-frame:nth-child(4) { animation-delay: 9s; }
+@keyframes storyCycle {
+    0% { opacity: 0; transform: scale(1); }
+    5% { opacity: 1; }
+    25% { opacity: 1; transform: scale(1.05); }
+    30% { opacity: 0; }
+    100% { opacity: 0; }
+}
