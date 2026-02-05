@@ -96,6 +96,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+}
+
+.team-hero .hero-content {
+    margin: 0 auto;
+    max-width: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-label {
@@ -1074,177 +1085,260 @@
     will-change: transform, opacity;
     backface-visibility: hidden;
 }
+
 /* ========================================
-   PREMIUM SIGNATURE FOOTER - FRESH & MODERN
+   ARCHITECT RIBBON - ULTRA-SLIM DATA STRIP
    ======================================== */
-.premium-footer {
-    background: #000;
-    padding: 10rem 0 4rem;
+.architect-ribbon {
+    background: #020202;
+    padding: 2.2rem 0;
     position: relative;
     overflow: hidden;
-    border-top: 1px solid rgba(220, 20, 60, 0.1);
+    border-top: 1px solid rgba(220, 20, 60, 0.15);
 }
 
-.footer-signature {
+.ribbon-background {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 25vw;
-    font-weight: 900;
-    color: rgba(220, 20, 60, 0.03);
-    -webkit-text-stroke: 1px rgba(220, 20, 60, 0.05);
-    z-index: 0;
+    inset: 0;
+    overflow: hidden;
     pointer-events: none;
-    letter-spacing: -1rem;
-    line-height: 1;
 }
 
-.premium-footer .container {
-    position: relative;
-    z-index: 1;
+.ribbon-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(220, 20, 60, 0.2) 20%,
+            var(--garnet-main) 50%,
+            rgba(220, 20, 60, 0.2) 80%,
+            transparent 100%);
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
 }
 
-.footer-main {
+/* Scanning light effect */
+.ribbon-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 200px;
+    height: 1px;
+    background: #fff;
+    box-shadow: 0 0 20px #fff, 0 0 40px var(--garnet-main);
+    animation: ribbonScan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes ribbonScan {
+    0% {
+        left: -10%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+.ribbon-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.ribbon-branding {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-shrink: 0;
+}
+
+.ribbon-logo {
+    width: 26px;
+    height: auto;
+    filter: drop-shadow(0 0 8px rgba(220, 20, 60, 0.3));
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.architect-ribbon:hover .ribbon-logo {
+    transform: rotate(90deg);
+}
+
+.ribbon-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.15rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.ribbon-title strong {
+    font-weight: 900;
+    color: var(--garnet-main);
+}
+
+.ribbon-meta {
+    font-family: monospace;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 2px;
+}
+
+.ribbon-nav {
+    display: flex;
     gap: 4rem;
-    margin-bottom: 8rem;
+    flex-grow: 1;
+    justify-content: center;
 }
 
-.footer-branding {
-    flex: 1;
+.nav-segment {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
-.footer-logo-premium {
+.segment-label {
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: var(--garnet-main);
+    letter-spacing: 0.1rem;
+    opacity: 0.7;
+    font-weight: 700;
+}
+
+.nav-segment a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-segment a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--garnet-main);
+    transition: width 0.3s ease;
+}
+
+.nav-segment a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.nav-segment a:hover::after {
+    width: 100%;
+}
+
+.ribbon-status {
     display: flex;
     align-items: center;
     gap: 1rem;
-    text-decoration: none;
-    margin-bottom: 2rem;
+    flex-shrink: 0;
 }
 
-.footer-logo-premium img {
-    width: 50px;
-    height: auto;
+.status-code {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: #00ff88;
+    letter-spacing: 0.1rem;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-.footer-logo-premium .logo-text {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #fff;
-    letter-spacing: -0.05rem;
+.status-pulse {
+    width: 6px;
+    height: 6px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff88;
+    animation: pulse-mini 2s infinite;
 }
 
-.footer-logo-premium .logo-text strong {
-    font-weight: 900;
-    color: var(--garnet-main);
+@keyframes pulse-mini {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
 }
 
-.footer-mission {
-    font-size: 1.4rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.4);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-}
-
-.footer-nav-groups {
-    display: flex;
-    gap: 6rem;
-}
-
-.footer-nav-col .nav-label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    color: var(--garnet-main);
-    margin-bottom: 2.5rem;
-    position: relative;
-}
-
-.footer-nav-col .nav-label::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -0.5rem;
-    width: 20px;
-    height: 1px;
-    background: var(--garnet-main);
-}
-
-.footer-nav-col ul {
-    list-style: none;
-}
-
-.footer-nav-col ul li {
-    margin-bottom: 1.2rem;
-}
-
-.footer-nav-col ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-}
-
-.footer-nav-col ul li a:hover {
-    opacity: 1;
-    color: var(--garnet-main);
-    padding-left: 0.5rem;
-}
-
-.footer-bottom-premium {
+.ribbon-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.footer-bottom-premium .legal p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.3);
+.ribbon-bottom .legal,
+.ribbon-bottom .tagline {
+    font-size: 0.7rem;
+    font-family: monospace;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.12rem;
 }
 
-.footer-tagline {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.1rem;
-    color: rgba(220, 20, 60, 0.6);
-    text-transform: uppercase;
-}
-
-@media (max-width: 1024px) {
-    .footer-main {
-        flex-direction: column;
-        gap: 6rem;
-    }
-    
-    .footer-nav-groups {
-        width: 100%;
-        justify-content: space-between;
+@media (max-width: 1200px) {
+    .ribbon-nav {
+        gap: 2rem;
     }
 }
 
-@media (max-width: 768px) {
-    .premium-footer {
-        padding: 6rem 0 3rem;
-    }
-    
-    .footer-nav-groups {
-        flex-direction: column;
-        gap: 4rem;
-    }
-    
-    .footer-bottom-premium {
+@media (max-width: 900px) {
+    .ribbon-content {
         flex-direction: column;
         gap: 2rem;
+        text-align: center;
+    }
+
+    .ribbon-nav {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .nav-segment {
+        justify-content: center;
+    }
+
+    .ribbon-bottom {
+        flex-direction: column;
+        gap: 1rem;
         text-align: center;
     }
 }
