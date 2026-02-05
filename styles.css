@@ -2919,3 +2919,240 @@ footer {
         font-size: 2rem;
     }
 }
+
+/* ========================================
+   OUTCOMES PAGE - BACKGROUND FLARES
+   ======================================== */
+
+/* Hero Section - Radial Burst Flare */
+.outcomes-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center,
+        rgba(220, 20, 60, 0.3) 0%,
+        rgba(199, 21, 133, 0.2) 20%,
+        rgba(138, 43, 226, 0.1) 40%,
+        transparent 70%);
+    animation: heroFlare 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes heroFlare {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.9;
+    }
+}
+
+/* Hero Section - Diagonal Light Sweep */
+.outcomes-hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(220, 20, 60, 0.15) 45%,
+        rgba(220, 20, 60, 0.3) 50%,
+        rgba(220, 20, 60, 0.15) 55%,
+        transparent 60%,
+        transparent 100%);
+    animation: diagonalSweep 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes diagonalSweep {
+    0% {
+        transform: translateX(-100%) translateY(-100%);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%);
+    }
+}
+
+/* Transformation Journey - Particle Field */
+.transformation-journey {
+    position: relative;
+}
+
+.transformation-journey::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(220, 20, 60, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(199, 21, 133, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+    animation: particleFloat 25s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+    }
+    33% {
+        background-position: 30% 20%, 70% 80%, 60% 40%;
+    }
+    66% {
+        background-position: 60% 40%, 40% 60%, 30% 70%;
+    }
+}
+
+/* Impact Metrics - Pulsing Grid */
+.impact-metrics::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(90deg, rgba(220, 20, 60, 0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(220, 20, 60, 0.05) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: gridPulse 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gridPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+/* Impact Metrics - Spotlight Effect */
+.impact-metrics::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse at center,
+        rgba(220, 20, 60, 0.2) 0%,
+        transparent 70%);
+    animation: spotlightPulse 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes spotlightPulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Value Pillars - Ambient Glow */
+.value-pillars::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(220, 20, 60, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(199, 21, 133, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.06) 0%, transparent 50%);
+    animation: ambientGlow 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes ambientGlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Ensure content is above background effects */
+.outcomes-hero .container,
+.transformation-journey .container,
+.impact-metrics .container,
+.value-pillars .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Case Studies - Scanning Line Effect */
+.case-studies-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(220, 20, 60, 0.5) 50%,
+        transparent 100%);
+    animation: scanLine 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(600px);
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments for background effects */
+@media (max-width: 768px) {
+    .outcomes-hero::before,
+    .outcomes-hero::after {
+        width: 200%;
+        height: 200%;
+    }
+    
+    .transformation-journey::before,
+    .impact-metrics::before,
+    .value-pillars::before {
+        opacity: 0.5;
+    }
+}
