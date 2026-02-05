@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // 3. Magnetic Button Logic (Subtle)
-    const btns = document.querySelectorAll('.btn-primary, .logo');
+    const btns = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-wow, .btn-jgpt, .btn-submit-luxury, .logo');
     btns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();

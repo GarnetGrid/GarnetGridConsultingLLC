@@ -10,7 +10,7 @@ class AntigravityBackground {
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
         this.mouse = { x: null, y: null, radius: 150 };
-        this.colors = ['#901539', '#ff2d55', '#4285f4', '#34a853', '#fbbc05', '#ea4335'];
+        this.colors = ['#901539', '#ff2d55', '#dc143c', '#800000', '#ffffff', '#333333'];
 
         this.init();
         this.animate();
