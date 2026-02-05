@@ -1266,3 +1266,46 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 }
+/* Technology Ecosystem Grid */
+.tech-stack-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.tech-item {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.tech-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--garnet-main);
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.2);
+}
+
+.tech-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.tech-category {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

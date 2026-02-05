@@ -89,4 +89,65 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         });
     });
+    // 6. Animated Counters
+    const counterObserverOptions = {
+        threshold: 0.5
+    };
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const targetValue = counter.innerText;
+
+                // Check if it's a number we can animate
+                const numericValue = parseFloat(targetValue.replace(/[^0-9.]/g, ''));
+
+                if (!isNaN(numericValue)) {
+                    animateValue(counter, 0, numericValue, 2000, targetValue);
+                }
+
+                observer.unobserve(counter);
+            }
+        });
+    }, counterObserverOptions);
+
+    document.querySelectorAll('.stat-val').forEach(counter => {
+        counterObserver.observe(counter);
+    });
+
+    function animateValue(obj, start, end, duration, finalString) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+            // Basic easing
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+            const currentVal = Math.floor(progress * (end - start) + start);
+
+            // Reconstruct string (preserving suffixes like 'M+', 'h', '%')
+            // This is a simple approximation; for complex strings, more logic is needed.
+            // Here we just replace the number part.
+            // Actually, let's just animate the number and append the suffix if simple
+
+            if (finalString.includes('%')) {
+                obj.innerHTML = Math.floor(easeProgress * end) + "%";
+            } else if (finalString.includes('M+')) {
+                obj.innerHTML = Math.floor(easeProgress * end) + "M+";
+            } else if (finalString.includes('h')) {
+                obj.innerHTML = Math.floor(easeProgress * end) + "h";
+            } else {
+                obj.innerHTML = Math.floor(easeProgress * end);
+            }
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                obj.innerHTML = finalString; // Ensure exact final value
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
 });
