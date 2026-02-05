@@ -3602,4 +3602,250 @@ footer {
     .hero-subtitle {
         font-size: 1.1rem;
     }
+}/* ========================================
+   COMPLEX LAYERED CODE BACKGROUND
+   ======================================== */
+.matrix-complex-bg {
+    position: relative;
+    background-color: #050505;
+    overflow: hidden;
+    /* Ensure text contrast */
+    color: #e0e0e0;
+    --code-color: rgba(220, 20, 60, 0.08);
+    /* Faint Garnet */
+    --code-color-bright: rgba(220, 20, 60, 0.15);
+}
+
+/* Layer 1: Static Grid Texture */
+.matrix-complex-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Layer 2: Deep Scrolling Code Column */
+.code-layer-1 {
+    position: absolute;
+    top: -50%;
+    left: 5%;
+    width: 25%;
+    height: 200%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><text x="10" y="20" fill="rgba(220,20,60,0.05)" font-family="monospace" font-size="12">0x4F A2 C1 99\nFUNCTION_INIT(0x1)\nBUFFER_OVERFLOW\nSYSTEM_CHECK: OK\nMEMORY_ALLOC: 4TB\n0010101010101</text></svg>');
+    opacity: 0.6;
+    animation: scrollDown 60s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Layer 3: Angled Data Stream (Parallax) */
+.code-layer-2 {
+    position: absolute;
+    top: -50%;
+    right: 10%;
+    width: 30%;
+    height: 200%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><text x="10" y="20" fill="rgba(255,255,255,0.03)" font-family="monospace" font-size="14">SELECT * FROM DATA_LAKE\nWHERE INTEGRITY = 100%\nORDER BY TIMESTAMP DESC\nJOIN ARCHITECTURE_TABLE\nON ID = NODE_01</text></svg>');
+    transform: rotate(-5deg);
+    animation: scrollUp 45s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Layer 4: Ambient Glow Orbs */
+.glow-layer {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
+    top: 20%;
+    left: 40%;
+    filter: blur(40px);
+    animation: pulseGlow 10s ease-in-out infinite alternate;
+    z-index: 3;
+    pointer-events: none;
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(50%);
+    }
+}
+
+@keyframes scrollUp {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateY(-50%) rotate(-5deg);
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+/* ========================================
+   ENHANCED CASE STUDY CARDS (Live Code)
+   ======================================== */
+.case-studies-luxury {
+    background: transparent;
+    /* Let the matrix bg show through */
+    position: relative;
+    z-index: 10;
+    padding: 6rem 0;
+}
+
+.case-study-card {
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 4px;
+    /* More angular/technical */
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+    position: relative;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.case-study-card:hover {
+    border-color: var(--garnet-main);
+    transform: translateY(-5px);
+    box-shadow:
+        0 20px 40px -15px rgba(0, 0, 0, 0.7),
+        0 0 20px rgba(220, 20, 60, 0.2);
+    /* Red glow */
+}
+
+/* Terminal Header for Card */
+.card-terminal-header {
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.terminal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.card-terminal-header span {
+    letter-spacing: 1px;
+}
+
+/* Live Code Snippet Container (Replaces Image Overlay) */
+.live-code-container {
+    height: 140px;
+    background: #0d0d0d;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+}
+
+.live-code-content {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #a0a0a0;
+    white-space: pre;
+    position: absolute;
+    top: 100%;
+    /* Start below */
+    animation: codeScroll 15s linear infinite;
+}
+
+/* Syntax Highlighting Sim */
+.code-keyword {
+    color: #dc143c;
+}
+
+/* Garnet */
+.code-var {
+    color: #fff;
+}
+
+.code-comment {
+    color: #555;
+}
+
+.code-string {
+    color: #888;
+}
+
+@keyframes codeScroll {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: -200%;
+    }
+
+    /* Scroll all the way up */
+}
+
+/* Specific delays for variety */
+.case-study-card:nth-child(2) .live-code-content {
+    animation-delay: -5s;
+}
+
+.case-study-card:nth-child(3) .live-code-content {
+    animation-delay: -2s;
+}
+
+.case-study-card:nth-child(4) .live-code-content {
+    animation-delay: -8s;
+}
+
+/* Keep existing content styles but refine them */
+.case-study-content {
+    padding: 1.5rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, transparent 100%);
+}
+
+.case-study-tags .tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    color: var(--garnet-main);
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
 }

@@ -264,211 +264,248 @@
             </div>
         </section>
 
-        <!-- Case Studies -->
-        <section class="case-studies-luxury">
-            <div class="container">
-                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
-                    <h2 style="font-size: 2.5rem; color: var(--garnet-main);">Operational Case Studies</h2>
-                    <p>High-fidelity implementations for industry leaders.</p>
-                </div>
+        <!-- Complex Code Background Wrapper -->
+        <div class="matrix-complex-bg">
+            <div class="code-layer-1"></div>
+            <div class="code-layer-2"></div>
+            <div class="glow-layer"></div>
 
-                <div class="case-studies-grid">
-                    <div class="case-study-card reveal">
-                        <div class="case-study-image">
-                            <img src="assets/images/case-studies/healthcare.png" alt="Healthcare Case Study"
-                                loading="lazy">
-                            <div class="case-study-overlay">
-                                <span class="case-study-industry">Healthcare</span>
-                            </div>
-                        </div>
-                        <div class="case-study-content">
-                            <h3>Healthcare Logistics Optimization</h3>
-                            <p class="case-study-desc">Optimizing supply chain visibility for a major regional medical
-                                provider.</p>
-                            <div class="case-study-stat">
-                                <span class="stat-value">40%</span>
-                                <span class="stat-label">Reduction in inventory drift via automated audit trails</span>
-                            </div>
-                            <div class="case-study-tags">
-                                <span class="tag">D365 F&O</span>
-                                <span class="tag">Power BI</span>
-                                <span class="tag">SQL</span>
-                            </div>
-                        </div>
+            <!-- Case Studies (Enhanced) -->
+            <section class="case-studies-luxury">
+                <div class="container">
+                    <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                        <h2 class="dazzle-heading" style="font-size: 3rem;">Operational Case Studies</h2>
+                        <p>High-fidelity implementations for industry leaders.</p>
                     </div>
 
-                    <div class="case-study-card reveal">
-                        <div class="case-study-image">
-                            <img src="assets/images/case-studies/manufacturing.png" alt="Manufacturing Case Study"
-                                loading="lazy">
-                            <div class="case-study-overlay">
-                                <span class="case-study-industry">Manufacturing</span>
+                    <div class="case-studies-grid">
+                        <!-- Healthcare -->
+                        <div class="case-study-card reveal">
+                            <div class="card-terminal-header">
+                                <div class="terminal-dots">
+                                    <div class="terminal-dot" style="background:#ff5f56"></div>
+                                    <div class="terminal-dot" style="background:#ffbd2e"></div>
+                                    <div class="terminal-dot" style="background:#27c93f"></div>
+                                </div>
+                                <span>LOGISTX_CORE_V2</span>
+                            </div>
+                            <div class="live-code-container">
+                                <div class="live-code-content">
+                                    -- INVENTORY DRIFT ANALYSIS
+                                    SELECT
+                                    itm.ITEM_ID,
+                                    loc.BIN_CODE,
+                                    SUM(inv.QTY) AS ONHAND,
+                                    SUM(audit.QTY) AS COUNTED
+                                    FROM INVENT_TRANS inv
+                                    JOIN WHS_LOCATIONS loc ON inv.LOC_ID = loc.ID
+                                    WHERE inv.VARIANCE > 0.05
+                                    -- AUTOMATING READJUSTMENT...
+                                    EXEC SP_AUTO_CORRECT @THRESHOLD = 0.05;
+                                    -- STATUS: OPTIMIZED
+                                </div>
+                            </div>
+                            <div class="case-study-content">
+                                <h3>Healthcare Logistics</h3>
+                                <p class="case-study-desc">Optimizing supply chain visibility for a major regional
+                                    medical provider.</p>
+                                <div class="case-study-stat">
+                                    <span class="stat-value">40%</span>
+                                    <span class="stat-label">Reduction in inventory drift</span>
+                                </div>
+                                <div class="case-study-tags">
+                                    <span class="tag">SQL</span>
+                                    <span class="tag">D365</span>
+                                    <span class="tag">POWER BI</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="case-study-content">
-                            <h3>Industrial Performance Dashboard</h3>
-                            <p class="case-study-desc">Streamlining floor-to-cloud reporting for a global Tier-1
-                                automotive supplier.</p>
-                            <div class="case-study-stat">
-                                <span class="stat-value">
-                                    <1s< /span>
-                                        <span class="stat-label">Real-time OEE dashboards with sub-second latency</span>
-                            </div>
-                            <div class="case-study-tags">
-                                <span class="tag">X++</span>
-                                <span class="tag">Azure</span>
-                                <span class="tag">Real-time</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="case-study-card reveal">
-                        <div class="case-study-image">
-                            <img src="assets/images/case-studies/healthcare.png" alt="Financial Services Case Study"
-                                loading="lazy">
-                            <div class="case-study-overlay">
-                                <span class="case-study-industry">Financial Services</span>
+                        <!-- Manufacturing -->
+                        <div class="case-study-card reveal">
+                            <div class="card-terminal-header">
+                                <div class="terminal-dots">
+                                    <div class="terminal-dot" style="background:#ff5f56"></div>
+                                    <div class="terminal-dot" style="background:#ffbd2e"></div>
+                                    <div class="terminal-dot" style="background:#27c93f"></div>
+                                </div>
+                                <span>OEE_SENSOR_STREAM</span>
+                            </div>
+                            <div class="live-code-container">
+                                <div class="live-code-content">
+                                    // IOT SENSOR STREAM
+                                    public void ProcessSignal(Signal signal) {
+                                    if (signal.Voltage > Threshold) {
+                                    Device.State = State.Running;
+                                    }
+                                    // LATENCY CHECK: 12ms
+                                    Telemetry.Track(signal);
+                                    // DASHBOARD UPDATE
+                                    await Hub.SendAsync("machine_01", signal);
+                                    }
+                                    // REALTIME: TRUE
+                                </div>
+                            </div>
+                            <div class="case-study-content">
+                                <h3>Industrial Dashboard</h3>
+                                <p class="case-study-desc">Streamlining floor-to-cloud reporting for a global Tier-1
+                                    automotive supplier.</p>
+                                <div class="case-study-stat">
+                                    <span class="stat-value">
+                                        <1s< /span>
+                                            <span class="stat-label">Latency in OEE Dashboards</span>
+                                </div>
+                                <div class="case-study-tags">
+                                    <span class="tag">X++</span>
+                                    <span class="tag">AZURE</span>
+                                    <span class="tag">IOT</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="case-study-content">
-                            <h3>Regulatory Compliance Dashboard</h3>
-                            <p class="case-study-desc">Building automated compliance reporting for a multi-state
-                                financial institution with real-time audit trails.</p>
-                            <div class="case-study-stat">
-                                <span class="stat-value">95%</span>
-                                <span class="stat-label">Reduction in manual compliance reporting time</span>
-                            </div>
-                            <div class="case-study-tags">
-                                <span class="tag">Power BI</span>
-                                <span class="tag">SQL Server</span>
-                                <span class="tag">Compliance</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="case-study-card reveal">
-                        <div class="case-study-image">
-                            <img src="assets/images/case-studies/manufacturing.png" alt="Retail Case Study"
-                                loading="lazy">
-                            <div class="case-study-overlay">
-                                <span class="case-study-industry">Retail & Distribution</span>
+                        <!-- Financial -->
+                        <div class="case-study-card reveal">
+                            <div class="card-terminal-header">
+                                <div class="terminal-dots">
+                                    <div class="terminal-dot" style="background:#ff5f56"></div>
+                                    <div class="terminal-dot" style="background:#ffbd2e"></div>
+                                    <div class="terminal-dot" style="background:#27c93f"></div>
+                                </div>
+                                <span>COMPLIANCE_BOT_V9</span>
+                            </div>
+                            <div class="live-code-container">
+                                <div class="live-code-content">
+                                    -- AUDIT TRAIL GENERATION
+                                    INSERT INTO COMPLIANCE_LOG
+                                    (TRANS_ID, USER, ACTION, TIMESTAMP)
+                                    VALUES (@UUID, @USER, 'APPROVAL', GETUTCDATE())
+
+                                    IF @@ROWCOUNT = 0
+                                    RAISERROR('AUDIT FAILED', 16, 1)
+
+                                    -- VERIFICATION COMPLETE
+                                    -- REPORT GENERATED: 200ms
+                                </div>
+                            </div>
+                            <div class="case-study-content">
+                                <h3>Regulatory Compliance</h3>
+                                <p class="case-study-desc">Building automated compliance reporting for a multi-state
+                                    financial institution.</p>
+                                <div class="case-study-stat">
+                                    <span class="stat-value">95%</span>
+                                    <span class="stat-label">Automated Reporting Time</span>
+                                </div>
+                                <div class="case-study-tags">
+                                    <span class="tag">SQL</span>
+                                    <span class="tag">SECURE</span>
+                                    <span class="tag">AUDIT</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="case-study-content">
-                            <h3>Omnichannel Integration Platform</h3>
-                            <p class="case-study-desc">Unifying inventory, sales, and customer data across 200+ retail
-                                locations and e-commerce channels.</p>
-                            <div class="case-study-stat">
-                                <span class="stat-value">85%</span>
-                                <span class="stat-label">Improvement in inventory accuracy across all channels</span>
+
+                        <!-- Retail -->
+                        <div class="case-study-card reveal">
+                            <div class="card-terminal-header">
+                                <div class="terminal-dots">
+                                    <div class="terminal-dot" style="background:#ff5f56"></div>
+                                    <div class="terminal-dot" style="background:#ffbd2e"></div>
+                                    <div class="terminal-dot" style="background:#27c93f"></div>
+                                </div>
+                                <span>OMNI_CHANNEL_SYNC</span>
                             </div>
-                            <div class="case-study-tags">
-                                <span class="tag">D365 Commerce</span>
-                                <span class="tag">API Integration</span>
-                                <span class="tag">Azure</span>
+                            <div class="live-code-container">
+                                <div class="live-code-content">
+                                    {
+                                    "event": "inventory_sync",
+                                    "store_id": "NY_055",
+                                    "items": [
+                                    { "sku": "A-990", "qty": 45 },
+                                    { "sku": "B-102", "qty": 12 }
+                                    ],
+                                    "sync_timestamp": 167889233,
+                                    "status": "confirmed"
+                                    }
+                                    // E-COMMERCE CHANNEL UPDATED
+                                </div>
+                            </div>
+                            <div class="case-study-content">
+                                <h3>Omnichannel Platform</h3>
+                                <p class="case-study-desc">Unifying inventory, sales, and customer data across 200+
+                                    retail locations.</p>
+                                <div class="case-study-stat">
+                                    <span class="stat-value">85%</span>
+                                    <span class="stat-label">Inventory Accuracy</span>
+                                </div>
+                                <div class="case-study-tags">
+                                    <span class="tag">API</span>
+                                    <span class="tag">COMMERCE</span>
+                                    <span class="tag">JSON</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Engagement Models -->
-        <section class="engagement-models">
-            <div class="container">
-                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
-                    <h2 style="font-size: 2.5rem;">How We Engage</h2>
-                    <p>Structured models tailored for your current maturity stage.</p>
-                </div>
-
-                <div class="engagement-grid">
-                    <div class="engagement-card reveal">
-                        <div class="engagement-header">
-                            <div class="engagement-number">01</div>
-                            <div class="engagement-icon">🎯</div>
-                        </div>
-                        <h3>Advisory</h3>
-                        <p class="engagement-desc">High-level architectural roadmapping, governance audits, and
-                            strategic technical guidance.</p>
-                        <div class="engagement-details">
-                            <h4>Ideal For:</h4>
-                            <ul>
-                                <li>Organizations with existing teams</li>
-                                <li>Strategic planning initiatives</li>
-                                <li>Architecture reviews</li>
-                            </ul>
-                            <h4>Deliverables:</h4>
-                            <ul>
-                                <li>Technical roadmaps</li>
-                                <li>Governance frameworks</li>
-                                <li>Best practice guides</li>
-                            </ul>
-                        </div>
-                        <div class="engagement-duration">
-                            <span class="duration-label">Typical Duration:</span>
-                            <span class="duration-value">2-4 weeks</span>
-                        </div>
-                    </div>
-
-                    <div class="engagement-card featured-engagement reveal">
-                        <div class="featured-badge">Most Popular</div>
-                        <div class="engagement-header">
-                            <div class="engagement-number">02</div>
-                            <div class="engagement-icon">🚀</div>
-                        </div>
-                        <h3>Build + Deliver</h3>
-                        <p class="engagement-desc">Direct implementation of models, pipelines, and reporting systems.
-                            Turnkey execution from design to deployment.</p>
-                        <div class="engagement-details">
-                            <h4>Ideal For:</h4>
-                            <ul>
-                                <li>Rapid transformation needs</li>
-                                <li>Resource-constrained teams</li>
-                                <li>Complex integrations</li>
-                            </ul>
-                            <h4>Deliverables:</h4>
-                            <ul>
-                                <li>Production-ready systems</li>
-                                <li>Documentation & training</li>
-                                <li>Ongoing support</li>
-                            </ul>
-                        </div>
-                        <div class="engagement-duration">
-                            <span class="duration-label">Typical Duration:</span>
-                            <span class="duration-value">8-16 weeks</span>
-                        </div>
-                    </div>
-
-                    <div class="engagement-card reveal">
-                        <div class="engagement-header">
-                            <div class="engagement-number">03</div>
-                            <div class="engagement-icon">💎</div>
-                        </div>
-                        <h3>Productize</h3>
-                        <p class="engagement-desc">Transforming your internal knowledge and workflows into proprietary
-                            tools and platforms.</p>
-                        <div class="engagement-details">
-                            <h4>Ideal For:</h4>
-                            <ul>
-                                <li>Unique business processes</li>
-                                <li>Competitive differentiation</li>
-                                <li>IP development</li>
-                            </ul>
-                            <h4>Deliverables:</h4>
-                            <ul>
-                                <li>Custom applications</li>
-                                <li>AI-powered tools</li>
-                                <li>Scalable platforms</li>
-                            </ul>
-                        </div>
-                        <div class="engagement-duration">
-                            <span class="duration-label">Typical Duration:</span>
-                            <span class="duration-value">12-24 weeks</span>
-                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <!-- Engagement Models (Inside Matrix) -->
+            <section class="engagement-models" style="background: transparent;">
+                <div class="container">
+                    <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                        <h2 class="dazzle-heading" style="font-size: 3rem;">Engagement Models</h2>
+                        <p>Structured expertise for your maturity stage.</p>
+                    </div>
+
+                    <div class="engagement-grid">
+                        <!-- Advisory -->
+                        <div class="engagement-card reveal"
+                            style="background: rgba(20,20,20,0.8); border: 1px solid rgba(255,255,255,0.1);">
+                            <div class="engagement-header">
+                                <div class="engagement-number">01</div>
+                                <div class="engagement-icon">🎯</div>
+                            </div>
+                            <h3>Advisory</h3>
+                            <p class="engagement-desc">High-level architectural roadmapping, governance audits, and
+                                strategic technical guidance.</p>
+                            <div class="engagement-duration">
+                                <span class="duration-value">2-4 weeks</span>
+                            </div>
+                        </div>
+
+                        <!-- Build -->
+                        <div class="engagement-card featured-engagement reveal"
+                            style="background: rgba(144, 21, 57, 0.15); border: 1px solid var(--garnet-main);">
+                            <div class="featured-badge">Most Popular</div>
+                            <div class="engagement-header">
+                                <div class="engagement-number">02</div>
+                                <div class="engagement-icon">🚀</div>
+                            </div>
+                            <h3>Build + Deliver</h3>
+                            <p class="engagement-desc">Direct implementation of models, pipelines, and reporting
+                                systems. Turnkey execution.</p>
+                            <div class="engagement-duration">
+                                <span class="duration-value">8-16 weeks</span>
+                            </div>
+                        </div>
+
+                        <!-- Productize -->
+                        <div class="engagement-card reveal"
+                            style="background: rgba(20,20,20,0.8); border: 1px solid rgba(255,255,255,0.1);">
+                            <div class="engagement-header">
+                                <div class="engagement-number">03</div>
+                                <div class="engagement-icon">💎</div>
+                            </div>
+                            <h3>Productize</h3>
+                            <p class="engagement-desc">Transforming your internal knowledge and workflows into
+                                proprietary tools and platforms.</p>
+                            <div class="engagement-duration">
+                                <span class="duration-value">12-24 weeks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- Final CTA -->
         <section class="outcomes-cta">
