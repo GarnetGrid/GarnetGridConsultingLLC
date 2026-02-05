@@ -3156,3 +3156,291 @@ footer {
         opacity: 0.5;
     }
 }
+
+/* ========================================
+   ARCHITECT RIBBON - ULTRA-SLIM DATA STRIP
+   ======================================== */
+.architect-ribbon {
+    background: #020202;
+    padding: 2.2rem 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(220, 20, 60, 0.15);
+}
+
+.ribbon-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ribbon-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(220, 20, 60, 0.2) 20%,
+            var(--garnet-main) 50%,
+            rgba(220, 20, 60, 0.2) 80%,
+            transparent 100%);
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+}
+
+.ribbon-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 200px;
+    height: 1px;
+    background: #fff;
+    box-shadow: 0 0 20px #fff, 0 0 40px var(--garnet-main);
+    animation: ribbonScan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes ribbonScan {
+    0% { left: -10%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 110%; opacity: 0; }
+}
+
+.ribbon-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.ribbon-branding {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-shrink: 0;
+}
+
+.ribbon-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.15rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.ribbon-title strong {
+    font-weight: 900;
+    color: var(--garnet-main);
+}
+
+.ribbon-meta {
+    font-family: monospace;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 2px;
+}
+
+.ribbon-nav {
+    display: flex;
+    gap: 4rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-segment {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.segment-label {
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: var(--garnet-main);
+    letter-spacing: 0.1rem;
+    opacity: 0.7;
+    font-weight: 700;
+}
+
+.nav-segment a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-segment a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--garnet-main);
+    transition: width 0.3s ease;
+}
+
+.nav-segment a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.nav-segment a:hover::after { width: 100%; }
+
+.ribbon-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.status-code {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: #00ff88;
+    letter-spacing: 0.1rem;
+    opacity: 0.9;
+}
+
+.status-pulse {
+    width: 6px;
+    height: 6px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff88;
+    animation: pulse-mini 2s infinite;
+}
+
+@keyframes pulse-mini {
+    0% { opacity: 0.4; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.ribbon-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.ribbon-bottom .legal,
+.ribbon-bottom .tagline {
+    font-size: 0.7rem;
+    font-family: monospace;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.12rem;
+}
+
+/* ========================================
+   ARCHITECT QUANTUM CORE - CSS-ONLY 3D LOGO
+   ======================================== */
+.arch-logo-v2 {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    perspective: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    pointer-events: none;
+    margin-right: 1rem;
+}
+
+.logo-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: logo-master-spin 15s linear infinite;
+}
+
+.core-nucleus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: var(--garnet-main);
+    transform: translate(-50%, -50%) rotateX(45deg) rotateZ(45deg);
+    box-shadow: 0 0 15px var(--garnet-main), inset 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: nucleus-pulse 3s ease-in-out infinite;
+}
+
+.grid-shell {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+.shell-plane {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 2px;
+}
+
+.shell-plane:nth-child(1) { transform: rotateY(0deg); }
+.shell-plane:nth-child(2) { transform: rotateY(60deg); }
+.shell-plane:nth-child(3) { transform: rotateY(120deg); }
+
+.orbit-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotateX(70deg);
+}
+
+.orbit-ring::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #fff;
+    animation: orbit-dot 4s linear infinite;
+}
+
+@keyframes logo-master-spin {
+    from { transform: rotateY(0deg) rotateX(0deg); }
+    to { transform: rotateY(360deg) rotateX(360deg); }
+}
+
+@keyframes nucleus-pulse {
+    0%, 100% { transform: translate(-50%, -50%) rotateX(45deg) rotateZ(45deg) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) rotateX(45deg) rotateZ(45deg) scale(1.3); opacity: 1; filter: brightness(1.5); }
+}
+
+@keyframes orbit-dot {
+    from { transform: translateX(-50%) rotate(0deg) translateY(-22px); }
+    to { transform: translateX(-50%) rotate(360deg) translateY(-22px); }
+}
+
+.ribbon-branding .arch-logo-v2 {
+    width: 28px;
+    height: 28px;
+    transform: scale(0.8);
+    margin-right: 0.8rem;
+}
