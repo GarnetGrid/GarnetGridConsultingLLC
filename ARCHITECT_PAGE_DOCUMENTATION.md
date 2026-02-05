@@ -1,7 +1,7 @@
-# The Team Page - Documentation
+# The Architect Page - Documentation
 
 ## Overview
-The Team page (`team.html`) is the most intricate and special page on the Garnet Grid Consulting website. It showcases **Jakub Dimitri Rezayev** as the sole architect, visionary, and force behind all Garnet Grid solutions.
+The Architect page (`architect.html`) is the most intricate and special page on the Garnet Grid Consulting website. It showcases **Jakub Dimitri Rezayev** as the sole architect, visionary, and force behind all Garnet Grid solutions.
 
 ## Purpose
 This page serves to:
@@ -154,11 +154,11 @@ The page has been integrated into all site footers:
 - **showcase.html** ✓
 - **contact.html** ✓
 - **jGPT.html** ✓
-- **team.html** ✓
+- **architect.html** ✓
 
 All "Connect" sections now include:
 - LinkedIn (links to https://www.linkedin.com/in/jakub-rezayev/)
-- The Team (links to team.html)
+- The Architect (links to architect.html)
 
 ### External Links
 - **LinkedIn Profile**: https://www.linkedin.com/in/jakub-rezayev/
@@ -171,7 +171,7 @@ All "Connect" sections now include:
 ## Technical Implementation
 
 ### Files Created
-1. **team.html** (400+ lines)
+1. **architect.html** (400+ lines)
    - Semantic HTML5 structure
    - Accessibility features (alt text, ARIA labels)
    - SEO optimized (meta tags, heading hierarchy)
@@ -222,7 +222,7 @@ All "Connect" sections now include:
 - **Professional**: Maintains enterprise credibility
 
 ### SEO Considerations
-- **Title Tag**: "The Team | Garnet Grid Consulting"
+- **Title Tag**: "The Architect | Garnet Grid Consulting"
 - **Meta Description**: Mentions you by name and role
 - **H1**: "One Vision. One Mind. One Team."
 - **Heading Hierarchy**: Proper H2-H4 structure
@@ -269,7 +269,7 @@ All "Connect" sections now include:
 
 ## Conclusion
 
-The Team page is now the crown jewel of the Garnet Grid website - a stunning, intricate showcase of your singular vision and comprehensive expertise. It positions you as the exceptional solo architect behind every solution, with premium design that matches the quality of your work.
+The Architect page is now the crown jewel of the Garnet Grid website - a stunning, intricate showcase of your singular vision and comprehensive expertise. It positions you as the exceptional solo architect behind every solution, with premium design that matches the quality of your work.
 
 The page successfully:
 ✓ Establishes your authority and expertise
@@ -279,4 +279,4 @@ The page successfully:
 ✓ Integrates seamlessly with the existing site
 ✓ Maintains the "Luxury Cyber" aesthetic throughout
 
-**Live URL**: http://localhost:8888/team.html
+**Live URL**: http://localhost:8888/architect.html

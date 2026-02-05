@@ -52,8 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
+            // Dampened rotation (divisor increased from 10 to 40)
+            const rotateX = (y - centerY) / 40;
+            const rotateY = (centerX - x) / 40;
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
         });

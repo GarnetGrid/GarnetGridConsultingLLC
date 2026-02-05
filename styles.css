@@ -293,7 +293,7 @@ header.main-nav.scrolled {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    padding: 2.2rem;
+    padding: 1.8rem;
     transition: var(--transition-med);
     position: relative;
     overflow: hidden;
@@ -488,7 +488,7 @@ header.main-nav.scrolled {
 
 /* 4. Page Layouts */
 section {
-    padding: 8rem 0;
+    padding: 6rem 0;
     position: relative;
     z-index: 1;
 }
