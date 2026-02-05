@@ -193,9 +193,9 @@ p {
     right: 0;
     z-index: 1000;
     padding: 1rem 2rem;
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.7) 100%), url('../images/header-logo-background.png') no-repeat center center;
+    background-size: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     /* Centered Stacked Layout */
@@ -206,7 +206,8 @@ p {
 
 .top-nav.scrolled {
     padding: 0.5rem 2rem;
-    background: rgba(10, 10, 10, 0.9);
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.9)), url('../images/header-logo-background.png') no-repeat center center;
+    background-size: cover;
     gap: 0.25rem;
 }
 
@@ -227,16 +228,6 @@ p {
     transform: translateY(-2px);
 }
 
-.top-nav .brand img {
-    width: 42px;
-    height: 42px;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-base);
-}
-
-.top-nav .brand:hover img {
-    filter: drop-shadow(0 0 12px var(--coral-400));
-}
 
 .nav-links {
     display: flex;
@@ -1272,83 +1263,13 @@ section {
 .showcase-header {
     position: relative;
     z-index: 2;
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-    margin-bottom: 4rem;
 }
 
-.showcase-header .logo-container {
-    margin-bottom: 2rem;
-    width: 200px;
-    height: 200px;
-    animation: float 6s ease-in-out infinite;
-}
-
-.showcase-header h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #fff 0%, var(--coral-300) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 10px 30px rgba(255, 127, 80, 0.3);
-}
-
-.showcase-header .subhead {
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-}
-
-/* Cinematic Card Upgrade */
-.showcase-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-bottom: 4rem;
-}
-
-.showcase-card:hover {
-    transform: translateY(-5px) scale(1.01);
-    background: rgba(255, 255, 255, 0.04);
-    border-color: var(--coral-400);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 127, 80, 0.1);
-}
-
-.showcase-media {
-    height: 100%;
-    min-height: 400px;
+.section-header {
     position: relative;
-    overflow: hidden;
+    z-index: 2;
 }
 
-.showcase-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s ease;
-}
-
-.showcase-card:hover .showcase-media img {
-    transform: scale(1.05);
-}
-
-.showcase-copy {
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
 /* Mobile adjust */
 @media (max-width: 900px) {
