@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JGPT | The Knowledge Engine</title>
+    <title>JGPT | The Knowledge Engine | Garnet Grid</title>
     <meta name="description"
-        content="Meet jGPT, your AI-powered architectural assistant. Ask questions about D365, Power BI, and Garnet Grid's methodology.">
+        content="Meet JGPT, the proprietary knowledge engine for enterprise architecture. Built from 15 years of technical practice in D365, Power BI, and Azure.">
     <!-- Security Optimization -->
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
@@ -15,30 +15,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=Outfit:wght@700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="jgpt-page.css">
 </head>
 
-<body>
+<body class="jgpt-body">
 
-    <!-- Metatron Background Layer -->
-    <div class="metatron-bg-layer">
-        <div class="metatron-cube">
-            <div class="meta-circle meta-c-center"></div>
-            <div class="meta-circle meta-c-1"></div>
-            <div class="meta-circle meta-c-2"></div>
-            <div class="meta-circle meta-c-3"></div>
-            <div class="meta-circle meta-c-4"></div>
-            <div class="meta-circle meta-c-5"></div>
-            <div class="meta-circle meta-c-6"></div>
-        </div>
-    </div>
-
-    <div class="aurora-bg"></div>
-    <div class="gridfield">
-        <div class="grid-shimmer"></div>
-    </div>
+    <!-- Background System -->
+    <div class="jgpt-background"></div>
+    <div class="jgpt-vignette"></div>
 
     <!-- Header -->
     <header class="main-nav">
@@ -59,7 +46,6 @@
             </a>
             <nav class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="team.html">The Architect</a>
                 <a href="expertise.html">Expertise</a>
                 <a href="outcomes.html">Outcomes</a>
                 <a href="showcase.html">Showcase</a>
@@ -74,174 +60,149 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="page-hero" style="padding-top: 12rem; padding-bottom: 4rem;">
+        <!-- Hero Section -->
+        <section class="jgpt-hero">
             <div class="container">
-                <div class="dazzle-container">
-                    <span class="hero-label">ENGINEERED INTELLIGENCE</span>
-                    <h1 class="dazzle-heading">
-                        <span class="d-row">JGPT: The</span>
-                        <span class="d-row">Knowledge Engine.</span>
-                    </h1>
-                    <p class="hero-subtitle">A specialized product, not a generic chatbot. Built from 15 years of
-                        technical practice.</p>
+                <span class="hero-label">PROPRIETARY INTELLIGENCE</span>
+                <h1 class="jgpt-title">JGPT Engine</h1>
+                <p class="hero-subtitle" style="max-width: 800px; margin: 0 auto; color: #aaa;">
+                    Not a chatbot. A specialized reasoning layer for the Modern Data Estate. Built from the field, for
+                    the project.
+                </p>
+
+                <!-- Metatron Core Visual -->
+                <div class="metatron-core-container reveal">
+                    <div class="metatron-core">
+                        <!-- 13 Circles of Metatron's Cube -->
+                        <div class="core-circle c-center"></div>
+                        <!-- Inner Ring -->
+                        <div class="core-circle c-1"></div>
+                        <div class="core-circle c-2"></div>
+                        <div class="core-circle c-3"></div>
+                        <div class="core-circle c-4"></div>
+                        <div class="core-circle c-5"></div>
+                        <div class="core-circle c-6"></div>
+                        <!-- Outer Ring -->
+                        <div class="core-circle c-7"></div>
+                        <div class="core-circle c-8"></div>
+                        <div class="core-circle c-9"></div>
+                        <div class="core-circle c-10"></div>
+                        <div class="core-circle c-11"></div>
+                        <div class="core-circle c-12"></div>
+                    </div>
+                    <!-- Lines (SVG Overlay for precision) -->
+                    <svg class="metatron-lines" viewBox="0 0 400 400">
+                        <!-- Center to Inner -->
+                        <line x1="200" y1="200" x2="200" y2="100" stroke="rgba(255,45,85,0.2)" stroke-width="1" />
+                        <!-- ... (Skipping many lines for performance, but adding key ones) -->
+                        <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(255,45,85,0.1)" stroke-width="1" />
+                    </svg>
                 </div>
             </div>
         </section>
 
-        <!-- Sub-nav -->
-        <nav class="sub-nav">
+        <!-- Feature Grid (Holographic Cards) -->
+        <section class="container">
+            <div class="holo-grid">
+                <!-- Card 1: D365 Context -->
+                <div class="holo-card reveal">
+                    <div class="holo-header">
+                        <div class="holo-icon">💎</div>
+                        <h3>D365 Contextual Mastery</h3>
+                    </div>
+                    <p>JGPT understands the unforgiving constraints of X++ and Dynamics 365. It provides architectural
+                        patterns that respect the CoC and Event Handling frameworks.</p>
+                    <div class="holo-terminal">
+                        <div class="terminal-header">
+                            <div class="t-dot" style="background: #ff5f56;"></div>
+                            <div class="t-dot" style="background: #ffbd2e;"></div>
+                            <div class="t-dot" style="background: #27c93f;"></div>
+                        </div>
+                        <div class="t-content">
+                            > ANALYZING_EXTENSIONS...<br>
+                            > [WARNING]: NESTED_LOOP_DETECTED<br>
+                            > REMEDY: USE_SET_BASED_OPERATION
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Power BI Optimization -->
+                <div class="holo-card reveal" style="transition-delay: 100ms;">
+                    <div class="holo-header">
+                        <div class="holo-icon">📊</div>
+                        <h3>Semantic Synthesis</h3>
+                    </div>
+                    <p>Specialized in DAX optimization and Star Schema design. JGPT identifies high-cardinality
+                        bottlenecks before they impact executive dashboards.</p>
+                    <div class="holo-terminal">
+                        <div class="terminal-header">
+                            <div class="t-dot" style="background: #ff5f56;"></div>
+                            <div class="t-dot" style="background: #ffbd2e;"></div>
+                            <div class="t-dot" style="background: #27c93f;"></div>
+                        </div>
+                        <div class="t-content" style="color: #00f0ff;">
+                            > VERTIPAQ_SCAN: COMPLETE<br>
+                            > MEMORY_SAVINGS: 42%<br>
+                            > STATUS: HIGH_FIDELITY
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Neural Troubleshooting -->
+                <div class="holo-card reveal" style="transition-delay: 200ms;">
+                    <div class="holo-header">
+                        <div class="holo-icon">🧠</div>
+                        <h3>Neural Troubleshooting</h3>
+                    </div>
+                    <p>Built on a repository of 15 years of technical failure modes. JGPT doesn't guess; it matches
+                        patterns against verified production resolutions.</p>
+                    <div class="holo-terminal">
+                        <div class="terminal-header">
+                            <div class="t-dot" style="background: #ff5f56;"></div>
+                            <div class="t-dot" style="background: #ffbd2e;"></div>
+                            <div class="t-dot" style="background: #27c93f;"></div>
+                        </div>
+                        <div class="t-content" style="color: #ff2d55;">
+                            > INCIDENT_MATCH: ERROR_0x42A<br>
+                            > ROOT_CAUSE: MISSING_FK_CONSTRAINT<br>
+                            > APPLY_FIX: [YES/NO]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Philosophy -->
+        <section class="container" style="padding: 8rem 0;">
+            <div class="glass-card reveal" style="padding: 4rem; border-color: rgba(255,45,85,0.1);">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Not Just AI. <span
+                            style="color: var(--jgpt-secondary);">Engineered Intelligence.</span></h2>
+                    <p style="font-size: 1.25rem; line-height: 1.8; color: #ccc;">
+                        Generic LLMs are broad and shallow. JGPT is narrow and deep. It is the digitization of the
+                        Garnet Grid methodology—a system that values deterministic outcomes over generative
+                        hallucinations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Access / CTA -->
+        <section class="jgpt-access">
             <div class="container">
-                <a href="#what-it-is">What it is</a>
-                <a href="#what-it-does">What it does</a>
-                <a href="#why-different">Why Different</a>
-                <a href="#how-built">How it's Built</a>
-                <a href="#use-cases">Use Cases</a>
-            </div>
-        </nav>
-
-        <!-- What it is -->
-        <section id="what-it-is" class="container reveal">
-            <div class="feature-row">
-                <div class="feature-text">
-                    <h2>What JGPT is</h2>
-                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-top: 1.5rem;">JGPT is a curated
-                        knowledge system designed to operationalize institutional memory. It bridges the gap between raw
-                        data and actionable architectural guidance.</p>
-                    <p style="margin-top: 1rem;">Focused specifically on the Microsoft stack (D365, Power BI, SQL), it
-                        serves as a high-fidelity co-pilot for technical teams and leadership alike.</p>
+                <div class="access-orb">
+                    <div class="orb-inner"></div>
+                    <div class="orb-rings"></div>
                 </div>
-                <div class="glass-card" style="text-align: center;">
-                    <div class="garnet-orb" style="width: 100px; height: 100px; margin: 0 auto 2rem; opacity: 0.8;">
-                    </div>
-                    <p style="font-family: monospace; color: var(--garnet-main);">> CORE_KNOWLEDGE_ACTIVE</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- What it does -->
-        <section id="what-it-does" style="background: rgba(0,0,0,0.2);">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2>Engineered for Execution</h2>
-                    <p>Turning complexity into immediate answers.</p>
-                </div>
-                <div class="card-grid">
-                    <div class="glass-card reveal">
-                        <h3>Fast Answers</h3>
-                        <p>No more searching through fragmented documentation. Get immediate, context-aware technical
-                            guidance.</p>
-                    </div>
-                    <div class="glass-card reveal">
-                        <h3>Pattern Recall</h3>
-                        <p>Access the best-practice patterns for X++ extensions, DAX optimization, and ETL orchestration
-                            instantly.</p>
-                    </div>
-                    <div class="glass-card reveal">
-                        <h3>Troubleshooting</h3>
-                        <p>Simulate error scenarios and receive verified resolution steps based on real-world production
-                            incidents.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Different -->
-        <section id="why-different" class="container reveal" style="padding-top: 8rem;">
-            <div class="feature-row" style="direction: rtl;">
-                <div class="feature-text" style="direction: ltr;">
-                    <h2>Why It's Different</h2>
-                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-top: 1.5rem;">Most AI is shallow.
-                        JGPT is opinionated. It is built from the field, meaning it understands the nuanced failures of
-                        enterprise systems.</p>
-                    <ul class="deliverables-list" style="margin-top: 2rem;">
-                        <li>Structured, not generative fluff</li>
-                        <li>Verifiable technical lineage</li>
-                        <li>Security-first by design</li>
-                        <li>Domain-specific mastery</li>
-                    </ul>
-                </div>
-                <div class="glass-card" style="direction: ltr;">
-                    <h4 style="color: var(--garnet-main);">VS Generic Chatbots</h4>
-                    <p style="font-size: 0.85rem; padding: 1rem; border-bottom: 1px solid var(--glass-border);">Generic:
-                        "I think you should try cleaning the data..."</p>
-                    <p style="font-size: 0.85rem; padding: 1rem; color: var(--garnet-main); font-weight: 700;">JGPT:
-                        "The VertiPaq engine is flagging a high-cardinality column in your Fact table. Run this DAX
-                        optimization pattern..."</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- How it's Built -->
-        <section id="how-built" style="background: rgba(0,0,0,0.1);">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2>The Architecture of Intelligence</h2>
-                    <p>Under the hood of the JGPT engine.</p>
-                </div>
-                <div class="stats-row">
-                    <div class="stat-box">
-                        <span class="stat-val">Ingest</span>
-                        <span class="stat-label">Multi-source parsing</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-val">Index</span>
-                        <span class="stat-label">Vector-semantic mapping</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-val">Retrieve</span>
-                        <span class="stat-label">Contextual Synthesis</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-val">Serve</span>
-                        <span class="stat-label">Low-latency UI</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Use Cases -->
-        <section id="use-cases" class="container reveal">
-            <div class="section-header">
-                <h2>Operational Utility</h2>
-                <p>How JGPT works across your organization.</p>
-            </div>
-            <div class="card-grid">
-                <div class="glass-card reveal">
-                    <h4 style="color: var(--garnet-main);">Power BI Support</h4>
-                    <p>Help your analysts write better DAX and design more efficient models without waiting for IT.</p>
-                </div>
-                <div class="glass-card reveal">
-                    <h4 style="color: var(--garnet-main);">X++ Guidance</h4>
-                    <p>Onboard D365 developers faster by giving them a direct line to your internal patterns and
-                        standards.</p>
-                </div>
-                <div class="glass-card reveal">
-                    <h4 style="color: var(--garnet-main);">Playbook recall</h4>
-                    <p>Access SOPs and technical playbooks instantly during critical updates or incidents.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Access Panel -->
-        <section class="access-panel">
-            <div class="container">
-                <div class="glass-card reveal"
-                    style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: center; padding: 4rem;">
-                    <div>
-                        <h2>Operationalize your knowledge.</h2>
-                        <p style="margin-top: 1rem;">JGPT isn't just a product. It's a framework we can use to turn your
-                            company's unique internal knowledge into a technical asset.</p>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <a href="contact.html" class="btn-primary">Request Access to JGPT</a>
-                        <a href="contact.html" class="btn-secondary">Partner to Productize</a>
-                    </div>
-                </div>
+                <h2 style="font-size: 3rem; margin-bottom: 2rem;">Initialize JGPT.</h2>
+                <p style="margin-bottom: 3rem; color: #aaa;">Deployment is reserved for enterprise partners and direct
+                    advisory clients.</p>
+                <a href="contact.html" class="btn-jgpt">Request Deployment Node</a>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="architect-ribbon">
         <div class="ribbon-background">
             <div class="ribbon-glow"></div>
@@ -272,10 +233,11 @@
                         <a href="outcomes.html">Outcomes</a>
                         <a href="showcase.html">Showcase</a>
                         <a href="jGPT.html">jGPT</a>
+                        <a href="pricing.html">Pricing</a>
                     </div>
                     <div class="nav-segment">
                         <span class="segment-label">ACCESS:</span>
-                        <a href="team.html">The Architect</a>
+                        <a href="architect.html">The Architect</a>
 
                         <a href="https://www.linkedin.com/in/jakub-rezayev/" target="_blank">LinkedIn</a>
                     </div>

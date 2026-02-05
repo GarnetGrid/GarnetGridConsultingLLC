@@ -1,0 +1,491 @@
+/* jGPT Page Redesign - Metatron & Antigravity Inspired */
+
+:root {
+    --jgpt-primary: #901539;
+    /* Garnet */
+    --jgpt-secondary: #ff2d55;
+    /* Hot Pink/Red */
+    --jgpt-accent: #00f0ff;
+    /* Cyan for 'thinking' state */
+    --jgpt-bg: #050505;
+    --jgpt-glass: rgba(15, 15, 15, 0.7);
+    --jgpt-border: rgba(255, 45, 85, 0.2);
+}
+
+.jgpt-body {
+    background-color: var(--jgpt-bg);
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- Metatron Background System --- */
+
+.jgpt-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: radial-gradient(circle at center, #1a050a 0%, #050505 100%);
+    overflow: hidden;
+}
+
+.jgpt-vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 30%, rgba(144, 21, 57, 0.15) 100%);
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.8);
+}
+
+/* Grain Overlay */
+.jgpt-background::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    animation: grain-shift 8s steps(10) infinite;
+}
+
+@keyframes grain-shift {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-5%, -5%);
+    }
+
+    20% {
+        transform: translate(-10%, 5%);
+    }
+
+    30% {
+        transform: translate(5%, -10%);
+    }
+
+    40% {
+        transform: translate(-5%, 15%);
+    }
+
+    50% {
+        transform: translate(-10%, -5%);
+    }
+
+    60% {
+        transform: translate(15%, 0);
+    }
+
+    70% {
+        transform: translate(0, 10%);
+    }
+
+    80% {
+        transform: translate(-15%, 0);
+    }
+
+    90% {
+        transform: translate(10%, 5%);
+    }
+
+    100% {
+        transform: translate(5%, 0);
+    }
+}
+
+/* --- Metatron Core Visual --- */
+
+.metatron-core-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 4rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.metatron-core {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: slow-rotate 40s linear infinite;
+}
+
+@keyframes slow-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.core-circle {
+    position: absolute;
+    border: 1px solid var(--jgpt-border);
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(144, 21, 57, 0.1), transparent);
+    box-shadow: 0 0 20px rgba(144, 21, 57, 0.2);
+    width: 100px;
+    height: 100px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Position exactly 13 circles for Metatron's Cube */
+.c-center {
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    border-color: var(--jgpt-secondary);
+    box-shadow: 0 0 30px rgba(255, 45, 85, 0.4);
+}
+
+/* Inner Ring (6 circles) */
+.c-1 {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.c-2 {
+    top: 30%;
+    right: 10%;
+}
+
+.c-3 {
+    bottom: 30%;
+    right: 10%;
+}
+
+.c-4 {
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.c-5 {
+    bottom: 30%;
+    left: 10%;
+}
+
+.c-6 {
+    top: 30%;
+    left: 10%;
+}
+
+/* Outer Ring (6 circles) */
+.c-7 {
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+}
+
+.c-8 {
+    top: 20%;
+    right: -5%;
+    width: 120px;
+    height: 120px;
+}
+
+.c-9 {
+    bottom: 20%;
+    right: -5%;
+    width: 120px;
+    height: 120px;
+}
+
+.c-10 {
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+}
+
+.c-11 {
+    bottom: 20%;
+    left: -5%;
+    width: 120px;
+    height: 120px;
+}
+
+.c-12 {
+    top: 20%;
+    left: -5%;
+    width: 120px;
+    height: 120px;
+}
+
+/* Connecting Lines (Simulated with pseudo-elements on container or separate SVG) */
+.metatron-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* --- JGPT Sections --- */
+
+.jgpt-hero {
+    padding: 10rem 0 4rem;
+    text-align: center;
+}
+
+.hero-label {
+    font-family: monospace;
+    color: var(--jgpt-secondary);
+    letter-spacing: 0.3em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 45, 85, 0.5);
+}
+
+.jgpt-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff 0%, #999 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.jgpt-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--jgpt-secondary), transparent);
+}
+
+/* --- Holographic Cards --- */
+
+.holo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    padding: 4rem 0;
+}
+
+.holo-card {
+    background: var(--jgpt-glass);
+    border: 1px solid var(--jgpt-border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    backdrop-filter: blur(20px);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+}
+
+.holo-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--jgpt-secondary), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.holo-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 45, 85, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(144, 21, 57, 0.1);
+}
+
+.holo-card:hover::before {
+    transform: translateX(100%);
+}
+
+.holo-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.holo-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(144, 21, 57, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.holo-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.holo-card p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Terminal View within Card */
+.holo-terminal {
+    background: #000;
+    border-radius: 6px;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #00ff00;
+    opacity: 0.8;
+    position: relative;
+}
+
+.terminal-header {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.t-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* --- Interaction Panel --- */
+
+.jgpt-access {
+    background: radial-gradient(circle at center, rgba(144, 21, 57, 0.2) 0%, transparent 70%);
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.access-orb {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 3rem;
+    position: relative;
+}
+
+.orb-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, var(--jgpt-secondary), var(--jgpt-primary));
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: orb-pulse 4s infinite alternate;
+}
+
+@keyframes orb-pulse {
+    from {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.6;
+        box-shadow: 0 0 20px var(--jgpt-secondary);
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.9;
+        box-shadow: 0 0 60px var(--jgpt-secondary);
+    }
+}
+
+.orb-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180%;
+    height: 180%;
+    border: 1px solid rgba(255, 45, 85, 0.2);
+    border-radius: 50%;
+}
+
+.orb-rings::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--jgpt-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--jgpt-secondary);
+}
+
+.btn-jgpt {
+    background: white;
+    color: black;
+    padding: 1.2rem 3rem;
+    border-radius: 100px;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-jgpt:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.btn-jgpt::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transition: left 0.5s;
+}
+
+.btn-jgpt:hover::after {
+    left: 100%;
+}
+
+@media (max-width: 768px) {
+    .metatron-core-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    .core-circle {
+        width: 75px;
+        height: 75px;
+    }
+}
