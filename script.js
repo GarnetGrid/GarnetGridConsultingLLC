@@ -64,31 +64,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 5. Mobile Menu Toggle
+    // 5. Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileNav = document.querySelector('.mobile-nav');
 
-    if (mobileToggle) {
+    if (mobileToggle && mobileNav) {
         mobileToggle.addEventListener('click', () => {
             mobileToggle.classList.toggle('active');
-            navLinks.classList.toggle('mobile-active');
+            mobileNav.classList.toggle('active');
 
             // Prevent scrolling when menu is open
-            if (navLinks.classList.contains('mobile-active')) {
+            if (mobileNav.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = '';
             }
         });
-    }
 
-    // Close menu when clicking links
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            navLinks.classList.remove('mobile-active');
-            document.body.style.overflow = '';
+        // Close menu when clicking links
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
-    });
+    }
     // 6. Animated Counters
     const counterObserverOptions = {
         threshold: 0.5
