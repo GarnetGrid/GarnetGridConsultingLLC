@@ -79,54 +79,154 @@
 /* ========================================
    HERO SECTION
    ======================================== */
+/* ========================================
+   HERO SECTION - DAZZLE EFFECT
+   ======================================== */
 .team-hero {
-    padding: 12rem 0 8rem;
+    padding: 14rem 0 10rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, rgba(220, 20, 60, 0.05) 0%, transparent 70%);
 }
 
-.team-hero::before {
+.dazzle-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-label {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5rem;
+    color: var(--garnet-main);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center the lines around the text */
+    gap: 2rem;
+    width: 100%;
+    /* Ensure it spans the container for centering */
+    opacity: 0;
+    animation: labelDazzleIn 1s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+.hero-label::before,
+.hero-label::after {
     content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
-    animation: heroPulse 8s ease-in-out infinite;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--garnet-main), transparent);
 }
 
-@keyframes heroPulse {
+@keyframes labelDazzleIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        letter-spacing: 1.5rem;
+    }
 
-    0%,
     100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0.8;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        letter-spacing: 0.5rem;
     }
 }
 
-.team-hero h1 {
-    font-size: 5rem;
+.dazzle-heading {
+    font-size: 6.5rem;
+    font-weight: 900;
     line-height: 1.1;
-    margin: 2rem 0;
-    background: linear-gradient(135deg, #fff 0%, rgba(220, 20, 60, 0.9) 100%);
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.d-row {
+    display: block;
+    background: linear-gradient(90deg,
+            #ffffff 0%,
+            rgba(255, 255, 255, 0.7) 40%,
+            var(--garnet-main) 50%,
+            rgba(255, 255, 255, 0.7) 60%,
+            #ffffff 100%);
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(8px);
+    animation:
+        rowReveal 1.2s cubic-bezier(0.2, 0, 0.2, 1) forwards,
+        shimmerSweep 6s linear infinite,
+        textDazzlePulse 3s ease-in-out infinite;
+}
+
+.d-row:nth-child(1) {
+    animation-delay: 0.2s, 0s, 0s;
+}
+
+.d-row:nth-child(2) {
+    animation-delay: 0.4s, 1s, 0.5s;
+}
+
+.d-row:nth-child(3) {
+    animation-delay: 0.6s, 2s, 1s;
+}
+
+@keyframes rowReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(60px);
+        filter: blur(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes shimmerSweep {
+    0% {
+        background-position: -300% center;
+    }
+
+    100% {
+        background-position: 300% center;
+    }
+}
+
+@keyframes textDazzlePulse {
+
+    0%,
+    100% {
+        text-shadow: 0 0 30px rgba(220, 20, 60, 0.2);
+    }
+
+    50% {
+        text-shadow: 0 0 60px rgba(220, 20, 60, 0.6), 0 0 20px rgba(220, 20, 60, 0.4);
+    }
 }
 
 .hero-subtitle {
-    font-size: 1.4rem;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 600px;
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 700px;
     margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 1.2s;
 }
 
 /* ========================================
@@ -138,10 +238,12 @@
 }
 
 .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 /* Profile Card */
@@ -305,7 +407,7 @@
 
 .profile-title {
     font-size: 1.3rem;
-    color: var(--garnet);
+    color: var(--garnet-main);
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
@@ -335,7 +437,7 @@
     display: block;
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--garnet);
+    color: var(--garnet-main);
     font-family: 'Outfit', sans-serif;
 }
 
@@ -352,7 +454,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--garnet), var(--magenta));
+    background: linear-gradient(135deg, var(--garnet-main), hsl(320, 80%, 50%));
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -388,23 +490,35 @@
 }
 
 .philosophy-panel h3 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--garnet);
+    color: var(--garnet-main);
 }
 
 .philosophy-content {
     position: relative;
     z-index: 1;
+    line-height: 1.8;
 }
 
 .philosophy-content blockquote {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.9);
-    border-left: 4px solid var(--garnet);
-    padding-left: 2rem;
-    margin: 0 0 2rem 0;
+    color: #fff;
+    padding: 0 2rem;
+    margin: 0 0 3rem 0;
+    position: relative;
+    border-left: none;
+    /* Removed the left border for centered look */
+}
+
+.philosophy-content blockquote::before,
+.philosophy-content blockquote::after {
+    content: '"';
+    font-size: 4rem;
+    color: var(--garnet-main);
+    opacity: 0.3;
+    position: absolute;
 }
 
 .philosophy-content p {
@@ -417,16 +531,19 @@
 /* ========================================
    EXPERTISE CONSTELLATION
    ======================================== */
+/* Expertise Constellation Centralized */
 .expertise-constellation {
     padding: 8rem 0;
     position: relative;
+    text-align: center;
 }
 
 .constellation-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 4rem;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 4rem auto 0;
 }
 
 .skill-node {
@@ -441,11 +558,12 @@
     animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0;
     animation-delay: var(--delay, 0s);
+    will-change: transform, opacity, border-color, box-shadow;
 }
 
 .skill-node:hover {
     transform: translateY(-10px);
-    border-color: var(--garnet);
+    border-color: var(--garnet-main);
     box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
 }
 
@@ -474,29 +592,53 @@
 .skill-node h4 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--garnet);
+    color: var(--garnet-main);
 }
 
-.skill-node p {
-    font-size: 1rem;
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, rgba(220, 20, 60, 0.9) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header p {
+    font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.6);
-    line-height: 1.6;
 }
 
 /* ========================================
    SOLO ADVANTAGE SECTION
    ======================================== */
+/* Solo Advantage Centered */
 .solo-advantage {
-    padding: 8rem 0;
+    padding: 10rem 0;
     background: rgba(0, 0, 0, 0.3);
     position: relative;
+    text-align: center;
 }
 
 .advantage-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 5rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 4rem;
+    max-width: 900px;
+    margin: 4rem auto 0;
+}
+
+.advantage-content {
+    text-align: center;
 }
 
 .advantage-intro {
@@ -520,7 +662,7 @@
 .advantage-number {
     font-size: 3rem;
     font-weight: 800;
-    color: var(--garnet);
+    color: var(--garnet-main);
     font-family: 'Outfit', sans-serif;
     line-height: 1;
     opacity: 0.3;
@@ -591,7 +733,7 @@
     top: var(--y);
     width: 20px;
     height: 20px;
-    background: var(--garnet);
+    background: var(--garnet-main);
     border-radius: 50%;
     animation: neuronPulse 2s ease-in-out infinite;
     animation-delay: var(--delay);
@@ -624,7 +766,8 @@
     position: relative;
     max-width: 800px;
     margin: 4rem auto 0;
-    padding-left: 4rem;
+    padding-left: 2rem;
+    text-align: left;
 }
 
 .timeline::before {
@@ -636,8 +779,8 @@
     width: 2px;
     background: linear-gradient(180deg,
             transparent 0%,
-            var(--garnet) 10%,
-            var(--garnet) 90%,
+            var(--garnet-main) 10%,
+            var(--garnet-main) 90%,
             transparent 100%);
 }
 
@@ -682,7 +825,7 @@
     top: 0;
     width: 20px;
     height: 20px;
-    background: var(--garnet);
+    background: var(--garnet-main);
     border-radius: 50%;
     border: 4px solid var(--bg-dark);
     box-shadow: 0 0 20px rgba(220, 20, 60, 0.6);
@@ -710,7 +853,7 @@
 
 .timeline-content h4 {
     font-size: 1.5rem;
-    color: var(--garnet);
+    color: var(--garnet-main);
     margin-bottom: 1rem;
 }
 
@@ -723,11 +866,45 @@
 /* ========================================
    TEAM CTA SECTION
    ======================================== */
-.team-cta {
-    padding: 8rem 0;
+/* Footer Fixes */
+.footer-logo img {
+    width: 120px;
+    /* Adjusted to a more reasonable but still premium size */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.5));
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.footer-grid {
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Base Performance */
+.reveal,
+.d-row,
+.hero-label,
+.profile-card,
+.skill-node,
+.advantage-card,
+.timeline-item {
+    will-change: transform, opacity;
 }
 
 .team-cta::before {
@@ -785,7 +962,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1.2rem 2.5rem;
-    background: linear-gradient(135deg, var(--garnet), var(--magenta));
+    background: linear-gradient(135deg, var(--garnet-main), hsl(320, 80%, 50%));
     color: white;
     text-decoration: none;
     border-radius: 50px;
