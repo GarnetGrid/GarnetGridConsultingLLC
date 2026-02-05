@@ -4,478 +4,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Garnet Grid Consulting portfolio showcase featuring Power BI dashboards, Dynamics 365 F&O extensions, data reconciliation automation, eDiscovery workflows, and process automation solutions. Real client results with technical code examples.">
-    <meta name="keywords"
-        content="Power BI, DAX, Dynamics 365, X++, SQL Automation, Python, eDiscovery, Data Integrity, Process Automation, Consulting Portfolio">
     <title>Showcase | Garnet Grid Consulting</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
-    <!-- Advanced SEO -->
-    <link rel="canonical" href="https://garnetgrid.com/showcase.html">
-    <meta property="og:title" content="Expertise Showcase | Garnet Grid Consulting">
-    <meta property="og:description"
-        content="Explore our portfolio of Power BI dashboards, D365 automation, and data engineering solutions.">
-    <meta property="og:url" content="https://garnetgrid.com/showcase.html">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://garnetgrid.com/assets/images/logo.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Garnet Grid Showcase">
-    <meta name="twitter:description" content="Real-world results: From messy data to revenue.">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <link rel="shortcut icon" href="assets/images/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="showcase-page">
-    <nav aria-label="Primary" class="top-nav scrolled">
-        <a aria-label="Garnet Grid Consulting home" class="brand" href="index.html">
-            <img alt="Garnet Grid Logo" src="assets/images/logo.png" width="40" height="40" />
-            <span>Garnet Grid Consulting</span>
-        </a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#jgpt-engine">JGPT Engine</a>
-            <a href="index.html#outcomes">Outcomes</a>
-            <a class="btn primary small" href="index.html#contact">Initiate</a>
+<body>
+
+    <div class="aurora-bg"></div>
+    <div class="gridfield">
+        <div class="grid-shimmer"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span>Garnet Grid</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="expertise.html">Expertise</a>
+                <a href="outcomes.html">Outcomes</a>
+                <a href="showcase.html" class="active">Showcase</a>
+                <a href="jGPT.html">JGPT</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html" class="btn-primary">Request Access</a>
+            </nav>
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span><span></span>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Project Showcase Header -->
-    <!-- Nebula Background Integration -->
-    <div class="showcase-nebula-container">
-        <img src="assets/images/header-nebula.png" alt="" class="showcase-nebula nebula-reveal">
-    </div>
-    <div class="section-header reveal active fade-in-up">
-        <h1>Expertise Showcase</h1>
-        <p class="subhead">Proof of technical excellence in Data Storytelling and ERP Systems.</p>
-    </div>
-
-    <div class="divider">
-        <div class="divider-wave"></div>
-    </div>
-
-    <section class="showcase-section section-deep-garnet" id="pbi">
-        <div class="section-header">
-            <div class="offer-kicker">Analytics Excellence</div>
-            <h2>Power BI Dashboards</h2>
-            <p>Transforming complex datasets into executive-level insights with precision storytelling.</p>
-        </div>
-        <div class="showcase-grid">
-            <div class="showcase-card reveal">
-                <div class="showcase-media">
-                    <img src="assets/images/showcase/pbi-real.png" alt="Power BI Executive Dashboard" loading="lazy">
+    <main>
+        <!-- Hero -->
+        <section class="page-hero" style="padding-top: 12rem; padding-bottom: 4rem;">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span
+                        style="color: var(--garnet-main); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem;">Technical
+                        Portfolio</span>
+                    <h1 style="font-size: 4rem; margin: 1rem 0;">Showcase</h1>
+                    <p>Demonstrating technical depth through real-world architectural patterns.</p>
                 </div>
-                <div class="showcase-copy">
-                    <h3>Executive Sales Analytics</h3>
-                    <p>A mission-critical dashboard for a mid-market manufacturer, revealing real-time revenue leakage
-                        and regional performance hotspots.</p>
+            </div>
+        </section>
 
-                    <div class="code-console">
-                        <div class="console-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
+        <!-- Power BI Showcase -->
+        <section class="pbi-showcase">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: left; margin-bottom: 3rem;">
+                    <h2 style="color: var(--garnet-main);">01. Power BI Architecture</h2>
+                    <p style="margin: 0;">Semantic modeling, high-concurrency DAX, and enterprise governance.</p>
+                </div>
+
+                <div class="glass-card reveal" style="margin-bottom: 4rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start;">
+                        <div>
+                            <h3>Financial Consolidation Model</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">Building a
+                                unified view for a global stakeholder group across 12 business units.</p>
+                            <ul class="deliverables-list" style="margin-top: 2rem;">
+                                <li>Complex Currency Translation</li>
+                                <li>Cross-Entity ELT Pipelines</li>
+                                <li>Dynamic RLS Hierarchies</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>The Result</h4>
+                            <p>Reduced monthly close reporting from 4 days to 3 hours. Implemented sub-second refresh
+                                responsiveness on 500M+ rows via VertiPaq partitioning.</p>
+                            <div class="stats-row">
+                                <div class="stat-box">
+                                    <span class="stat-val">3h</span>
+                                    <span class="stat-label">Refresh Time</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-val">500M+</span>
+                                    <span class="stat-label">Row Count</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-val">98%</span>
+                                    <span class="stat-label">Adoption Rate</span>
+                                </div>
                             </div>
-                            <span class="console-title">rolling_revenue.dax</span>
-                        </div>
-                        <div class="code-content">
-                            <pre><code><span class="code-comment">-- Complex Rolling 12-Month Performance</span>
-Rolling 12M Sales = 
-<span class="code-keyword">VAR</span> MaxDate = <span class="code-function">MAX</span>('Calendar'[Date])
-<span class="code-keyword">RETURN</span>
-    <span class="code-function">CALCULATE</span>(
-        [Total Sales],
-        <span class="code-function">DATESINPERIOD</span>(
-            'Calendar'[Date],
-            MaxDate,
-            -12, <span class="code-keyword">MONTH</span>
-        )
-    )</code></pre>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="project-insight">
-                        <h4>Impact Breakdown</h4>
-                        <ul>
-                            <li><strong>Problem:</strong> Fragmented SQL summaries leading to delayed sales forecasting.
-                            </li>
-                            <li><strong>Solution:</strong> Tiered Power BI architecture with 20ms DAX query response.
-                            </li>
-                            <li><strong>Result:</strong> $2.4M identified in "at-risk" contracts within 48 hours of
-                                launch.</li>
-                        </ul>
+        <!-- X++ Showcase -->
+        <section class="xplusplus-showcase" style="background: rgba(0,0,0,0.2); padding: 6rem 0;">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: left; margin-bottom: 3rem;">
+                    <h2 style="color: var(--garnet-main);">02. X++ / D365 Engineering</h2>
+                    <p style="margin: 0;">Extending the core with clean patterns and high-throughput batch logic.</p>
+                </div>
+
+                <div class="glass-card reveal" style="margin-bottom: 4rem;">
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: start;">
+                        <div>
+                            <h4 style="margin-bottom: 1.5rem;">Pattern Implementation</h4>
+                            <p>Utilizing Chain of Command (CoC) and Event Handlers to build non-intrusive,
+                                upgrade-friendly extensions. Specializing in high-concurrency batch processing via the
+                                SysOperation Framework.</p>
+
+                            <div class="code-panel" style="margin-top: 2rem;">
+                                <span class="code-comment">// Optimized Batch Processing Pattern</span><br>
+                                <span class="code-keyword">[ExtensionOf</span>(<span
+                                    class="code-class">classStr</span>(PurchTableType))<span
+                                    class="code-keyword">]</span><br>
+                                <span class="code-keyword">final class</span> <span
+                                    class="code-class">GGC_PurchTableType_Extension</span><br>
+                                {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">public void</span> update()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">next</span>
+                                update();<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span>
+                                (this.purchTable.Status == GGC_Status::SyncReady)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                    class="code-class">GGC_SyncService</span>::triggerExport(this.purchTable);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Typical Work Scope</h3>
+                            <ul class="deliverables-list">
+                                <li>Custom Service Endpoints</li>
+                                <li>Data Entity OData Performance</li>
+                                <li>Transactional Integrity Guards</li>
+                                <li>Error Handling & Log Silos</li>
+                            </ul>
+                            <a href="contact.html" class="btn-secondary"
+                                style="margin-top: 2rem; display: inline-block;">Request a Walkthrough</a>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <ul class="tag-list">
-                        <li>DAX Optimization</li>
-                        <li>RLS Security</li>
-                        <li>Automated ETL</li>
+        <!-- CTA -->
+        <section class="cta-banner">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Want to see the full models?</h2>
+                    <p>I can provide a narrated walkthrough of sanitized technical architectures.</p>
+                    <a href="contact.html" class="btn-primary" style="margin-top: 2.5rem;">Request Technical Review</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem;"><span>Garnet Grid</span></a>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Turning enterprise knowledge into
+                        architectural precision. Built from the field.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="expertise.html">Expertise</a></li>
+                        <li><a href="outcomes.html">Outcomes</a></li>
+                        <li><a href="showcase.html">Showcase</a></li>
+                        <li><a href="jGPT.html">JGPT</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:intelligence@garnetgrid.com">intelligence@garnetgrid.com</a></li>
+                        <li>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">New York, NY</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div class="divider">
-        <div class="divider-wave"></div>
-    </div>
-
-    <section class="showcase-section section-deep-garnet" id="d365">
-        <div class="section-header">
-            <div class="offer-kicker">ERP Mastery</div>
-            <h2>Dynamics 365 F&O</h2>
-            <p>Modernizing core business logic with high-performance X++ extensions and custom UI.</p>
-        </div>
-        <div class="showcase-grid">
-            <div class="showcase-card reveal">
-                <div class="showcase-media">
-                    <img src="assets/images/showcase/d365-real.png" alt="D365 F&O Custom Extension" loading="lazy">
-                </div>
-                <div class="showcase-copy">
-                    <h3>Supply Chain Automation</h3>
-                    <p>Development of complex X++ extensions to automate warehouse picking logic, reducing friction in
-                        high-volume distribution centers.</p>
-
-                    <div class="code-console">
-                        <div class="console-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <span class="console-title">PurchTable_Extension.xpp</span>
-                        </div>
-                        <div class="code-content">
-                            <pre><code><span class="code-keyword">[ExtensionOf(classStr(PurchTableType))]</span>
-<span class="code-keyword">final class</span> PurchTable_GG_Extension
-{
-    <span class="code-keyword">public void</span> <span class="code-function">initValue</span>()
-    {
-        <span class="code-keyword">next</span> <span class="code-function">initValue</span>();
-        <span class="code-comment">// Custom Garnet Grid Automation Logic</span>
-        <span class="code-keyword">this</span>.purchTable().GGRiskProfile = <span class="code-keyword">true</span>;
-    }
-}</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="project-insight">
-                        <h4>Impact Breakdown</h4>
-                        <ul>
-                            <li><strong>Problem:</strong> Manual warehouse routing causing 15% fulfillment delay in Q4.
-                            </li>
-                            <li><strong>Solution:</strong> X++ Chain of Command (CoC) logic injected into standard
-                                Picking flows.</li>
-                            <li><strong>Result:</strong> 40% reduction in document handling time and 0% regression on
-                                D365 updates.</li>
-                        </ul>
-                    </div>
-
-                    <ul class="tag-list">
-                        <li>Chain of Command</li>
-                        <li>OData APIs</li>
-                        <li>Custom UI Fragments</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider">
-        <div class="divider-wave"></div>
-    </div>
-
-    <section class="showcase-section section-deep-garnet" id="data-integrity">
-        <div class="section-header">
-            <div class="offer-kicker">Data Quality</div>
-            <h2>Financial Reconciliation Automation</h2>
-            <p>Building bulletproof data validation frameworks that catch errors before they become problems.</p>
-        </div>
-        <div class="showcase-grid">
-            <div class="showcase-card reveal">
-                <div class="showcase-media">
-                    <img src="assets/images/showcase/integrity-real.png" alt="Automated Reconciliation Dashboard"
-                        loading="lazy">
-                </div>
-                <div class="showcase-copy">
-                    <h3>Multi-System Reconciliation Engine</h3>
-                    <p>A healthcare services company needed to reconcile billing data across 5 disparate systems daily,
-                        catching discrepancies before month-end close.</p>
-
-                    <div class="code-console">
-                        <div class="console-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <span class="console-title">variance_detection.sql</span>
-                        </div>
-                        <div class="code-content">
-                            <pre><code><span class="code-comment">-- Automated Variance Detection Framework</span>
-<span class="code-keyword">WITH</span> SourceA <span class="code-keyword">AS</span> (
-    <span class="code-keyword">SELECT</span> AccountID, <span class="code-function">SUM</span>(Amount) <span class="code-keyword">AS</span> Total
-    <span class="code-keyword">FROM</span> BillingSystem
-    <span class="code-keyword">WHERE</span> PostDate = <span class="code-function">CAST</span>(<span class="code-function">GETDATE</span>() <span class="code-keyword">AS DATE</span>)
-    <span class="code-keyword">GROUP BY</span> AccountID
-),
-SourceB <span class="code-keyword">AS</span> (
-    <span class="code-keyword">SELECT</span> AccountID, <span class="code-function">SUM</span>(Amount) <span class="code-keyword">AS</span> Total
-    <span class="code-keyword">FROM</span> GeneralLedger
-    <span class="code-keyword">WHERE</span> PostDate = <span class="code-function">CAST</span>(<span class="code-function">GETDATE</span>() <span class="code-keyword">AS DATE</span>)
-    <span class="code-keyword">GROUP BY</span> AccountID
-)
-<span class="code-keyword">SELECT</span> 
-    <span class="code-function">COALESCE</span>(a.AccountID, b.AccountID) <span class="code-keyword">AS</span> Account,
-    a.Total - b.Total <span class="code-keyword">AS</span> Variance,
-    <span class="code-keyword">CASE WHEN ABS</span>(a.Total - b.Total) > 100 
-         <span class="code-keyword">THEN</span> 'ALERT' <span class="code-keyword">ELSE</span> 'OK' <span class="code-keyword">END AS</span> Status
-<span class="code-keyword">FROM</span> SourceA a
-<span class="code-keyword">FULL OUTER JOIN</span> SourceB b <span class="code-keyword">ON</span> a.AccountID = b.AccountID
-<span class="code-keyword">WHERE ABS</span>(a.Total - b.Total) > 0.01;</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="project-insight">
-                        <h4>Impact Breakdown</h4>
-
-                        <div class="comparison-visual reveal">
-                            <img src="assets/images/showcase/dashboard-compare.png"
-                                alt="Before vs After Reconciliation Process" class="compare-img">
-                            <p class="caption-center">From Manual Chaos to Automated Clarity</p>
-                        </div>
-
-                        <ul>
-                            <li><strong>Problem:</strong> Labor-intensive manual reconciliation process.</li>
-                            frequent errors.</li>
-                            <li><strong>Solution:</strong> Automated SQL-based variance detection with real-time
-                                alerting
-                                and exception workflows.</li>
-                            <li><strong>Result:</strong> 95% reduction in data errors, $250K prevented in billing
-                                mistakes, 20 hours/week saved.</li>
-                        </ul>
-                    </div>
-
-                    <ul class="tag-list">
-                        <li>SQL Automation</li>
-                        <li>Data Quality</li>
-                        <li>Exception Handling</li>
-                        <li>Real-time Alerts</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider">
-        <div class="divider-wave"></div>
-    </div>
-
-    <section class="showcase-section section-deep-garnet" id="ediscovery">
-        <div class="section-header">
-            <div class="offer-kicker">Legal Technology</div>
-            <h2>eDiscovery Document Processing</h2>
-            <p>Intelligent document classification and retention workflows for defensible legal processes.</p>
-        </div>
-        <div class="showcase-grid">
-            <div class="showcase-card reveal">
-                <div class="showcase-media">
-                    <img src="assets/images/showcase/ediscovery-real.png" alt="Document Classification Workflow"
-                        loading="lazy">
-                </div>
-                <div class="showcase-copy">
-                    <h3>Automated Document Classification Engine</h3>
-                    <p>A law firm needed to process 500,000+ documents for litigation discovery, with intelligent
-                        classification and metadata extraction.</p>
-
-                    <div class="code-console">
-                        <div class="console-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <span class="console-title">document_classifier.py</span>
-                        </div>
-                        <div class="code-content">
-                            <pre><code><span class="code-comment"># Intelligent Document Classification Pipeline</span>
-<span class="code-keyword">import</span> re
-<span class="code-keyword">from</span> pathlib <span class="code-keyword">import</span> Path
-
-<span class="code-keyword">def</span> <span class="code-function">classify_document</span>(file_path: Path) -> dict:
-    <span class="code-string">"""Extract metadata and classify legal documents"""</span>
-    
-    <span class="code-comment"># Extract key metadata patterns</span>
-    patterns = {
-        <span class="code-string">'contract'</span>: <span class="code-keyword">r</span><span class="code-string">'\b(agreement|contract|terms)\b'</span>,
-        <span class="code-string">'financial'</span>: <span class="code-keyword">r</span><span class="code-string">'\b(invoice|payment|\$\d+)\b'</span>,
-        <span class="code-string">'privileged'</span>: <span class="code-keyword">r</span><span class="code-string">'\b(attorney-client|privileged)\b'</span>
-    }
-    
-    content = file_path.<span class="code-function">read_text</span>(encoding=<span class="code-string">'utf-8'</span>)
-    
-    classification = {
-        <span class="code-string">'file'</span>: file_path.name,
-        <span class="code-string">'categories'</span>: [],
-        <span class="code-string">'priority'</span>: <span class="code-string">'standard'</span>
-    }
-    
-    <span class="code-keyword">for</span> category, pattern <span class="code-keyword">in</span> patterns.<span class="code-function">items</span>():
-        <span class="code-keyword">if</span> re.<span class="code-function">search</span>(pattern, content, re.IGNORECASE):
-            classification[<span class="code-string">'categories'</span>].<span class="code-function">append</span>(category)
-            <span class="code-keyword">if</span> category == <span class="code-string">'privileged'</span>:
-                classification[<span class="code-string">'priority'</span>] = <span class="code-string">'high'</span>
-    
-    <span class="code-keyword">return</span> classification</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="project-insight">
-                        <h4>Impact Breakdown</h4>
-                        <ul>
-                            <li><strong>Problem:</strong> Manual document review too slow and expensive for client
-                                budgets, risking case timelines.</li>
-                            <li><strong>Solution:</strong> Custom Python-based classification engine with smart search
-                                and
-                                automated metadata tagging.</li>
-                            <li><strong>Result:</strong> 60% faster document review, 40% cost reduction, competitive
-                                advantage in case bidding.</li>
-                        </ul>
-                    </div>
-
-                    <ul class="tag-list">
-                        <li>Python Automation</li>
-                        <li>NLP Classification</li>
-                        <li>Metadata Extraction</li>
-                        <li>Workflow Design</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider">
-        <div class="divider-wave"></div>
-    </div>
-
-    <section class="showcase-section section-deep-garnet" id="process-automation">
-        <div class="section-header">
-            <div class="offer-kicker">Workflow Excellence</div>
-            <h2>Month-End Close Automation</h2>
-            <p>Eliminating manual bottlenecks with intelligent workflow orchestration and validation.</p>
-        </div>
-        <div class="showcase-grid">
-            <div class="showcase-card reveal">
-                <div class="showcase-media">
-                    <img src="assets/images/showcase/automation-real.png" alt="Automated Close Process" loading="lazy">
-                </div>
-                <div class="showcase-copy">
-                    <h3>Intelligent Close Orchestration</h3>
-                    <p>A mid-market manufacturer struggled with a 10-day month-end close involving 50+ Excel files and
-                        constant reconciliation errors.</p>
-
-                    <div class="code-console">
-                        <div class="console-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <span class="console-title">close_orchestrator.py</span>
-                        </div>
-                        <div class="code-content">
-                            <pre><code><span class="code-comment"># Month-End Close Automation Framework</span>
-<span class="code-keyword">from</span> dataclasses <span class="code-keyword">import</span> dataclass
-<span class="code-keyword">from</span> typing <span class="code-keyword">import</span> List
-
-<span class="code-keyword">@dataclass</span>
-<span class="code-keyword">class</span> <span class="code-function">CloseTask</span>:
-    name: str
-    dependencies: List[str]
-    validation_query: str
-    
-<span class="code-keyword">class</span> <span class="code-function">CloseOrchestrator</span>:
-    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self, tasks: List[CloseTask]):
-        self.tasks = tasks
-        self.completed = <span class="code-function">set</span>()
-    
-    <span class="code-keyword">def</span> <span class="code-function">execute_close</span>(self):
-        <span class="code-string">"""Execute tasks in dependency order with validation"""</span>
-        <span class="code-keyword">while</span> <span class="code-function">len</span>(self.completed) < <span class="code-function">len</span>(self.tasks):
-            <span class="code-keyword">for</span> task <span class="code-keyword">in</span> self.tasks:
-                <span class="code-keyword">if</span> task.name <span class="code-keyword">in</span> self.completed:
-                    <span class="code-keyword">continue</span>
-                
-                <span class="code-comment"># Check if dependencies are met</span>
-                <span class="code-keyword">if</span> <span class="code-function">all</span>(dep <span class="code-keyword">in</span> self.completed 
-                       <span class="code-keyword">for</span> dep <span class="code-keyword">in</span> task.dependencies):
-                    
-                    self.<span class="code-function">run_task</span>(task)
-                    <span class="code-keyword">if</span> self.<span class="code-function">validate_task</span>(task):
-                        self.completed.<span class="code-function">add</span>(task.name)
-                    <span class="code-keyword">else</span>:
-                        <span class="code-keyword">raise</span> <span class="code-function">ValueError</span>(<span class="code-string">f"Validation failed: {task.name}"</span>)</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="project-insight">
-                        <h4>Impact Breakdown</h4>
-                        <ul>
-                            <li><strong>Problem:</strong> 10-day close cycle with manual Excel workflows, constant
-                                reconciliation errors, and no visibility.</li>
-                            <li><strong>Solution:</strong> Python-based orchestration engine with automated validation,
-                                dependency management, and real-time KPI tracking.</li>
-                            <li><strong>Result:</strong> 70% reduction in close time (10 days → 3 days), zero
-                                reconciliation errors, $180K annual savings.</li>
-                        </ul>
-                    </div>
-
-                    <ul class="tag-list">
-                        <li>Python Orchestration</li>
-                        <li>Workflow Automation</li>
-                        <li>Validation Framework</li>
-                        <li>KPI Tracking</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="contact">
-        <div class="section-header">
-            <h2>Start Your Transformation</h2>
-            <p>Ready to see these results in your own business?</p>
-            <div class="hero-actions">
-                <a href="index.html#contact" class="btn primary">Get Started</a>
-                <a href="index.html" class="btn ghost">Back to Home</a>
-            </div>
-        </div>
-
-        <!-- Dynamic System Footer (Consistency Upgrade) -->
-        <div class="system-footer">
-            <div class="sys-status">
-                <span class="status-indicator"></span>
-                SYSTEM STATUS: <span class="blink">OPERATIONAL</span>
-            </div>
-            <div class="sys-meta">
-                <span>LATENCY: <span class="latency-counter">12ms</span></span>
-                <span>ENCRYPTION: <span class="secure-lock">AES-256</span></span>
-                <span>&copy; 2026 GARNET GRID</span>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Garnet Grid Consulting. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
