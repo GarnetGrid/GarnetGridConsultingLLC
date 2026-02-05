@@ -221,17 +221,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.querySelector('.btn-text').textContent = 'Sending...';
                 submitBtn.style.opacity = '0.7';
 
+                // Basic Input Sanitization (Security Best Practice)
+                const sanitize = (str) => {
+                    const temp = document.createElement('div');
+                    temp.textContent = str;
+                    return temp.innerHTML;
+                };
+
                 // Collect form data
                 const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    company: document.getElementById('company').value,
-                    type: document.getElementById('type').value,
-                    message: document.getElementById('message').value,
+                    name: sanitize(document.getElementById('name').value),
+                    email: sanitize(document.getElementById('email').value),
+                    company: sanitize(document.getElementById('company').value),
+                    type: sanitize(document.getElementById('type').value),
+                    message: sanitize(document.getElementById('message').value),
                     timestamp: new Date().toISOString()
                 };
 
                 // Simulate form submission (replace with actual API call)
+                // Note: For production, ensure this endpoint is HTTPS and secured.
                 setTimeout(() => {
                     // Show success message
                     showSuccessToast();
@@ -245,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.style.opacity = '1';
 
                     // Log to console (for demo purposes)
-                    console.log('Form submitted:', formData);
+                    console.log('Form submitted securely:', formData);
                 }, 1500);
             });
         }
@@ -289,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+
         // Smooth scroll to form when clicking CTA
         const ctaButton = document.querySelector('.cta-final-section .btn-primary');
         if (ctaButton) {
@@ -298,29 +307,69 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (form) {
                     form.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     // Focus first input after scroll
-                    setTimeout(() => {
-                        document.getElementById('name').focus();
-                    }, 500);
+                    setTimeout(() => form.querySelector('input').focus(), 800);
+                }
+            });
+        }
+    }
+
+    // 10. Cookie Consent Logic
+    const cookieConsent = localStorage.getItem('cookieConsent');
+    if (!cookieConsent) {
+        const banner = document.createElement('div');
+        banner.className = 'cookie-banner';
+        banner.setAttribute('role', 'region');
+        banner.setAttribute('aria-label', 'Cookie Consent');
+        banner.innerHTML = `
+            <div class="cookie-content">
+                <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy.html">Learn more</a></p>
+                <div class="cookie-actions">
+                    <button id="acceptCookies" class="btn-primary-small" aria-label="Accept cookies">Accept</button>
+                    <button id="declineCookies" class="btn-secondary-small" aria-label="Decline cookies">Decline</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(banner);
+
+        // Animation in
+        setTimeout(() => banner.classList.add('show'), 100);
+
+        document.getElementById('acceptCookies').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            banner.classList.remove('show');
+            setTimeout(() => banner.remove(), 500);
+        });
+
+        document.getElementById('declineCookies').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'false');
+            banner.classList.remove('show');
+            setTimeout(() => banner.remove(), 500);
+        });
+    }
+});
+setTimeout(() => {
+    document.getElementById('name').focus();
+}, 500);
                 }
             });
         }
 
-        // Animate stats on scroll
-        const statValues = document.querySelectorAll('.cta-stat-value');
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'statPulse 0.6s ease';
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
+// Animate stats on scroll
+const statValues = document.querySelectorAll('.cta-stat-value');
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'statPulse 0.6s ease';
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
 
-        statValues.forEach(stat => statsObserver.observe(stat));
+statValues.forEach(stat => statsObserver.observe(stat));
 
-        // Add CSS for stat animation and toast
-        const style = document.createElement('style');
-        style.textContent = `
+// Add CSS for stat animation and toast
+const style = document.createElement('style');
+style.textContent = `
             @keyframes statPulse {
                 0% { transform: scale(0.8); opacity: 0; }
                 50% { transform: scale(1.1); }
@@ -382,58 +431,58 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         `;
-        document.head.appendChild(style);
+document.head.appendChild(style);
     }
 
-    // ========================================
-    // OUTCOMES PAGE - ANIMATED METRICS
-    // ========================================
-    const metricCards = document.querySelectorAll('.metric-card');
+// ========================================
+// OUTCOMES PAGE - ANIMATED METRICS
+// ========================================
+const metricCards = document.querySelectorAll('.metric-card');
 
-    if (metricCards.length > 0) {
-        const animateCounter = (element, target, duration = 2000) => {
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
+if (metricCards.length > 0) {
+    const animateCounter = (element, target, duration = 2000) => {
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
 
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    // Handle decimal values
-                    if (target % 1 !== 0) {
-                        element.textContent = current.toFixed(1);
-                    } else {
-                        element.textContent = Math.floor(current);
-                    }
-                    requestAnimationFrame(updateCounter);
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                // Handle decimal values
+                if (target % 1 !== 0) {
+                    element.textContent = current.toFixed(1);
                 } else {
-                    // Final value
-                    if (target % 1 !== 0) {
-                        element.textContent = target.toFixed(1);
-                    } else {
-                        element.textContent = target;
-                    }
+                    element.textContent = Math.floor(current);
                 }
-            };
-
-            requestAnimationFrame(updateCounter);
+                requestAnimationFrame(updateCounter);
+            } else {
+                // Final value
+                if (target % 1 !== 0) {
+                    element.textContent = target.toFixed(1);
+                } else {
+                    element.textContent = target;
+                }
+            }
         };
 
-        const metricsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const valueElement = entry.target.querySelector('.metric-value');
-                    if (valueElement && !valueElement.classList.contains('animated')) {
-                        const target = parseFloat(valueElement.dataset.target);
-                        valueElement.classList.add('animated');
-                        animateCounter(valueElement, target);
-                    }
-                }
-            });
-        }, {
-            threshold: 0.5
-        });
+        requestAnimationFrame(updateCounter);
+    };
 
-        metricCards.forEach(card => metricsObserver.observe(card));
-    }
+    const metricsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const valueElement = entry.target.querySelector('.metric-value');
+                if (valueElement && !valueElement.classList.contains('animated')) {
+                    const target = parseFloat(valueElement.dataset.target);
+                    valueElement.classList.add('animated');
+                    animateCounter(valueElement, target);
+                }
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    metricCards.forEach(card => metricsObserver.observe(card));
+}
 });
