@@ -97,43 +97,104 @@
                     <p style="margin: 0;">Extending the core with clean patterns and high-throughput batch logic.</p>
                 </div>
 
-                <div class="glass-card reveal" style="margin-bottom: 4rem;">
-                    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: start;">
-                        <div>
-                            <h4 style="margin-bottom: 1.5rem;">Pattern Implementation</h4>
-                            <p>Utilizing Chain of Command (CoC) and Event Handlers to build non-intrusive,
-                                upgrade-friendly extensions. Specializing in high-concurrency batch processing via the
-                                SysOperation Framework.</p>
-
-                            <div class="code-panel" style="margin-top: 2rem;">
-                                <span class="code-comment">// Optimized Batch Processing Pattern</span><br>
-                                <span class="code-keyword">[ExtensionOf</span>(<span
-                                    class="code-class">classStr</span>(PurchTableType))<span
-                                    class="code-keyword">]</span><br>
-                                <span class="code-keyword">final class</span> <span
-                                    class="code-class">GGC_PurchTableType_Extension</span><br>
+                <div class="glass-card reveal" style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; align-items: stretch;">
+                        <div style="padding: 3rem;">
+                            <h3 style="color: var(--garnet-main);">Performance-Tuned ERP Extensibility</h3>
+                            <p style="font-size: 1rem; color: var(--text-secondary); margin: 1.5rem 0;">
+                                Utilizing Chain of Command (CoC) and Event Handlers to build non-intrusive,
+                                upgrade-friendly extensions for D365 F&O.
+                            </p>
+                            <div class="code-panel"
+                                style="margin-bottom: 1.5rem; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; border: 1px solid var(--garnet-rim);">
+                                <span style="color: #6a9955;">// Optimized Batch Processing Pattern</span><br>
+                                <span style="color: #569cd6;">[ExtensionOf</span>(<span
+                                    style="color: #4ec9b0;">classStr</span>(PurchTableType))<span
+                                    style="color: #569cd6;">]</span><br>
+                                <span style="color: #569cd6;">final class</span> <span
+                                    style="color: #4ec9b0;">GGC_PurchTableType_Extension</span><br>
                                 {<br>
-                                <div class="glass-card reveal"
-                                    style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
-                                    <div
-                                        style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; align-items: stretch;">
-                                        <div style="padding: 3rem;">
-                                            <h3 style="color: var(--garnet-main);">Performance-Tuned ERP Extensibility
-                                            </h3>
-                                            <p style="font-size: 1rem; color: var(--text-secondary); margin: 1.5rem 0;">
-                                                Utilizing Chain of Command (CoC) and Event Handlers to build
-                                                non-intrusive, upgrade-friendly extensions for D365 F&O.</p>
-                                            <ul class="deliverables-list">
-                                                <li>Custom Service Endpoints</li>
-                                                <li>High-Throughput Batch Logic</li>
-                                                <li>Transactional Integrity Guards</li>
-                                            </ul>
-                                        </div>
-                                        <img src="assets/images/showcase/d365-real.png" alt="D365 X++ Code"
-                                            style="width: 100%; height: 100%; object-fit: cover; border-left: 1px solid var(--garnet-rim);">
-                                    </div>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">public void</span> run() { ... }<br>
+                                }
+                            </div>
+                            <ul class="deliverables-list" style="margin-top: 1rem;">
+                                <li>Custom Service Endpoints</li>
+                                <li>High-Throughput Batch Logic</li>
+                                <li>Transactional Integrity Guards</li>
+                            </ul>
+                        </div>
+                        <img src="assets/images/showcase/d365-real.png" alt="D365 X++ Code"
+                            style="width: 100%; height: 100%; object-fit: cover; border-left: 1px solid var(--garnet-rim);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SQL Capabilities -->
+        <section class="sql-showcase">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: left; margin-bottom: 3rem;">
+                    <h2 style="color: var(--garnet-main);">03. SQL & Data Engineering</h2>
+                    <p style="margin: 0;">High-performance storage procedures, complex views, and resilient ETL
+                        pipelines.</p>
+                </div>
+
+                <div class="glass-card reveal" style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
+                    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 0; align-items: stretch;">
+                        <img src="assets/images/showcase/integrity-real.png" alt="SQL Database Diagram"
+                            style="width: 100%; height: 100%; object-fit: cover; border-right: 1px solid var(--garnet-rim);">
+                        <div style="padding: 3rem;">
+                            <h3 style="color: var(--garnet-main);">Enterprise Data Architecture</h3>
+                            <p style="font-size: 1rem; color: var(--text-secondary); margin: 1.5rem 0;">
+                                Designing normalized schemas for transactional integrity and star schemas for analytical
+                                speed.
+                                We optimize execution plans to turn multi-second queries into sub-millisecond responses.
+                            </p>
+                            <div class="stats-row" style="margin-top: 2rem;">
+                                <div class="stat-box">
+                                    <span class="stat-val">TPC-H</span>
+                                    <span class="stat-label">Benchmarking</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-val">99.9%</span>
+                                    <span class="stat-label">Uptime</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Website Creation -->
+        <section class="web-showcase" style="background: rgba(0,0,0,0.2); padding: 6rem 0;">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: left; margin-bottom: 3rem;">
+                    <h2 style="color: var(--garnet-main);">04. Modern Web Development</h2>
+                    <p style="margin: 0;">Responsive, high-performance web applications built on modern stacks.</p>
+                </div>
+
+                <div class="glass-card reveal" style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
+                    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; align-items: stretch;">
+                        <div style="padding: 3rem;">
+                            <h3 style="color: var(--garnet-main);">Immersive User Experiences</h3>
+                            <p style="font-size: 1rem; color: var(--text-secondary); margin: 1.5rem 0;">
+                                From complex dashboard portals to high-converting landing pages. We utilize semantic
+                                HTML,
+                                modern CSS (Grid/Flexbox), and vanilla JavaScript for blazing fast load times and SEO
+                                dominance.
+                            </p>
+                            <ul class="deliverables-list">
+                                <li>Responsive Layouts</li>
+                                <li>Interactive Visuals</li>
+                                <li>WCAG Accessibility</li>
+                            </ul>
+                        </div>
+                        <img src="assets/images/showcase/automation-real.png" alt="Web Development"
+                            style="width: 100%; height: 100%; object-fit: cover; border-left: 1px solid var(--garnet-rim);">
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- CTA -->
