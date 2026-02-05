@@ -47,92 +47,10 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 }, { passive: true });
 
-// ============================================
-// SCROLL PROGRESS INDICATOR
-// ============================================
-const updateScrollProgress = () => {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-
-  // Create element if it doesn't exist
-  let bar = document.querySelector('.scroll-progress-bar');
-  if (!bar) {
-    const container = document.createElement('div');
-    container.className = 'scroll-progress-container';
-    bar = document.createElement('div');
-    bar.className = 'scroll-progress-bar';
-    container.appendChild(bar);
-    document.body.appendChild(container); // Append to body, not nav
-  }
-
-  bar.style.width = scrolled + "%";
-};
-
-window.addEventListener('scroll', updateScrollProgress);
-window.addEventListener('resize', updateScrollProgress); // Recalculate on resize
-
-// ============================================
-// SCROLL REVEAL ANIMATIONS
-// ============================================
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px'
-};
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
+// Reveal animations removed per user request for immediate visibility
 const initReveal = () => {
-  const sections = document.querySelectorAll('section, header.landing, footer');
-
-  sections.forEach(section => {
-    const revealElements = section.querySelectorAll(`
-      .step,
-      .offer-card,
-      .about-card,
-      .svc-card,
-      .testimonial-card,
-      .showcase-card,
-      .hero-content,
-      .section-header,
-      .feature-block,
-      .stats-grid,
-      .grid-layout-3
-    `);
-
-    revealElements.forEach((el, index) => {
-      el.classList.add('reveal');
-      // Staggered delay within each section
-      el.style.transitionDelay = `${index * 100}ms`;
-      revealObserver.observe(el);
-    });
-  });
-
-  // Observe section headers independently if not caught above
-  document.querySelectorAll('.section-header').forEach(header => {
-    header.classList.add('reveal');
-    revealObserver.observe(header);
-  });
-
-  // Force check once
-  setTimeout(() => {
-    window.scrollBy(0, 1);
-    window.scrollBy(0, -1);
-  }, 100);
+  // No-op
 };
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initReveal);
-} else {
-  initReveal();
-}
 
 // Lock mechanism removed for reliability
 
