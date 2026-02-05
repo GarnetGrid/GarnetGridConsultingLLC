@@ -206,9 +206,97 @@ p {
 
 .top-nav.scrolled {
     padding: 0.5rem 2rem;
-    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.9)), url('../images/header-logo-background.png') no-repeat center center;
-    background-size: cover;
+    /* Enhanced Hero Background */
+    background:
+        linear-gradient(to bottom, rgba(5, 5, 5, 0.3), rgba(5, 5, 5, 1)),
+        radial-gradient(circle at 50% 50%, rgba(90, 10, 20, 0.15), transparent 70%),
+        url('../images/header-logo-background.png') no-repeat center center;
+    background-size: cover, 100% 100%, cover;
     gap: 0.25rem;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(90deg, rgba(255, 69, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255, 69, 0, 0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    animation: gridPulse 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gridPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.7;
+    z-index: 10;
+}
+
+.scroll-indicator span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--slate-400);
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    position: relative;
+}
+
+.wheel {
+    width: 2px;
+    height: 6px;
+    background: var(--coral-400);
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, 12px);
+        opacity: 0;
+    }
 }
 
 .top-nav .brand {
@@ -3321,15 +3409,9 @@ body.landing-unlocked .hero-actions {
 }
 
 /* --- Hero Section Specifics --- */
-.hero-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 8rem;
-    /* Nav offset */
-    background: black;
-    /* Base */
-    position: relative;
+background: black;
+/* Base */
+position: relative;
 }
 
 .hero-content {
