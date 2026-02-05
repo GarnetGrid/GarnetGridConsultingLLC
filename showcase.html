@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showcase | Garnet Grid Consulting</title>
+    <meta name="description"
+        content="Explore our technical portfolio: High-concurrency X++ extensions, 500M+ row Power BI models, and Python-driven process automation.">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -139,7 +142,7 @@
 
                         <div class="glass-card reveal" style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
                             <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 0; align-items: stretch;">
-                                <img src="assets/images/showcase/pbi-real.png" alt="Power BI Dashboard"
+                                <img loading="lazy" src="assets/images/showcase/pbi-real.png" alt="Power BI Dashboard"
                                     style="width: 100%; height: 100%; object-fit: cover; border-right: 1px solid var(--garnet-rim);">
                                 <div style="padding: 3rem;">
                                     <h3 style="color: var(--garnet-main);">Financial Consolidation Model</h3>
@@ -202,7 +205,7 @@
                                         <li>Transactional Integrity Guards</li>
                                     </ul>
                                 </div>
-                                <img src="assets/images/showcase/d365-real.png" alt="D365 X++ Code"
+                                <img loading="lazy" src="assets/images/showcase/d365-real.png" alt="D365 X++ Code"
                                     style="width: 100%; height: 100%; object-fit: cover; border-left: 1px solid var(--garnet-rim);">
                             </div>
                         </div>
@@ -222,8 +225,21 @@
 
                         <div class="glass-card reveal" style="margin-bottom: 4rem; overflow: hidden; padding: 0;">
                             <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 0; align-items: stretch;">
-                                <img src="assets/images/showcase/integrity-real.png" alt="SQL Database Diagram"
-                                    style="width: 100%; height: 100%; object-fit: cover; border-right: 1px solid var(--garnet-rim);">
+                                <!-- CSS-Only Visualization for SQL -->
+                                <div class="sql-core-viz">
+                                    <div class="sql-node" data-id="1">REPLICA</div>
+                                    <div class="sql-node" data-id="2">CACHE</div>
+                                    <div class="sql-node" data-id="3">INGEST</div>
+                                    <div class="sql-node" data-id="4">LOGS</div>
+                                    <div class="sql-node master" data-id="CORE">
+                                        MASTER
+                                        <div class="sql-pulse"></div>
+                                    </div>
+                                    <div class="sql-node" data-id="5">INDEX</div>
+                                    <div class="sql-node" data-id="6">ARCHIVE</div>
+                                    <div class="sql-node" data-id="7">QUERY</div>
+                                    <div class="sql-node" data-id="8">BI_VIEW</div>
+                                </div>
                                 <div style="padding: 3rem;">
                                     <h3 style="color: var(--garnet-main);">Enterprise Data Architecture</h3>
                                     <p style="font-size: 1rem; color: var(--text-secondary); margin: 1.5rem 0;">
@@ -280,7 +296,7 @@
                                         <li>WCAG Accessibility</li>
                                     </ul>
                                 </div>
-                                <img src="assets/images/showcase/automation-real.png" alt="Web Development"
+                                <img loading="lazy" src="assets/images/showcase/automation-real.png" alt="Web Development"
                                     style="width: 100%; height: 100%; object-fit: cover; border-left: 1px solid var(--garnet-rim);">
                             </div>
                         </div>
