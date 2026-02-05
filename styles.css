@@ -580,19 +580,14 @@ section {
     gap: 2rem;
 }
 
-/* What We Build Section - Central Visual */
+/* What We Build Section */
 .what-we-build {
     position: relative;
-    background: radial-gradient(circle at center, rgba(162, 23, 62, 0.05) 0%, transparent 60%),
-        url('assets/images/garnet-core-hub.png') no-repeat center 40%;
-    background-size: 600px auto;
 }
 
-/* Strict Grid for What We Build to prevent orphan cards */
+/* Strict Grid for What We Build */
 .what-we-build .card-grid {
     grid-template-columns: repeat(4, 1fr);
-    position: relative;
-    z-index: 2;
 }
 
 @media (max-width: 1150px) {
@@ -924,7 +919,87 @@ footer {
     color: #75715e;
 }
 
+/* CTA Banner */
+/* CTA Banner - Garnet Grid Background */
+/* CTA Banner - Obsidian Reflex */
+.cta-banner {
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Transform the container into a floating card */
+.cta-banner .container {
+    background: linear-gradient(145deg, #0a0a0a, #000000);
+    border: 1px solid var(--garnet-rim);
+    border-radius: 24px;
+    padding: 5rem 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(162, 23, 62, 0.1);
+    max-width: 1000px;
+    /* Contain width */
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Subtle gloss effect */
+.cta-banner .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.05), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Deep garnet pulse at bottom */
+.cta-banner .container::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 100px;
+    background: var(--garnet-main);
+    filter: blur(80px);
+    opacity: 0.2;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cta-banner .section-header {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-banner .section-header h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 60%, var(--garnet-main));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-banner h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 60%, var(--garnet-main));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Responsive */
+
 @media (max-width: 1024px) {
     .hero h1 {
         font-size: 3.5rem;
