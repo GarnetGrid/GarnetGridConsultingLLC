@@ -3444,3 +3444,162 @@ footer {
     transform: scale(0.8);
     margin-right: 0.8rem;
 }
+/* ========================================
+   HERO SECTION - DAZZLE EFFECT (From Team Page)
+   ======================================== */
+.dazzle-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-label {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5rem;
+    color: var(--garnet-main);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center the lines around the text */
+    gap: 2rem;
+    width: 100%;
+    /* Ensure it spans the container for centering */
+    opacity: 0;
+    animation: labelDazzleIn 1s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+.hero-label::before,
+.hero-label::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--garnet-main), transparent);
+}
+
+@keyframes labelDazzleIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        letter-spacing: 1.5rem;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        letter-spacing: 0.5rem;
+    }
+}
+
+.dazzle-heading {
+    font-size: 6.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    /* Spacing below the heading */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.d-row {
+    display: block;
+    background: linear-gradient(90deg,
+            #ffffff 0%,
+            rgba(255, 255, 255, 0.7) 40%,
+            var(--garnet-main) 50%,
+            rgba(255, 255, 255, 0.7) 60%,
+            #ffffff 100%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(8px);
+    animation:
+        rowReveal 1.2s cubic-bezier(0.2, 0, 0.2, 1) forwards,
+        shimmerSweep 6s linear infinite,
+        textDazzlePulse 3s ease-in-out infinite;
+}
+
+.d-row:nth-child(1) {
+    animation-delay: 0.2s, 0s, 0s;
+}
+
+.d-row:nth-child(2) {
+    animation-delay: 0.4s, 1s, 0.5s;
+}
+
+.d-row:nth-child(3) {
+    animation-delay: 0.6s, 2s, 1s;
+}
+
+@keyframes rowReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(60px);
+        filter: blur(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes shimmerSweep {
+    0% {
+        background-position: -300% center;
+    }
+
+    100% {
+        background-position: 300% center;
+    }
+}
+
+@keyframes textDazzlePulse {
+
+    0%,
+    100% {
+        text-shadow: 0 0 30px rgba(220, 20, 60, 0.2);
+    }
+
+    50% {
+        text-shadow: 0 0 60px rgba(220, 20, 60, 0.6), 0 0 20px rgba(220, 20, 60, 0.4);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 1.2s;
+}
+
+@media (max-width: 1024px) {
+    .dazzle-heading {
+        font-size: 4.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .dazzle-heading {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+}
