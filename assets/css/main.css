@@ -3545,3 +3545,139 @@ body.landing-unlocked .hero-actions {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ============================================
+   PHASE 4: GLOBAL CONSISTENCY (Showcase)
+   ============================================ */
+
+/* Branding Consistency */
+.showcase-section {
+    position: relative;
+    padding: 6rem 2rem;
+    overflow: hidden;
+}
+
+/* Ensure showcase sections have the deep background if added via class, 
+   or override defaults here if we don't want to touch HTML too much.
+   We will add .section-deep-garnet to HTML, but let's refine existing cards. */
+
+.showcase-card {
+    background: rgba(10, 10, 12, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+}
+
+.showcase-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    background: linear-gradient(145deg, rgba(20, 10, 12, 0.8), rgba(0, 0, 0, 0.9));
+    border-color: var(--neon-garnet);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 69, 0, 0.1);
+}
+
+.showcase-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.showcase-card:hover .showcase-media img {
+    transform: scale(1.03);
+}
+
+.showcase-copy {
+    padding: 2.5rem;
+}
+
+.showcase-copy h3 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--white);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.project-insight {
+    background: rgba(255, 69, 0, 0.03);
+    border-left: 2px solid var(--neon-garnet);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 12px 12px 0;
+}
+
+.comparison-visual img {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
+}
+
+/* Code Console consistency */
+.code-console {
+    background: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+}
+
+.console-header {
+    background: #1a1a1a;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.window-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.console-title {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.code-content {
+    padding: 1rem;
+    color: #e0e0e0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+.code-keyword {
+    color: #ff79c6;
+}
+
+.code-function {
+    color: #8be9fd;
+}
+
+.code-string {
+    color: #f1fa8c;
+}
+
+.code-comment {
+    color: #6272a4;
+    font-style: italic;
+}
+
+/* Tag List Update */
+.tag-list li {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.showcase-card:hover .tag-list li {
+    background: rgba(255, 69, 0, 0.1);
+    border-color: var(--neon-garnet);
+    color: var(--neon-garnet);
+}

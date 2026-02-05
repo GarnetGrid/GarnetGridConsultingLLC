@@ -77,22 +77,20 @@ window.addEventListener('resize', updateScrollProgress); // Recalculate on resiz
 // ============================================
 const observerOptions = {
   threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
+  rootMargin: '0px'
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
-      // Optionally unobserve after revealing
-      // revealObserver.unobserve(entry.target);
+      revealObserver.unobserve(entry.target);
     }
   });
 }, observerOptions);
 
-// Add reveal class to elements with staggered delays
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = document.querySelectorAll('section, header.landing');
+const initReveal = () => {
+  const sections = document.querySelectorAll('section, header.landing, footer');
 
   sections.forEach(section => {
     const revealElements = section.querySelectorAll(`
@@ -102,13 +100,17 @@ document.addEventListener('DOMContentLoaded', () => {
       .svc-card,
       .testimonial-card,
       .showcase-card,
-      .section-header > *
+      .hero-content,
+      .section-header,
+      .feature-block,
+      .stats-grid,
+      .grid-layout-3
     `);
 
     revealElements.forEach((el, index) => {
       el.classList.add('reveal');
       // Staggered delay within each section
-      el.style.transitionDelay = `${index * 120}ms`;
+      el.style.transitionDelay = `${index * 100}ms`;
       revealObserver.observe(el);
     });
   });
@@ -118,73 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
     header.classList.add('reveal');
     revealObserver.observe(header);
   });
-});
 
-// ============================================
-// MAGNETIC BUTTONS EFFECT
-// ============================================
-// ============================================
-// MAGNETIC BUTTONS EFFECT
-// ============================================
-document.querySelectorAll('.btn').forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
+  // Force check once
+  setTimeout(() => {
+    window.scrollBy(0, 1);
+    window.scrollBy(0, -1);
+  }, 100);
+};
 
-    // Subtle pull effect
-    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.3}px)`;
-  });
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initReveal);
+} else {
+  initReveal();
+}
 
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = 'translate(0, 0)';
-  });
-});
-
-// ============================================
-// LANDING LOCK/UNLOCK MECHANISM
-// ============================================
-(() => {
-  const body = document.body;
-  let unlocked = false;
-
-  const unlock = () => {
-    if (unlocked) return;
-    unlocked = true;
-    body.classList.remove('landing-locked');
-    body.classList.add('landing-unlocked');
-    cleanup();
-  };
-
-  const onScroll = () => {
-    if (window.scrollY > 10) unlock();
-  };
-
-  const onWheel = () => unlock();
-  const onTouchMove = () => unlock();
-  const onKey = (e) => {
-    if (['ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) unlock();
-  };
-
-  const cleanup = () => {
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('wheel', onWheel);
-    window.removeEventListener('touchmove', onTouchMove);
-    window.removeEventListener('keydown', onKey);
-  };
-
-  // Initialize
-  if (window.scrollY > 10) {
-    body.classList.add('landing-unlocked');
-    unlocked = true;
-  } else {
-    body.classList.add('landing-locked');
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('wheel', onWheel, { passive: true });
-    window.addEventListener('touchmove', onTouchMove, { passive: true });
-    window.addEventListener('keydown', onKey);
-  }
-})();
+// Lock mechanism removed for reliability
 
 // ============================================
 // SERVICE ACCORDION (EXCLUSIVE)
