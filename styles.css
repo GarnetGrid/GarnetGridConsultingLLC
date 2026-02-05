@@ -580,6 +580,33 @@ section {
     gap: 2rem;
 }
 
+/* What We Build Section - Central Visual */
+.what-we-build {
+    position: relative;
+    background: radial-gradient(circle at center, rgba(162, 23, 62, 0.05) 0%, transparent 60%),
+        url('assets/images/garnet-core-hub.png') no-repeat center 40%;
+    background-size: 600px auto;
+}
+
+/* Strict Grid for What We Build to prevent orphan cards */
+.what-we-build .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 1150px) {
+    .what-we-build .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .what-we-build .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Footer */
 footer {
     background: var(--bg-obsidian-soft);
