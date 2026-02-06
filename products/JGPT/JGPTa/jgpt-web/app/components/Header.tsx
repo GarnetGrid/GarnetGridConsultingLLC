@@ -48,7 +48,7 @@ export default function Header({
                 </div>
             </div>
 
-            <div className="flex bg-[#141428]/60 p-1 rounded-full border border-white/5">
+            <div className="hidden md:flex bg-[#141428]/60 p-1 rounded-full border border-white/5">
                 {(["chat", "evals", "knowledge", "workbench", "admin"] as const).map((t) => {
                     if (t === "admin" && role !== "admin") return null;
                     const isActive = tab === t;
@@ -68,32 +68,40 @@ export default function Header({
             </div>
 
             <div className="flex items-center gap-3">
-                <CustomDropdown
-                    value={dept || "all"}
-                    onChange={(v) => onDeptChange?.(Array.isArray(v) ? v : [v])}
-                    options={DEPARTMENTS}
-                    borderColor="#05d9e8"
-                    label="Department"
-                    multiSelect={true}
-                    showRecent={true}
-                />
-                <CustomDropdown
-                    value={mode || "powerbi"}
-                    onChange={(v) => onModeChange?.(v as string)}
-                    options={MODES}
-                    label="Mode"
-                    showRecent={true}
-                />
-                <ModelSelector
-                    value={model || "llama3.2"}
-                    onChange={(v) => onModelChange?.(v)}
-                    persona={Array.isArray(dept) ? dept[0] : (dept || "powerbi")}
-                />
+                <div className="hidden md:block">
+                    <CustomDropdown
+                        value={dept || "all"}
+                        onChange={(v) => onDeptChange?.(Array.isArray(v) ? v : [v])}
+                        options={DEPARTMENTS}
+                        borderColor="#05d9e8"
+                        label="Department"
+                        multiSelect={true}
+                        showRecent={true}
+                    />
+                </div>
+                <div className="hidden md:block">
+                    <CustomDropdown
+                        value={mode || "powerbi"}
+                        onChange={(v) => onModeChange?.(v as string)}
+                        options={MODES}
+                        label="Mode"
+                        showRecent={true}
+                    />
+                </div>
+                <div className="hidden md:block">
+                    <ModelSelector
+                        value={model || "llama3.2"}
+                        onChange={(v) => onModelChange?.(v)}
+                        persona={Array.isArray(dept) ? dept[0] : (dept || "powerbi")}
+                    />
+                </div>
 
-                <ModelSettings
-                    options={modelOptions || {}}
-                    onChange={(opts) => onModelOptionsChange?.(opts)}
-                />
+                <div className="hidden md:block">
+                    <ModelSettings
+                        options={modelOptions || {}}
+                        onChange={(opts) => onModelOptionsChange?.(opts)}
+                    />
+                </div>
 
                 {/* Theme Toggle */}
                 <ThemeToggle />

@@ -29,7 +29,8 @@ export default function ThemeToggle() {
         <button
             onClick={toggleTheme}
             className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10"
-            title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+            title={`Toggle Theme (${theme === "dark" ? "Light" : "Dark"} Mode)`}
+            aria-label="Theme Toggle"
         >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
