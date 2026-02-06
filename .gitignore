@@ -1,0 +1,5 @@
+
+# Archives
+*.zip
+*.tar.gz
+.DS_Store

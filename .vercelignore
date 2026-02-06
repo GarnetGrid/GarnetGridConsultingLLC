@@ -1,0 +1,12 @@
+.git
+.DS_Store
+*.md
+docs/
+tests/
+venv/
+__pycache__/
+*.log
+LICENSE
+Makefile
+products/
+scripts/
