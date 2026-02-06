@@ -1563,6 +1563,7 @@
         /* Often causes overflow issues on mobile */
     }
 }
+
 /* ========================================
    EDUCATION CREDENTIALS - HOLOGRAPHIC
    ======================================== */
@@ -1601,12 +1602,10 @@
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
     transform: skewX(-25deg);
     transition: left 0.7s;
     pointer-events: none;
@@ -1619,8 +1618,8 @@
 .holo-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(220, 20, 60, 0.2),
-                inset 0 0 20px rgba(220, 20, 60, 0.05);
+        0 0 30px rgba(220, 20, 60, 0.2),
+        inset 0 0 20px rgba(220, 20, 60, 0.05);
     border-color: rgba(220, 20, 60, 0.3);
 }
 
@@ -1723,13 +1722,12 @@
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: linear-gradient(to bottom, 
-        transparent, 
-        rgba(220, 20, 60, 0.5), 
-        var(--garnet-main), 
-        rgba(220, 20, 60, 0.5), 
-        transparent
-    );
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(220, 20, 60, 0.5),
+            var(--garnet-main),
+            rgba(220, 20, 60, 0.5),
+            transparent);
     box-shadow: 0 0 15px var(--garnet-main);
 }
 
@@ -1778,13 +1776,15 @@
 }
 
 .timeline-node:nth-child(odd) .node-content {
-    margin-right: auto; /* Left side */
+    margin-right: auto;
+    /* Left side */
     text-align: right;
     border-right: 2px solid var(--garnet-main);
 }
 
 .timeline-node:nth-child(even) .node-content {
-    margin-left: auto; /* Right side */
+    margin-left: auto;
+    /* Right side */
     text-align: left;
     border-left: 2px solid var(--garnet-main);
 }
@@ -1855,16 +1855,16 @@
     .timeline-container::before {
         left: 30px;
     }
-    
+
     .timeline-node {
         justify-content: flex-start;
         padding-left: 60px;
     }
-    
+
     .node-marker {
         left: 30px;
     }
-    
+
     .node-content {
         width: 100%;
         text-align: left !important;

@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 5. Mobile Menu Toggle
-    // 5. Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
 
