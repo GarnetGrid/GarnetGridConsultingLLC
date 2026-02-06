@@ -3283,30 +3283,7 @@ footer {
     }
 }
 
-/* ========================================
-   CUSTOM SCROLLBAR
-   ======================================== */
-::-webkit-scrollbar {
-    width: 8px;
-    background: #020202;
-}
 
-::-webkit-scrollbar-track {
-    background: #020202;
-    border-left: 1px solid rgba(220, 20, 60, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    box-shadow: none;
-    border: 1px solid transparent;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
-    box-shadow: none;
-}
 
 /* ========================================
    ARCHITECT RIBBON - ULTRA-SLIM DATA STRIP
