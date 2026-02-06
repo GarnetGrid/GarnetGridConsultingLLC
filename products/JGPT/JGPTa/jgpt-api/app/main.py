@@ -6,6 +6,7 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from app.util.auth import get_current_user, get_current_admin
+from app.middleware.auth import verify_client_access
 from app.routes import auth_routes
 
 from app.db.init_db import init_db
@@ -112,12 +113,18 @@ async def startup() -> None:
 from app.routes.connections import router as connections_router
 
 app.include_router(auth_routes.router, prefix="/auth", tags=["Auth"])
-app.include_router(chat_router, prefix="/api/chat", tags=["Chat"], dependencies=[Depends(get_current_user)])
-app.include_router(conv_router, prefix="/api/conversations", tags=["Conversations"], dependencies=[Depends(get_current_user)])
-app.include_router(ingest_router, prefix="/api/ingest", tags=["Ingestion"], dependencies=[Depends(get_current_user)])
-app.include_router(kb_router, prefix="/api/kb", tags=["Knowledge Base"], dependencies=[Depends(get_current_user)])
-app.include_router(kb_sources_router, prefix="/api/kb", tags=["Knowledge Base"], dependencies=[Depends(get_current_user)])
-app.include_router(eval_router, prefix="/api/eval", tags=["Evaluation"], dependencies=[Depends(get_current_user)])
+app.include_router(auth_routes.router, prefix="/auth", tags=["Auth"])
+# For now, we enforce client access on Chat and Reasoning, or all?
+# Plan says strict isolation. Let's add it to chat for now as a test.
+# Actually, if we use API Key, we might not have a JWT 'user'. 
+# We need to handle both or determine precedence.
+# Middleware injects client_id. 
+app.include_router(chat_router, prefix="/api/chat", tags=["Chat"], dependencies=[Depends(get_current_user), Depends(verify_client_access)])
+app.include_router(conv_router, prefix="/api/conversations", tags=["Conversations"], dependencies=[Depends(get_current_user), Depends(verify_client_access)])
+app.include_router(ingest_router, prefix="/api/ingest", tags=["Ingestion"], dependencies=[Depends(get_current_user), Depends(verify_client_access)])
+app.include_router(kb_router, prefix="/api/kb", tags=["Knowledge Base"], dependencies=[Depends(get_current_user), Depends(verify_client_access)])
+app.include_router(kb_sources_router, prefix="/api/kb", tags=["Knowledge Base"], dependencies=[Depends(get_current_user), Depends(verify_client_access)])
+app.include_router(eval_router, prefix="/api/eval", tags=["Evaluation"], dependencies=[Depends(get_current_user), Depends(verify_client_access)])
 app.include_router(health_router, prefix="/api/health", tags=["System"])
 app.include_router(debug_router, prefix="/api/debug", tags=["Debug"], dependencies=[Depends(get_current_user)])
 app.include_router(images_router, prefix="/api/images", tags=["Assets"], dependencies=[Depends(get_current_user)])
@@ -130,4 +137,4 @@ from app.routes.powerbi import router as powerbi_router
 app.include_router(powerbi_router, prefix="/api/powerbi", tags=["PowerBI"], dependencies=[Depends(get_current_user)])
 
 from app.routes.reason import router as reason_router
-app.include_router(reason_router, prefix="/api/reason", tags=["Reasoning"], dependencies=[Depends(get_current_user)])
+app.include_router(reason_router, prefix="/api/reason", tags=["Reasoning"], dependencies=[Depends(get_current_user), Depends(verify_client_access)])

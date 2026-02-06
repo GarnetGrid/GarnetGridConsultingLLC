@@ -34,6 +34,7 @@ class Document(Base):
     content_hash: Mapped[str] = mapped_column(Text, nullable=False)
     content: Mapped[str] = mapped_column(Text, nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    client_id: Mapped[str] = mapped_column(Text, nullable=False, default="default", index=True)
 
     chunks: Mapped[list["Chunk"]] = relationship(back_populates="document", cascade="all, delete-orphan")
 
@@ -46,6 +47,7 @@ class Chunk(Base):
     text: Mapped[str] = mapped_column(Text, nullable=False)
     embedding: Mapped[list[float]] = mapped_column(Vector(VECTOR_DIM), nullable=False)
     tsv: Mapped[any] = mapped_column(TSVECTOR, nullable=True)
+    client_id: Mapped[str] = mapped_column(Text, nullable=False, default="default", index=True)
 
     document: Mapped["Document"] = relationship(back_populates="chunks")
 
@@ -69,6 +71,7 @@ class Conversation(Base):
     mode: Mapped[str] = mapped_column(Text, nullable=False, default="powerbi")
     model: Mapped[str] = mapped_column(Text, nullable=False, default="llama3.2")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    client_id: Mapped[str] = mapped_column(Text, nullable=False, default="default", index=True)
 
     messages: Mapped[list["Message"]] = relationship(back_populates="conversation", cascade="all, delete-orphan")
 
@@ -184,6 +187,7 @@ class ApiKey(Base):
     name: Mapped[str] = mapped_column(Text, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    client_id: Mapped[str] = mapped_column(Text, nullable=False, default="default", index=True)
 
 class Connection(Base):
     __tablename__ = "connections"
@@ -198,3 +202,15 @@ class Connection(Base):
     encrypted_password: Mapped[str] = mapped_column(Text, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+
+class IngestionJob(Base):
+    __tablename__ = "ingestion_jobs"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    client_id: Mapped[str] = mapped_column(Text, nullable=False, default="default", index=True)
+    status: Mapped[str] = mapped_column(Text, nullable=False, default="pending") # pending, processing, completed, failed
+    source_type: Mapped[str] = mapped_column(Text, nullable=False) # url, file, text
+    source_target: Mapped[str] = mapped_column(Text, nullable=False) # url or filename
+    error: Mapped[str] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
