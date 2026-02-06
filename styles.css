@@ -3297,15 +3297,15 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--garnet-main);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-    box-shadow: 0 0 15px var(--garnet-glow);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    border: 1px solid transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff2d55;
-    box-shadow: 0 0 25px var(--garnet-glow);
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: none;
 }
 
 /* ========================================
