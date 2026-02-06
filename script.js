@@ -165,16 +165,47 @@ document.addEventListener('DOMContentLoaded', () => {
         let clickCount = 0;
         let clickTimer;
 
+        // Hint Element
+        const hintText = document.querySelector('.secret-hint');
+
         footerStatus.addEventListener('click', () => {
             clickCount++;
             clearTimeout(clickTimer);
 
-            if (clickCount === 3) {
+            // Interaction Logic
+            if (clickCount === 1) {
+                if (hintText) {
+                    hintText.innerText = "Maybe Click Twice?";
+                    hintText.style.color = "rgba(255, 255, 255, 0.5)";
+                }
+            } else if (clickCount === 2) {
+                if (hintText) {
+                    hintText.innerText = "Okay FINE Triple Click It";
+                    hintText.style.color = "var(--garnet-main)";
+                }
+            } else if (clickCount === 3) {
                 document.body.classList.toggle('blueprint-mode');
                 console.log("BLUEPRINT MODE TOGGLED");
                 clickCount = 0;
+
+                if (hintText) {
+                    hintText.innerText = "System Log";
+                    hintText.style.color = ""; // Reset to CSS default
+                }
             } else {
-                clickTimer = setTimeout(() => { clickCount = 0; }, 500);
+                // Safety catch for rapid spam clicks > 3
+                clickCount = 0;
+            }
+
+            // Reset timer if they stop clicking
+            if (clickCount < 3) {
+                clickTimer = setTimeout(() => {
+                    clickCount = 0;
+                    if (hintText) {
+                        hintText.innerText = "System Log";
+                        hintText.style.color = ""; // Reset
+                    }
+                }, 1000); // Give them 1 second between clicks to read it
             }
         });
     }
@@ -538,7 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.style.opacity = '1';
 
                     // Log to console (for demo purposes)
-                    console.log('Form submitted securely:', formData);
+                    // console.log('Form submitted securely:', formData);
                 }, 1500);
             });
         }
