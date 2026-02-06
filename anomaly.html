@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM ANOMALY DETECTED | Garnet Grid</title>
+    <style>
+        :root {
+            --neon-red: #ff3333;
+            --neon-cyan: #00f3ff;
+            --bg-color: #0a0a0a;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            user-select: none;
+        }
+
+        #game-ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .hud-text {
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px var(--neon-cyan);
+            margin-bottom: 5px;
+        }
+
+        #integrity-bar-container {
+            width: 300px;
+            height: 20px;
+            border: 1px solid var(--neon-cyan);
+            margin-top: 10px;
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        #integrity-bar {
+            width: 100%;
+            height: 100%;
+            background-color: var(--neon-cyan);
+            transition: width 0.2s, background-color 0.2s;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        #game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border: 2px solid var(--neon-red);
+            box-shadow: 0 0 30px var(--neon-red);
+        }
+
+        h1 {
+            color: var(--neon-red);
+            font-size: 3rem;
+            margin: 0 0 20px 0;
+            text-shadow: 0 0 10px var(--neon-red);
+        }
+
+        button {
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        #boot-sequence {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .terminal-line {
+            color: var(--neon-cyan);
+            font-size: 1rem;
+            margin: 5px 0;
+            opacity: 0;
+            animation: fadeIn 0.1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="boot-sequence"></div>
+
+    <div id="game-ui" style="display: none;">
+        <div class="hud-text">CORE STABILIZATION PROTOCOL</div>
+        <div class="hud-text">SCORE: <span id="score">0</span></div>
+        <div id="integrity-bar-container">
+            <div id="integrity-bar"></div>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="game-over">
+        <h1>CRITICAL FAILURE</h1>
+        <p class="hud-text" style="color: #fff; margin-bottom: 30px;">CORE INTEGRITY COMPROMISED</p>
+        <p class="hud-text" style="margin-bottom: 30px;">FINAL SCORE: <span id="final-score">0</span></p>
+        <button onclick="startGame()">REINITIALIZE</button>
+        <br><br>
+        <button onclick="window.location.href='index.html'"
+            style="border-color: #666; color: #aaa; font-size: 0.8rem;">Return to Safety</button>
+    </div>
+
+    <script>
+        // --- Boot Sequence ---
+        const bootText = [
+            "DETECTING ANOMALOUS SIGNAL...",
+            "TRACING SOURCE: GARNET_GRID_LOGO_ROOT",
+            "ACCESSING HIDDEN SUBSYSTEM...",
+            "BYPASSING SECURITY PROTOCOLS...",
+            "INITIALIZING DEFENSE MATRIX...",
+            "READY."
+        ];
+
+        const bootContainer = document.getElementById('boot-sequence');
+        let bootDelay = 400;
+
+        function runBootSequence() {
+            bootText.forEach((text, index) => {
+                setTimeout(() => {
+                    const el = document.createElement('div');
+                    el.className = 'terminal-line';
+                    el.textContent = `> ${text}`;
+                    bootContainer.appendChild(el);
+                }, index * bootDelay);
+            });
+
+            setTimeout(() => {
+                bootContainer.style.display = 'none';
+                document.getElementById('game-ui').style.display = 'block';
+                startGame();
+            }, bootText.length * bootDelay + 500);
+        }
+
+        // --- Game Logic ---
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let animationId;
+        let score = 0;
+        let integrity = 100;
+        let gameActive = false;
+
+        // Resize
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Game State
+        const player = {
+            angle: 0,
+            radius: 80, // Distance from center
+            size: Math.PI / 3 // Arc size (60 degrees)
+        };
+
+        const core = {
+            radius: 30,
+            pulse: 0
+        };
+
+        let particles = [];
+        let particlesSpawnRate = 1000; // ms
+        let lastSpawn = 0;
+
+        // Input
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Calculate angle from center to mouse
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            player.angle = Math.atan2(mouseY - cy, mouseX - cx);
+        });
+
+        class Particle {
+            constructor() {
+                // Spawn at random edge
+                if (Math.random() < 0.5) {
+                    this.x = Math.random() < 0.5 ? 0 : canvas.width;
+                    this.y = Math.random() * canvas.height;
+                } else {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() < 0.5 ? 0 : canvas.height;
+                }
+
+                // Target center
+                const cx = canvas.width / 2;
+                const cy = canvas.height / 2;
+                const angle = Math.atan2(cy - this.y, cx - this.x);
+
+                this.dx = Math.cos(angle) * (2 + Math.random() * 2); // Speed
+                this.dy = Math.sin(angle) * (2 + Math.random() * 2);
+                this.radius = 4;
+                this.color = '#ff3333';
+            }
+
+            update() {
+                this.x += this.dx;
+                this.y += this.dy;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+            }
+        }
+
+        function startGame() {
+            gameActive = true;
+            score = 0;
+            integrity = 100;
+            particles = [];
+            document.getElementById('score').innerText = score;
+            document.getElementById('integrity-bar').style.width = '100%';
+            document.getElementById('integrity-bar').style.backgroundColor = '#00f3ff';
+            document.getElementById('game-over').style.display = 'none';
+            lastSpawn = performance.now();
+            animate();
+        }
+
+        function gameOver() {
+            gameActive = false;
+            cancelAnimationFrame(animationId);
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('game-over').style.display = 'block';
+        }
+
+        function animate(timestamp) {
+            if (!gameActive) return;
+            animationId = requestAnimationFrame(animate);
+
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.3)'; // Trails
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+
+            // Draw Core
+            core.pulse += 0.05;
+            const corePulse = Math.sin(core.pulse) * 5;
+            ctx.beginPath();
+            ctx.arc(cx, cy, core.radius + corePulse, 0, Math.PI * 2);
+            ctx.fillStyle = '#00f3ff';
+            ctx.fill();
+            ctx.shadowBlur = 20 + corePulse * 2;
+            ctx.shadowColor = '#00f3ff';
+
+            // Draw Player Shield
+            ctx.beginPath();
+            ctx.arc(cx, cy, player.radius, player.angle - player.size / 2, player.angle + player.size / 2);
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = '#00f3ff';
+            ctx.stroke();
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#00f3ff';
+
+            // Spawn Particles
+            if (timestamp - lastSpawn > particlesSpawnRate) {
+                particles.push(new Particle());
+                lastSpawn = timestamp;
+                // Increase difficulty
+                if (particlesSpawnRate > 200) particlesSpawnRate -= 10;
+            }
+
+            // Update/Draw Particles
+            particles.forEach((p, index) => {
+                p.update();
+                p.draw();
+
+                // Distance to center
+                const dist = Math.hypot(p.x - cx, p.y - cy);
+
+                // Collision with Shield
+                if (dist < player.radius + 5 && dist > player.radius - 5) {
+                    // Check angle
+                    let pAngle = Math.atan2(p.y - cy, p.x - cx);
+                    // Normalize angles to 0-2PI for easier comparison is tricky, using raw atan2 usually -PI to PI
+
+                    // Normalize both to 0 - 2PI range
+                    let shieldStart = player.angle - player.size / 2;
+                    let shieldEnd = player.angle + player.size / 2;
+
+                    // Simple angle difference check
+                    let angleDiff = Math.abs(pAngle - player.angle);
+                    if (angleDiff > Math.PI) angleDiff = 2 * Math.PI - angleDiff;
+
+                    if (angleDiff < player.size / 2) {
+                        // Blocked!
+                        particles.splice(index, 1);
+                        score += 10;
+                        document.getElementById('score').innerText = score;
+                        return;
+                    }
+                }
+
+                // Collision with Core
+                if (dist < core.radius) {
+                    particles.splice(index, 1);
+                    integrity -= 20;
+                    document.getElementById('integrity-bar').style.width = integrity + '%';
+
+                    // Critical Color
+                    if (integrity <= 40) {
+                        document.getElementById('integrity-bar').style.backgroundColor = '#ff3333';
+                    }
+
+                    if (integrity <= 0) {
+                        gameOver();
+                    }
+                }
+            });
+        }
+
+        // Start
+        runBootSequence();
+
+    </script>
+</body>
+
+</html>
