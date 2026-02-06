@@ -154,6 +154,289 @@ document.addEventListener('DOMContentLoaded', () => {
         window.requestAnimationFrame(step);
     }
 
+    // -------------------------------------------------------------
+    // EASTER EGG SUITE
+    // -------------------------------------------------------------
+
+    // 1. Blueprint Mode (Trigger: Triple Click Footer Status)
+    const footerStatus = document.querySelector('.ribbon-status');
+    if (footerStatus) {
+        let clickCount = 0;
+        let clickTimer;
+
+        footerStatus.addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+
+            if (clickCount === 3) {
+                document.body.classList.toggle('blueprint-mode');
+                console.log("BLUEPRINT MODE TOGGLED");
+                clickCount = 0;
+            } else {
+                clickTimer = setTimeout(() => { clickCount = 0; }, 500);
+            }
+        });
+    }
+
+    // 2. Konami Terminal
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                activateTerminal();
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+
+    function activateTerminal() {
+        if (document.getElementById('konami-terminal')) return; // Already open
+
+        const termHTML = `
+            <div id="konami-terminal">
+                <div id="terminal-output">
+                    <div class="terminal-line">GARNET OS v9.0.1 [SECURE CONNECTION ESTABLISHED]</div>
+                    <div class="terminal-line">Type 'help' for available commands.</div>
+                    <br>
+                </div>
+                <div class="command-line">
+                    <span class="prompt">root@garnet:~#</span>
+                    <input type="text" id="terminal-input" autocomplete="off" autofocus>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', termHTML);
+        const term = document.getElementById('konami-terminal');
+        const input = document.getElementById('terminal-input');
+        const output = document.getElementById('terminal-output');
+
+        term.style.display = 'flex';
+        input.focus();
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = input.value.trim().toLowerCase();
+                processCommand(cmd, output);
+                input.value = '';
+            }
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function closeTerm(e) {
+            if (e.key === 'Escape') {
+                term.remove();
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', closeTerm);
+            }
+        });
+    }
+
+    function processCommand(cmd, output) {
+        let response = '';
+        switch (cmd) {
+            case 'help':
+                response = "AVAILABLE COMMANDS:\n- help: Show this menu\n- status: System diagnostic\n- whoami: User identity\n- manifesto: Decrypt hidden file\n- clear: Clear screen\n- exit: Close terminal";
+                break;
+            case 'status':
+                response = "SYSTEM STATUS: NORMAL\nCPU: 4% // MEM: 12TB // NET: SECURE\nNO ANOMALIES DETECTED.";
+                break;
+            case 'whoami':
+                response = "USER: GUEST_ADMIN\nACCESS LEVEL: RESTRICTED";
+                break;
+            case 'manifesto':
+                response = "DECRYPTING...\n\n\"The Grid is not a cage. It is a lattice. We do not build walls; we build pathways. In the chaotic flux of data, structure is the only salvation.\" - The Architect";
+                break;
+            case 'clear':
+                output.innerHTML = '';
+                return;
+            case 'exit':
+                document.getElementById('konami-terminal').remove();
+                document.body.style.overflow = '';
+                return;
+            default:
+                response = `COMMAND NOT FOUND: ${cmd}`;
+        }
+
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        line.innerText = `> ${cmd}`;
+        output.appendChild(line);
+
+        const respLine = document.createElement('div');
+        respLine.className = 'terminal-line';
+        respLine.innerText = response;
+        respLine.style.color = '#fff';
+        respLine.style.marginBottom = '20px';
+        output.appendChild(respLine);
+
+        output.scrollTop = output.scrollHeight;
+    }
+
+    // 3. Gravity Grid (Trigger: Rapid Click 'Garnet Grid' Header Text)
+    // The "Garnet Grid" text is inside .logo > span
+    const logoText = document.querySelector('.logo span');
+    if (logoText) {
+        let textClicks = 0;
+        let textTimer;
+
+        logoText.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent home navigation if clicked rapidly
+            textClicks++;
+            clearTimeout(textTimer);
+
+            if (textClicks === 3) {
+                initGravityGrid();
+                textClicks = 0;
+            } else {
+                textTimer = setTimeout(() => { textClicks = 0; }, 500);
+            }
+        });
+    }
+
+    function initGravityGrid() {
+        console.log("GRAVITY GRID ACTIVATED");
+
+        // Remove existing static grid bg
+        const existingGrid = document.querySelector('.gridfield');
+        if (existingGrid) existingGrid.style.display = 'none';
+
+        // Create Canvas Overlay
+        const canvas = document.createElement('canvas');
+        canvas.id = 'gravity-grid-canvas';
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '-1'; // Behind everything
+        canvas.style.pointerEvents = 'none'; // Let clicks pass through, but we track mouse globally
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        const points = [];
+        const spacing = 50;
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            initPoints();
+        }
+
+        function initPoints() {
+            points.length = 0;
+            for (let x = 0; x < width; x += spacing) {
+                for (let y = 0; y < height; y += spacing) {
+                    points.push({
+                        x: x,
+                        y: y,
+                        originX: x,
+                        originY: y,
+                        vx: 0,
+                        vy: 0
+                    });
+                }
+            }
+        }
+
+        let mouse = { x: -1000, y: -1000 };
+        document.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.lineWidth = 1;
+
+            points.forEach(p => {
+                // Physics
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                // Repel
+                if (dist < 200) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (200 - dist) / 200;
+                    p.vx += Math.cos(angle) * force * 2;
+                    p.vy += Math.sin(angle) * force * 2;
+                }
+
+                // Spring back
+                const ox = p.originX - p.x;
+                const oy = p.originY - p.y;
+                p.vx += ox * 0.05;
+                p.vy += oy * 0.05;
+
+                // Dampen
+                p.vx *= 0.9;
+                p.vy *= 0.9;
+
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Draw point
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.fill();
+            });
+
+            // Draw Lines (Grid)
+            // Note: Simplistic neighbor search for performance
+            // Just connecting to right and bottom neighbor in the array would be efficient if ordered,
+            // but since we push them in loops, we can try to connect logical neighbors.
+            // For chaos effect, we definitely want to connect them.
+
+            // Doing a distance check for lines is expensive O(N^2). 
+            // Better to assume grid structure stays somewhat intact or just render points for 'Starfield' gravity.
+            // Let's rely on points creating a "fluid" feel, or do simple connection to original neighbors?
+            // Simple Connection:
+            /*
+            points.forEach((p, i) => {
+                 // connect to point right?
+                 // This requires knowing index math. 
+            });
+            */
+            // Let's just draw the points for now to ensure performance, or maybe simple lines if close.
+            // Actually, let's do lines if distance < spacing * 1.5
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+    }
+
+    // 7. Easter Egg: Core Identity Anomaly
+    // Triggered by "inspecting" (Right-Click) the Garnet Grid animated logo
+    const logoAnim = document.querySelector('.arch-logo-v2');
+    if (logoAnim) {
+        logoAnim.addEventListener('contextmenu', (e) => {
+            e.preventDefault(); // Stop standard context menu
+            console.log("%c SYSTEM OVERRIDE INITIATED ", "background: #ff3333; color: #000; font-size: 16px; font-weight: bold; padding: 4px;");
+
+            // Brief delay for dramatic effect
+            setTimeout(() => {
+                window.location.href = 'anomaly.html';
+            }, 500);
+        });
+    }
+
     // 7. Scroll Progress Indicator
     const progressBar = document.createElement('div');
     progressBar.className = 'scroll-progress';

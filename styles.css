@@ -5487,6 +5487,7 @@ footer {
         min-width: 0;
     }
 }
+
 /* Cookie Consent Banner */
 .cookie-banner {
     position: fixed;
@@ -5595,7 +5596,8 @@ footer {
         margin-top: 0.5rem;
     }
 
-    .btn-primary-small, .btn-secondary-small {
+    .btn-primary-small,
+    .btn-secondary-small {
         flex: 1;
         text-align: center;
         padding: 0.75rem;
@@ -5689,7 +5691,8 @@ footer {
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.5);
     font-family: 'Inter', monospace;
-    height: 1.2rem; /* Fixed height to prevent jump */
+    height: 1.2rem;
+    /* Fixed height to prevent jump */
 }
 
 .progress-bar {
@@ -5713,13 +5716,27 @@ footer {
 }
 
 @keyframes loaderSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes corePulse {
-    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 }
 
 /* Exit Animation */
@@ -5774,7 +5791,7 @@ body.light-mode .noise-layer {
     z-index: 10000;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #theme-toggle:hover {
@@ -5792,9 +5809,102 @@ body.light-mode .noise-layer {
         width: 90%;
         max-width: 300px;
     }
-    
+
     .boot-text {
         font-size: 1rem;
         letter-spacing: 0.15rem;
     }
+}
+
+/* --- Easter Egg: Blueprint Mode --- */
+body.blueprint-mode {
+    background: #001a1a !important;
+    color: #00ffff !important;
+    font-family: 'Courier New', monospace !important;
+}
+
+body.blueprint-mode * {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+body.blueprint-mode *:not(i) {
+    outline: 1px solid rgba(0, 255, 255, 0.3) !important;
+}
+
+body.blueprint-mode img,
+body.blueprint-mode video,
+body.blueprint-mode .logo-inner {
+    outline: 1px solid #00ffff !important;
+    opacity: 0.5 !important;
+    filter: grayscale(100%) sepia(100%) hue-rotate(130deg) !important;
+}
+
+body.blueprint-mode h1,
+body.blueprint-mode h2,
+body.blueprint-mode h3,
+body.blueprint-mode p,
+body.blueprint-mode a {
+    color: #00ffff !important;
+    font-weight: normal !important;
+}
+
+body.blueprint-mode ::selection {
+    background: #00ffff !important;
+    color: #000 !important;
+}
+
+/* --- Easter Egg: Konami Terminal --- */
+#konami-terminal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 9999;
+    font-family: 'Courier New', monospace;
+    color: #33ff33;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    display: none;
+    /* Hidden by default */
+}
+
+#terminal-output {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+}
+
+.terminal-line {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.command-line {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #33ff33;
+    padding-top: 10px;
+}
+
+.prompt {
+    margin-right: 10px;
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    color: #33ff33;
+    font-family: inherit;
+    font-size: 1.2rem;
+    flex-grow: 1;
+    outline: none;
 }
