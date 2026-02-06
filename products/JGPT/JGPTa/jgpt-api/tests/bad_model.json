@@ -1,0 +1,49 @@
+{
+    "model": {
+        "tables": [
+            {
+                "name": "Sales",
+                "columns": [
+                    {
+                        "name": "Amount",
+                        "isHidden": false
+                    },
+                    {
+                        "name": "DateKey",
+                        "isHidden": false
+                    },
+                    {
+                        "name": "CustomerKey",
+                        "isHidden": false
+                    }
+                ],
+                "measures": [
+                    {
+                        "name": "Total Sales"
+                    }
+                ]
+            },
+            {
+                "name": "Customer",
+                "columns": [
+                    {
+                        "name": "CustomerKey",
+                        "isHidden": false
+                    },
+                    {
+                        "name": "Name",
+                        "isHidden": false
+                    }
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "fromTable": "Sales",
+                "toTable": "Customer",
+                "crossFilteringBehavior": "bothDirections",
+                "relyOnReferentialIntegrity": true
+            }
+        ]
+    }
+}

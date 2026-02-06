@@ -1,0 +1,9 @@
+{
+  "project_name": "MyExtension",
+  "description": "Core sales extensions",
+  "objects": [
+    "CustTable.Extension",
+    "SalesLine.Extension"
+  ],
+  "type": "D365FO"
+}

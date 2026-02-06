@@ -1,0 +1,11 @@
+{
+    "default_model": "codellama",
+    "default_options": {
+        "temperature": 0.1,
+        "num_ctx": 16384
+    },
+    "recommended_models": [
+        "codellama",
+        "llama3.2"
+    ]
+}

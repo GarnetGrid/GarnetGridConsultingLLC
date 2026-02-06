@@ -1,0 +1,8 @@
+{
+    "default_model": "llama3.2",
+    "default_options": {
+        "temperature": 0.1,
+        "num_ctx": 16384
+    },
+    "tools_enabled": true
+}

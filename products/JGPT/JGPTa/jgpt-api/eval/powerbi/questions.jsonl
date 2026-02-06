@@ -1,0 +1,5 @@
+{"id": "pbi_001", "q": "Create a DateTable calculated table that uses FactSales[OrderDate] min/max and includes ISOWeekNum and FiscalYear starting July."}
+{"id": "pbi_002", "q": "Write a DAX measure for trailing 12-month sales using DateTable[Date] and base [Sales] measure."}
+{"id": "pbi_003", "q": "Explain how to fix incorrect grand totals in a matrix using ISINSCOPE and a safe measure pattern."}
+{"id": "pbi_004", "q": "Give a Power Query M pattern for incremental refresh using RangeStart and RangeEnd on OrderDate."}
+{"id": "pbi_005", "q": "What are 5 star schema modeling anti-patterns in Power BI and how to fix them?"}

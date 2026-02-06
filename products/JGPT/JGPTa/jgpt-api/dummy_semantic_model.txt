@@ -1,0 +1,1 @@
+The Sales Model contains three tables: Customer, Product, and Sales. The Sales table has a relationship to Customer and Product.

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Garnet Grid | PBI Theme Architect</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #0f172a;
+            color: white;
+            padding: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            background: #1e293b;
+            color: #a5b4fc;
+            border: 1px solid #334155;
+            padding: 1rem;
+            font-family: monospace;
+        }
+
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Power BI Theme Architect</h1>
+    <p>Select your palette to generate a JSON theme.</p>
+
+    <div class="grid" id="palette">
+        <input type="color" value="#118DFF" id="c1">
+        <input type="color" value="#12239E" id="c2">
+        <input type="color" value="#E66C37" id="c3">
+        <input type="color" value="#6B007B" id="c4">
+        <input type="color" value="#E64483" id="c5">
+        <input type="color" value="#00B294" id="c6">
+        <input type="color" value="#018A80" id="c7">
+        <input type="color" value="#D93B3B" id="c8">
+    </div>
+
+    <button onclick="generate()">Generate JSON</button>
+    <textarea id="output" readonly></textarea>
+
+    <script>
+        function generate() {
+            const colors = Array.from(document.querySelectorAll('input[type="color"]')).map(i => i.value);
+
+            const theme = {
+                "name": "Garnet Grid Generated",
+                "dataColors": colors,
+                "background": "#FFFFFF",
+                "foreground": colors[0],
+                "tableAccent": colors[1],
+                "visualStyles": {
+                    "*": {
+                        "*": {
+                            "*": [{ "responsive": true }]
+                        }
+                    }
+                }
+            };
+
+            document.getElementById('output').value = JSON.stringify(theme, null, 4);
+        }
+    </script>
+</body>
+
+</html>

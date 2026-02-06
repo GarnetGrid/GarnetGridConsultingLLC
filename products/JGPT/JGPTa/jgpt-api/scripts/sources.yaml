@@ -1,0 +1,78 @@
+powerbi:
+  - title: Learn DAX basics in Power BI Desktop (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-quickstart-learn-dax-basics
+  - title: DAX overview (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dax/dax-overview
+  - title: DAX syntax reference (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dax/dax-syntax-reference
+  - title: DAX function reference (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dax/dax-function-reference
+  - title: CALCULATE function (DAX) (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dax/calculate-function-dax
+  - title: ALL function (DAX) (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dax/all-function-dax
+  - title: Why Power BI totals might seem inaccurate (SQLBI)
+    url: https://www.sqlbi.com/articles/why-power-bi-totals-might-seem-inaccurate/
+  - title: Distinguishing HASONEVALUE from ISINSCOPE (SQLBI)
+    url: https://www.sqlbi.com/articles/distinguishing-hasonevalue-from-isinscope/
+  - title: Week-based time intelligence in DAX (SQLBI)
+    url: https://www.sqlbi.com/articles/week-based-time-intelligence-in-dax/
+  - title: Optimizing DAX expressions involving multiple measures (SQLBI)
+    url: https://www.sqlbi.com/articles/optimizing-dax-expressions-involving-multiple-measures/
+  - title: Understanding Context Transition (SQLBI)
+    url: https://www.sqlbi.com/articles/understanding-context-transition/
+  - title: Variables in DAX (SQLBI)
+    url: https://www.sqlbi.com/articles/variables-in-dax/
+  - title: Filter columns not tables in DAX (SQLBI)
+    url: https://www.sqlbi.com/articles/filter-columns-not-tables-in-dax/
+
+d365fo:
+  - title: X++ transaction integrity (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-data/xpp-transaction
+  - title: X++ exception handling (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-exceptions
+  - title: X++ Data Caching Best Practices (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-data/data-caching
+  - title: Trace Parser for Performance Analysis (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/trace-parser
+  - title: Role-based security architecture (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/sysadmin/role-based-security
+  - title: Extensible Data Security (XDS) policies (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/sysadmin/extensible-data-security-policies
+  - title: Class extension - Method wrapping and Chain of Command (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/method-wrapping-coc
+  - title: Customize through extension and overlayering (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/customization-overlayering-extensions
+  - title: Attributes that make methods extensible (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/extensibility-attributes
+  - title: Migrate from overlayering to extensions (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/migrate-overlayer-extension
+  - title: Extensibility home page (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/extensibility-home-page
+  - title: Extensible code - delegates (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/extensible-code-delegates
+  - title: Add methods to tables through extension (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/add-method-table
+  - title: Build and consume data entities (Microsoft Learn)
+    url: https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/data-entities/build-consuming-data-entities
+
+python:
+  - title: FastAPI Documentation (Auto-Sitemap)
+    url: https://fastapi.tiangolo.com/sitemap.xml
+    type: sitemap
+    limit: 10 # Only fetch 10 pages for demo
+    
+  - title: Pydantic Documentation
+    url: https://docs.pydantic.dev/latest/
+  - title: SQLAlchemy 2.0 Documentation
+    url: https://docs.sqlalchemy.org/en/20/
+  - title: AsyncIO High-level API
+    url: https://docs.python.org/3/library/asyncio-task.html
+
+architecture:
+  - title: Microservices Guide (Martin Fowler)
+    url: https://martinfowler.com/articles/microservices.html
+  - title: Domain-Driven Design (Martin Fowler)
+    url: https://martinfowler.com/bliki/DomainDrivenDesign.html
+  - title: 12 Factor App
+    url: https://12factor.net/

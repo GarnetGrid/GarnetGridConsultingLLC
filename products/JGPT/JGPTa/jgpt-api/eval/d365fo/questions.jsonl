@@ -1,0 +1,5 @@
+{"id": "d365_001", "q": "Show an X++ pattern for transaction handling with ttsBegin/ttsCommit and exception rollback."}
+{"id": "d365_002", "q": "Give an example of a D365FO event handler for a form control click, and where to place it."}
+{"id": "d365_003", "q": "Explain how to extend a data entity and map it for DMF import, including common pitfalls."}
+{"id": "d365_004", "q": "Provide a template for exposing a custom service (SysOperation) that can be called via OData or custom API integration."}
+{"id": "d365_005", "q": "Explain the difference between Chain of Command and Event Handlers, and when to use each."}
