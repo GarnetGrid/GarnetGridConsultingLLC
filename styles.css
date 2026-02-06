@@ -1236,7 +1236,7 @@ footer {
     .mobile-toggle {
         display: block;
         position: relative;
-        z-index: 1100;
+        z-index: 2000;
     }
 
     .mobile-toggle.active span:nth-child(1) {

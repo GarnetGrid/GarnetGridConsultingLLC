@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garnet Grid | Secure Access Portal</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@200;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --portal-bg: #000000;
+            --portal-card: rgba(10, 10, 10, 0.85);
+            --portal-accent: var(--garnet-main);
+            --terminal-green: #27c93f;
+            --terminal-red: #ff5f56;
+        }
+
+        body {
+            background-color: var(--portal-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .portal-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 45, 85, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 45, 85, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .access-card {
+            background: var(--portal-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: cardFadeIn 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .access-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--portal-accent), transparent);
+        }
+
+        .portal-logo {
+            margin-bottom: 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: white;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .portal-logo span {
+            color: var(--portal-accent);
+        }
+
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .portal-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .portal-input:focus {
+            border-color: var(--portal-accent);
+            box-shadow: 0 0 15px rgba(255, 45, 85, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-access {
+            width: 100%;
+            padding: 1rem;
+            background: white;
+            color: black;
+            border: none;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-access:hover {
+            background: var(--portal-accent);
+            color: white;
+        }
+
+        .status-msg {
+            margin-top: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            height: 1.2rem;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .status-msg.error {
+            color: var(--terminal-red);
+            animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        .status-msg.success {
+            color: var(--terminal-green);
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="portal-grid"></div>
+
+    <div class="access-card">
+        <div class="portal-logo">Garnet <span>Grid</span></div>
+        <h1>SECURE DISTRIBUTION NODE</h1>
+
+        <form id="accessForm">
+            <div class="input-group">
+                <input type="password" id="accessCode" class="portal-input" placeholder="ENTER ACCESS KEY"
+                    autocomplete="off" autofocus>
+            </div>
+            <button type="submit" class="btn-access">Authenticate</button>
+        </form>
+
+        <div class="status-msg" id="statusMsg">Waiting for input...</div>
+    </div>
+
+    <script src="portal.js"></script>
+</body>
+
+</html>

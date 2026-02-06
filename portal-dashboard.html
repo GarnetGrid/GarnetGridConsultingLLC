@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garnet Grid | Secure Workspace</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@200;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="jgpt-page.css"> <!-- Reusing JGPT styles for consistency -->
+    <style>
+        :root {
+            --portal-bg: #050505;
+            --portal-card-bg: rgba(20, 20, 20, 0.6);
+            --portal-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--portal-bg);
+            color: white;
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .dashboard-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--portal-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 100;
+        }
+
+        .user-id {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--garnet-main);
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            background: none;
+            border: 1px solid var(--portal-border);
+            color: #888;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            border-color: var(--garnet-main);
+            color: white;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .welcome-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 3rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .asset-card {
+            background: var(--portal-card-bg);
+            border: 1px solid var(--portal-border);
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--garnet-main);
+        }
+
+        .asset-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #888;
+            border: 1px solid #333;
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .asset-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .asset-meta {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .download-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: white;
+            color: black;
+            padding: 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: var(--garnet-main);
+            color: white;
+        }
+
+        .security-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--garnet-main);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Secure Header -->
+    <header class="dashboard-header">
+        <div class="logo">GARNET GRID <span style="font-weight:300; opacity:0.7;">| SECURE NODE</span></div>
+        <div style="display:flex; gap:2rem; align-items:center;">
+            <span class="user-id">ID: <span id="sessionID">...</span></span>
+            <button class="logout-btn" onclick="logout()">TERMINATE SESSION</button>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 class="welcome-text">Enterprise Repository</h1>
+        <div class="breadcrumb">> ROOT_ACCESS / PRODUCTS / SOURCE_CODE</div>
+
+        <div class="asset-grid">
+            <!-- JGPT Source Asset -->
+            <div class="asset-card">
+                <div class="security-badge">🔒 CONFIDENTIAL</div>
+                <div class="asset-type">SOURCE ARTIFACT</div>
+                <h2 class="asset-title">JGPT Engine v1.0</h2>
+                <div class="asset-meta">
+                    <ul>
+                        <li><strong>Format:</strong> .ZIP Archive (Source Code)</li>
+                        <li><strong>Size:</strong> <span id="fileSize">Calculated...</span></li>
+                        <li><strong>License:</strong> Enterprise Proprietary</li>
+                        <li><strong>SHA256:</strong> 0xCONFIDENTIAL</li>
+                    </ul>
+                    <p style="margin-top:1rem; font-size:0.85rem; color:#666;">
+                        Complete source tree for the JGPT Reasoning Engine. Includes Python backend, D365 integration
+                        modules, and frontend React components.
+                    </p>
+                </div>
+                <!-- Actual Download Link -->
+                <a href="secure-assets/JGPT_Enterprise_Source_v1.0.zip" class="download-btn" download>Initialize
+                    Download</a>
+            </div>
+
+            <!-- Documentation Link -->
+            <div class="asset-card" style="opacity: 0.7;">
+                <div class="asset-type">DOCUMENTATION</div>
+                <h2 class="asset-title">Integration Manual</h2>
+                <div class="asset-meta">
+                    <p>Comprehensive guide for deploying JGPT within secure Azure environments.</p>
+                </div>
+                <button class="download-btn" style="background:#333; color:#666; cursor:not-allowed;">Coming
+                    Soon</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Session Check
+        if (!sessionStorage.getItem('ggc_secure_session')) {
+            window.location.href = 'portal.html';
+        }
+
+        // Set Session ID display
+        document.getElementById('sessionID').innerText = sessionStorage.getItem('ggc_session_id') || 'UNKNOWN';
+
+        function logout() {
+            sessionStorage.removeItem('ggc_secure_session');
+            sessionStorage.removeItem('ggc_session_id');
+            window.location.href = 'portal.html';
+        }
+
+        // Mock File Size
+        // In a real server env, we'd fetch this. Here we hardcode an estimate or fetch HEAD.
+        fetch('secure-assets/JGPT_Enterprise_Source_v1.0.zip', { method: 'HEAD' })
+            .then(res => {
+                if (res.ok) {
+                    const size = res.headers.get('content-length');
+                    if (size) {
+                        document.getElementById('fileSize').innerText = (size / 1024 / 1024).toFixed(2) + ' MB';
+                    }
+                }
+            })
+            .catch(() => {
+                document.getElementById('fileSize').innerText = 'Unknown Size';
+            });
+    </script>
+</body>
+
+</html>

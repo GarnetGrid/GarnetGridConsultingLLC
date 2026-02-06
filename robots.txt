@@ -3,3 +3,6 @@ Allow: /
 Sitemap: https://garnetgrid.com/sitemap.xml
 
 Disallow: /sector_7.html
+Disallow: /portal.html
+Disallow: /portal-dashboard.html
+Disallow: /secure-assets/
