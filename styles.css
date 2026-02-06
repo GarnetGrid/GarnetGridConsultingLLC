@@ -5888,6 +5888,17 @@ body.blueprint-mode ::selection {
     display: block;
 }
 
+.secret-hint {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.1);
+    /* Very faint */
+    text-align: center;
+    margin-bottom: 2px;
+    transition: color 0.3s ease;
+    cursor: default;
+}
+
 .command-line {
     display: flex;
     align-items: center;

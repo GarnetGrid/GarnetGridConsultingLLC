@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCESS DENIED // SECTOR 7</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ff0000;
+            font-family: 'Courier New', monospace;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            border: 2px solid #ff0000;
+            padding: 4rem;
+            max-width: 800px;
+            position: relative;
+            background: rgba(20, 0, 0, 0.9);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+            animation: glitch 1s infinite;
+        }
+
+        .warning-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .meta-data {
+            font-size: 0.8rem;
+            color: #800000;
+            border-top: 1px solid #800000;
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+
+        .ip-log {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+                text-shadow: 2px 2px #0ff;
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+                text-shadow: -2px -2px #0ff;
+            }
+
+            40% {
+                transform: translate(2px, -2px);
+                text-shadow: 2px -2px #0ff;
+            }
+
+            60% {
+                transform: translate(-2px, -2px);
+                text-shadow: -2px 2px #0ff;
+            }
+
+            80% {
+                transform: translate(2px, 2px);
+                text-shadow: 2px -2px #0ff;
+            }
+
+            100% {
+                transform: translate(0);
+                text-shadow: -2px -2px #0ff;
+            }
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 0, 0, 0.3);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0%;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scan-line"></div>
+    <div class="container">
+        <span class="warning-icon">⚠️</span>
+        <h1>ACCESS DENIED</h1>
+        <p><strong>WARNING:</strong> YOU HAVE ENTERED A RESTRICTED CONTAINMENT ZONE (SECTOR 7).</p>
+        <p>THIS DOMAIN IS MONITORED BY GARNET GRID INTELLIGENCE SYSTEMS.</p>
+        <p>YOUR DIGITAL FINGERPRINT HAS BEEN LOGGED AND FLAGGED FOR REVIEW.</p>
+        <p><strong>IMMEDIATE DISCONNECT RECOMMENDED.</strong></p>
+
+        <div class="meta-data">
+            INCIDENT REPORT: #99-AF-22<br>
+            STATUS: <span style="color:red; animation: blink 0.5s infinite;">CRITICAL</span><br>
+            TRACE ROUTE: <span class="ip-log">ESTABLISHED</span>
+        </div>
+    </div>
+
+    <script>
+        // Play an subtle low frequency hum if they interact? 
+        // Or just log to console to freak them out
+        console.warn("SECURITY ALERT: UNAUTHORIZED ACCESS DETECTED.");
+        console.warn("TRACING SOURCE...");
+
+        setTimeout(() => {
+            console.log("TRACE COMPLETE. UPLOADING TO GARNET_CORE...");
+        }, 2000);
+    </script>
+</body>
+
+</html>

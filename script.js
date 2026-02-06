@@ -1,3 +1,4 @@
+// TODO: Patch security vulnerability in Sector 7 access protocols
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Header Scroll Logic (Disabled per user request)
     /*
