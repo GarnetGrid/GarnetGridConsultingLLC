@@ -2,7 +2,7 @@ import json
 import re
 import inspect
 from typing import AsyncGenerator
-from app.rag.ollama_client import ollama_chat
+from app.services.router import router
 from app.services.reasoner.prompts import SYSTEM_PROMPT
 from app.services.reasoner.tools import get_tool_descriptions, get_tool_names, get_tool_by_name
 
@@ -47,10 +47,13 @@ async def reasoner_agent(user_input: str, model: str = "llama3.2") -> AsyncGener
         
         # Actually, let's just pass the whole thing if the client supports it, or split it.
         # Let's assume standard usage:
-        response_text = await ollama_chat(
-            model=model,
-            system="You are a reasoning agent. Follow the trace exactly.", 
-            user=full_prompt
+        # Route the request through the centralized Model Router
+        # We default to prefer_local=True for reasoning tasks
+        response_text = await router.route_request(
+            system_prompt="You are a reasoning agent. Follow the trace exactly.",
+            user_prompt=full_prompt,
+            task_type="reasoning",
+            prefer_local=True
         )
         
         # Parse the output
