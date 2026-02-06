@@ -678,8 +678,10 @@
 
 .advantage-item {
     display: flex;
-    gap: 2rem;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
 }
 
 .advantage-number {

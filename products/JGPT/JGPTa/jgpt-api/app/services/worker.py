@@ -5,6 +5,7 @@ from app.db.session import SessionLocal
 from app.db.models import IngestionJob
 from app.util.url_ingest import scrape_url
 from app.util.ingest import ingest_kb
+from app.services.local_llm.deepseek_worker import summarize_text, expand_documentation, generate_reference_notes
 # ... import other ingest logic
 
 logger = logging.getLogger(__name__)
@@ -30,13 +31,23 @@ async def process_job(job_id: int):
                 simulated_text = f"Content from {job.source_target}. " * 50 
                 
                 # DeepSeek Hook
-                from app.services.local_llm.deepseek_worker import summarize_text
                 summary = await summarize_text(simulated_text)
                 logger.info(f"Generated Summary: {summary[:100]}...")
                 
                 # TODO: Save summary to Document model
 
-                
+            elif job.source_type == "deepseek_expand":
+                logger.info(f"Expanding Knowledge: {job.source_target[:50]}...")
+                expanded_content = await expand_documentation(job.source_target)
+                logger.info(f"Expansion Complete. Length: {len(expanded_content)}")
+                # TODO: Save expanded content as new Document or Chunk
+
+            elif job.source_type == "deepseek_analyze":
+                logger.info(f"Analyzing Content: {job.source_target[:50]}...")
+                analysis = await generate_reference_notes(job.source_target)
+                logger.info(f"Analysis Complete. Meta: {analysis[:100]}...")
+                # TODO: Update Document metadata
+            
             # Simulate success for now as we refine the worker logic
             # Actual implementation needs to call the heavy lifting functions
             # from app.util.ingest etc.
