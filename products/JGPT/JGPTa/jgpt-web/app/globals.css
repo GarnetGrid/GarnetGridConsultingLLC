@@ -1,5 +1,5 @@
 :root {
-  /* Premium Dark Theme Palette */
+  /* Premium Dark Theme Palette (Default) */
   --bg: #0a0a0f;
   --bg-secondary: #0d0d1a;
   --panel: rgba(13, 13, 26, 0.7);
@@ -24,6 +24,28 @@
   /* Glass Effects */
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-bg: rgba(255, 255, 255, 0.03);
+}
+
+:root[data-theme='light'] {
+  /* Premium Light Theme Palette */
+  --bg: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --panel: rgba(255, 255, 255, 0.75);
+  --panel-solid: #ffffff;
+  --panel2: rgba(240, 242, 245, 0.6);
+  --text: #1a1a2e;
+  --muted: #64748b;
+  --line: rgba(0, 0, 0, 0.06);
+
+  /* Accents - Keep vibrant but adjust glow */
+  --accent: #d91c5c;
+  --accent-glow: rgba(217, 28, 92, 0.15);
+  --accent2: #048a94;
+  --accent2-glow: rgba(4, 138, 148, 0.15);
+
+  /* Glass Effects - Adjusted for light */
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.6);
 }
 
 @tailwind base;

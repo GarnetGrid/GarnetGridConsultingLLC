@@ -49,36 +49,35 @@ async def context_retriever(query: str) -> str:
     Retrieves relevant context from the JGPT Knowledge Base.
     Use this to find information about the user's organization, documents, or previous knowledge.
     """
+    # Lazy imports to avoid circular dependencies
+    from app.db.session import SessionLocal
+    from app.rag.ollama_client import ollama_embed
+    from app.rag.retriever import retrieve
+
+    session = SessionLocal()
     try:
-        # Lazy imports to avoid circular dependencies
-        from app.db.session import SessionLocal
-        from app.rag.ollama_client import ollama_embed
-        from app.rag.retriever import retrieve
+         # Embedding
+         query_emb = await ollama_embed(model="llama3.2", text=query)
+         
+         # Retrieve (top_k=3 to keep context concise)
+         citations, context_str, meta = await retrieve(
+             session=session,
+             query_text=query,
+             query_emb=query_emb,
+             top_k=3,
+             domain=None,
+             mmr_lambda=0.7 # High diversity
+         )
+         
+         if not context_str:
+             return "No relevant context found in the Knowledge Base."
+         
+         return f"Retrieved Context:\n{context_str}"
 
-        session = SessionLocal()
-        try:
-             # Embedding
-             query_emb = await ollama_embed(model="llama3.2", text=query)
-             
-             # Retrieve (top_k=3 to keep context concise)
-             citations, context_str, meta = await retrieve(
-                 session=session,
-                 query_text=query,
-                 query_emb=query_emb,
-                 top_k=3,
-                 domain=None,
-                 mmr_lambda=0.7 # High diversity
-             )
-             
-             if not context_str:
-                 return "No relevant context found in the Knowledge Base."
-             
-             return f"Retrieved Context:\n{context_str}"
-
-        except Exception as e:
-            return f"Error retrieving context: {e}"
-        finally:
-            session.close()
+    except Exception as e:
+        return f"Error retrieving context: {e}"
+    finally:
+        session.close()
 
 # Define the available tools
 TOOLS = [

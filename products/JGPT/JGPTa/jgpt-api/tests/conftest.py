@@ -13,6 +13,10 @@ from sqlalchemy.dialects.postgresql import TSVECTOR
 def compile_tsvector(type_, compiler, **kw):
     return "TEXT"
 
+# Ensure modules are loaded for patching
+import app.routes.chat
+import app.routes.ingest
+
 @pytest.fixture(scope="function")
 def test_db():
     from sqlalchemy.pool import StaticPool

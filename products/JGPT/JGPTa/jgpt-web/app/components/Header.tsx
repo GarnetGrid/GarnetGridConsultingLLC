@@ -3,6 +3,7 @@ import CustomDropdown from "./CustomDropdown";
 import { Plus, X } from "lucide-react";
 import ModelSelector from "./ModelSelector";
 import ModelSettings from "./ModelSettings";
+import ThemeToggle from "./ThemeToggle";
 
 interface HeaderProps {
     tab: "chat" | "evals" | "knowledge" | "admin" | "workbench";
@@ -93,6 +94,9 @@ export default function Header({
                     options={modelOptions || {}}
                     onChange={(opts) => onModelOptionsChange?.(opts)}
                 />
+
+                {/* Theme Toggle */}
+                <ThemeToggle />
 
                 {/* Add Knowledge Button */}
                 <button
