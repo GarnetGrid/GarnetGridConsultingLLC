@@ -206,18 +206,28 @@
     </main>
 
     <script>
-        // Session Check
-        if (!sessionStorage.getItem('ggc_secure_session')) {
-            window.location.href = 'portal.html';
-        }
-
-        // Set Session ID display
-        document.getElementById('sessionID').innerText = sessionStorage.getItem('ggc_session_id') || 'UNKNOWN';
+        // Session Check via API (Cookie Validation)
+        const API_BASE = 'http://localhost:8000'; // Update for production
+        fetch(`${API_BASE}/auth/me`, { credentials: 'include' })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Unauthorized');
+                }
+                return res.json();
+            })
+            .then(user => {
+                document.getElementById('sessionID').innerText = user.email || 'USER';
+            })
+            .catch(() => {
+                // Redirect on auth failure
+                window.location.href = 'portal.html';
+            });
 
         function logout() {
-            sessionStorage.removeItem('ggc_secure_session');
-            sessionStorage.removeItem('ggc_session_id');
-            window.location.href = 'portal.html';
+            fetch(`${API_BASE}/auth/logout`, { method: 'POST', credentials: 'include' })
+                .finally(() => {
+                    window.location.href = 'portal.html';
+                });
         }
 
         // Mock File Size

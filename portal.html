@@ -199,12 +199,14 @@
         <div class="portal-logo">Garnet <span>Grid</span></div>
         <h1>SECURE DISTRIBUTION NODE</h1>
 
-        <form id="accessForm">
+        <form id="loginForm">
             <div class="input-group">
-                <input type="password" id="accessCode" class="portal-input" placeholder="ENTER ACCESS KEY"
-                    autocomplete="off" autofocus>
+                <input type="email" id="email" class="portal-input" placeholder="EMAIL ADDRESS" required autofocus>
             </div>
-            <button type="submit" class="btn-access">Authenticate</button>
+            <div class="input-group" style="margin-top: 15px;">
+                <input type="password" id="password" class="portal-input" placeholder="PASSWORD" required>
+            </div>
+            <button type="submit" class="btn-access">AUTHENTICATE</button>
         </form>
 
         <div class="status-msg" id="statusMsg">Waiting for input...</div>
