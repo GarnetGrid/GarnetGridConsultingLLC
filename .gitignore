@@ -1,5 +1,11 @@
 
+# Security / Local AI
+products/JGPT/
+products/JGPT/JGPTa/kb/
+products/JGPT/JGPTa/storage/
+.env
+.DS_Store
+
 # Archives
 *.zip
 *.tar.gz
-.DS_Store
