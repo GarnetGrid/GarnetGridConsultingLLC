@@ -1,8 +1,0 @@
-.DS_Store
-.env
-.env.*
-__pycache__/
-*.pyc
-api/app/storage/uploads/
-api/app/storage/cache/
-.vscode/
