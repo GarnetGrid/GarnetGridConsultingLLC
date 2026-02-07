@@ -152,99 +152,271 @@
             color: var(--garnet-main);
             opacity: 0.5;
         }
-    </style>
-</head>
 
-<body>
-    <!-- Secure Header -->
-    <header class="dashboard-header">
-        <div class="logo">GARNET GRID <span style="font-weight:300; opacity:0.7;">| SECURE NODE</span></div>
-        <div style="display:flex; gap:2rem; align-items:center;">
-            <span class="user-id">ID: <span id="sessionID">...</span></span>
-            <button class="logout-btn" onclick="logout()">TERMINATE SESSION</button>
-        </div>
-    </header>
+        /* --- API Key Section Styles --- */
+        .secrets-section {
+            margin-top: 4rem;
+            border-top: 1px solid var(--portal-border);
+            padding-top: 3rem;
+        }
 
-    <main class="dashboard-container">
-        <h1 class="welcome-text">Enterprise Repository</h1>
-        <div class="breadcrumb">> ROOT_ACCESS / PRODUCTS / SOURCE_CODE</div>
+        .secrets-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
 
-        <div class="asset-grid">
-            <!-- JGPT Source Asset -->
-            <div class="asset-card">
-                <div class="security-badge">🔒 CONFIDENTIAL</div>
-                <div class="asset-type">SOURCE ARTIFACT</div>
-                <h2 class="asset-title">JGPT Engine v1.0</h2>
-                <div class="asset-meta">
-                    <ul>
-                        <li><strong>Format:</strong> .ZIP Archive (Source Code)</li>
-                        <li><strong>Size:</strong> <span id="fileSize">Calculated...</span></li>
-                        <li><strong>License:</strong> Enterprise Proprietary</li>
-                        <li><strong>SHA256:</strong> 0xCONFIDENTIAL</li>
-                    </ul>
-                    <p style="margin-top:1rem; font-size:0.85rem; color:#666;">
-                        Complete source tree for the JGPT Reasoning Engine. Includes Python backend, D365 integration
-                        modules, and frontend React components.
-                    </p>
-                </div>
-                <!-- Actual Download Link -->
-                <a href="secure-assets/JGPT_Enterprise_Source_v1.0.zip" class="download-btn" download>Initialize
-                    Download</a>
-            </div>
+        .key-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
 
-            <!-- Documentation Link -->
-            <div class="asset-card" style="opacity: 0.7;">
-                <div class="asset-type">DOCUMENTATION</div>
-                <h2 class="asset-title">Integration Manual</h2>
-                <div class="asset-meta">
-                    <p>Comprehensive guide for deploying JGPT within secure Azure environments.</p>
-                </div>
-                <button class="download-btn" style="background:#333; color:#666; cursor:not-allowed;">Coming
-                    Soon</button>
-            </div>
-        </div>
-    </main>
+        .key-table th {
+            text-align: left;
+            color: #888;
+            padding: 1rem;
+            border-bottom: 1px solid var(--portal-border);
+        }
 
-    <script>
-        // Session Check via API (Cookie Validation)
-        const API_BASE = 'http://localhost:8000'; // Update for production
-        fetch(`${API_BASE}/auth/me`, { credentials: 'include' })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Unauthorized');
-                }
-                return res.json();
-            })
-            .then(user => {
-                document.getElementById('sessionID').innerText = user.email || 'USER';
-            })
-            .catch(() => {
-                // Redirect on auth failure
-                window.location.href = 'portal.html';
+        .key-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .status-active {
+            color: #4CAF50;
+        }
+
+        .revoke-btn {
+            background: rgba(255, 50, 50, 0.1);
+            color: #ffcccc;
+            border: 1px solid rgba(255, 50, 50, 0.3);
+            border-radius: 4px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .revoke-btn:hover {
+            background: rgba(255, 50, 50, 0.3);
+            border-color: #ff5050;
+        }
+
+        .create-key-form {
+            display: flex;
+            gap: 1rem;
+            background: var(--portal-card-bg);
+            padding: 1.5rem;
+            border: 1px solid var(--portal-border);
+            align-items: center;
+        }
+
+        .input-dark {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #444;
+            color: white;
+            padding: 0.8rem 1rem;
+            font-family: 'Inter', sans-serif;
+            flex-grow: 1;
+        }
+
+        .action-btn {
+            background: white;
+            color: black;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .action-btn:hover {
+            background: var(--garnet-main);
+            color: white;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #111;
+            border: 1px solid var(--garnet-main);
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .new-key-display {
+            background: #222;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--garnet-main);
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            word-break: break-all;
+            border: 1px dashed #444;
+        }
+
+        </head><body>< !-- Secure Header --><header class="dashboard-header"><div class="logo">GARNET GRID <span style="font-weight:300; opacity:0.7;">| SECURE NODE</span></div><div style="display:flex; gap:2rem; align-items:center;"><span class="user-id">ID: <span id="sessionID">...</span></span><button class="logout-btn" onclick="logout()">TERMINATE SESSION</button></div></header><main class="dashboard-container"><h1 class="welcome-text">Enterprise Repository</h1><div class="breadcrumb">>ROOT_ACCESS / PRODUCTS / SOURCE_CODE</div><div class="asset-grid">< !-- JGPT Source Asset --><div class="asset-card"><div class="security-badge">🔒 CONFIDENTIAL</div><div class="asset-type">SOURCE ARTIFACT</div><h2 class="asset-title">JGPT Engine v1.0</h2><div class="asset-meta"><ul><li><strong>Format:</strong>.ZIP Archive (Source Code)</li><li><strong>Size:</strong><span id="fileSize">Calculated...</span></li><li><strong>License:</strong>Enterprise Proprietary</li><li><strong>SHA256:</strong>0xCONFIDENTIAL</li></ul><p style="margin-top:1rem; font-size:0.85rem; color:#666;">Complete source tree for the JGPT Reasoning Engine. Includes Python backend,
+        D365 integration modules,
+        and frontend React components. </p></div>< !-- Actual Download Link --><a href="secure-assets/JGPT_Enterprise_Source_v1.0.zip" class="download-btn" download>Initialize Download</a></div>< !-- Documentation Link --><div class="asset-card" style="opacity: 0.7;"><div class="asset-type">DOCUMENTATION</div><h2 class="asset-title">Integration Manual</h2><div class="asset-meta"><p>Comprehensive guide for deploying JGPT within secure Azure environments.</p></div><button class="download-btn" style="background:#333; color:#666; cursor:not-allowed;">Coming Soon</button></div></div></div>< !-- API Key Management Section --><div class="secrets-section" id="secretsSection" style="display:none;"><div class="secrets-header"><h1 class="welcome-text" style="font-size: 2rem;">Secret Management</h1><div class="asset-type">ADMIN ACCESS</div></div><table class="key-table"><thead><tr><th>Key Name</th><th>Prefix</th><th>Created</th><th>Status</th><th>Action</th></tr></thead><tbody id="keyListBody">< !-- Populated by JS --></tbody></table><div class="create-key-form"><input type="text" id="newKeyName" class="input-dark" placeholder="New Key Name (e.g. 'Production App')"><button class="action-btn" onclick="generateKey()">Generate New Secret</button></div></div>< !-- New Key Modal --><div class="modal-overlay" id="keyModal"><div class="modal-content"><h2 class="asset-title">Secret Created</h2><p>Please copy this key immediately. It will <strong>never</strong>be shown again.</p><div class="new-key-display" id="fullKeyDisplay">Error</div><button class="action-btn" onclick="closeModal()">I have saved it</button></div></div></main>
+
+        }) .catch(()=> {
+                document.getElementById('fileSize').innerText='Unknown Size';
             });
 
-        function logout() {
-            fetch(`${API_BASE}/auth/logout`, { method: 'POST', credentials: 'include' })
-                .finally(() => {
-                    window.location.href = 'portal.html';
+        // --- API Key Management (Admin Check) ---
+
+        function loadApiKeys() {
+            fetch(`$ {
+                    API_BASE
+                }
+
+                /auth/api-keys`, {
+                credentials: 'include'
+
+            }) .then(res=> {
+                if (res.status===403) return []; // Not admin
+                if ( !res.ok) throw new Error('Failed to fetch keys');
+                return res.json();
+
+            }) .then(keys=> {
+                if (keys.length > 0 || document.getElementById('sessionID').innerText.includes('admin')) {
+                    document.getElementById('secretsSection').style.display='block';
+                    renderKeys(keys);
+                }
+            }) .catch(err=> console.log('Admin check:', err));
+        }
+
+        function renderKeys(keys) {
+            const tbody=document.getElementById('keyListBody');
+            tbody.innerHTML='';
+
+            keys.forEach(k=> {
+                    const tr=document.createElement('tr');
+
+                    tr.innerHTML=` <td style="color:white; font-weight:600;" >$ {
+                        k.name
+                    }
+
+                    </td> <td>$ {
+                        k.prefix
+                    }
+
+                    </td> <td>$ {
+                        new Date(k.created_at).toLocaleDateString()
+                    }
+
+                    </td> <td><span class="status-active" >Active</span></td> <td><button class="revoke-btn" onclick="revokeKey(${k.id})" >REVOKE</button></td> `;
+                    tbody.appendChild(tr);
                 });
         }
 
-        // Mock File Size
-        // In a real server env, we'd fetch this. Here we hardcode an estimate or fetch HEAD.
-        fetch('secure-assets/JGPT_Enterprise_Source_v1.0.zip', { method: 'HEAD' })
-            .then(res => {
-                if (res.ok) {
-                    const size = res.headers.get('content-length');
-                    if (size) {
-                        document.getElementById('fileSize').innerText = (size / 1024 / 1024).toFixed(2) + ' MB';
-                    }
-                }
-            })
-            .catch(() => {
-                document.getElementById('fileSize').innerText = 'Unknown Size';
-            });
-    </script>
-</body>
+        function generateKey() {
+            const nameInput=document.getElementById('newKeyName');
+            const name=nameInput.value.trim();
+            if ( !name) return alert("Please enter a key name");
 
-</html>
+            fetch(`$ {
+                    API_BASE
+                }
+
+                /auth/api-keys`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+                ,
+                body: JSON.stringify({
+                    name: name
+                }),
+            credentials: 'include'
+
+        }) .then(res=> res.json()) .then(data=> {
+                if (data.full_key) {
+                    document.getElementById('fullKeyDisplay').innerText=data.full_key;
+                    document.getElementById('keyModal').style.display='flex';
+                    nameInput.value='';
+                    loadApiKeys(); // Refresh list to show new entry (masked)
+                }
+
+                else {
+                    alert("Error creating key");
+                }
+            }) .catch(err=> alert("Failed: " + err));
+        }
+
+        function revokeKey(id) {
+            if ( !confirm("Are you sure? This action cannot be undone.")) return;
+
+            fetch(`$ {
+                    API_BASE
+                }
+
+                /auth/api-keys/$ {
+                    id
+                }
+
+                `, {
+                method: 'DELETE',
+                credentials: 'include'
+
+            }) .then(res=> {
+                if (res.ok) loadApiKeys();
+                else alert("Failed to revoke");
+            }) .catch(err=> alert("Error: " + err));
+        }
+
+        function closeModal() {
+            document.getElementById('keyModal').style.display='none';
+            document.getElementById('fullKeyDisplay').innerText='';
+        }
+
+        // Initialize Admin Checks
+        // Call this after user is loaded
+        const originalUserFetch=fetch(`$ {
+                API_BASE
+            }
+
+            /auth/me`, {
+            credentials: 'include'
+
+        }) .then(res=> {
+                if ( !res.ok) {
+                    throw new Error('Unauthorized');
+                }
+
+                return res.json();
+
+            }) .then(user=> {
+                document.getElementById('sessionID').innerText=user.email || 'USER';
+
+                // Trigger Admin Load
+                if (user.role==='admin') {
+                    loadApiKeys();
+                }
+
+            }) .catch(()=> {
+                // Redirect on auth failure
+                window.location.href='portal.html';
+            });
+        </script></body></html>
