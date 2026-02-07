@@ -9,3 +9,9 @@ products/JGPT/JGPTa/storage/
 # Archives
 *.zip
 *.tar.gz
+
+# Data & Assets
+linkedin_data/
+secure-assets/
+parsed_data*.txt
+
