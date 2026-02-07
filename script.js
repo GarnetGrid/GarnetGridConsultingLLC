@@ -915,3 +915,159 @@ document.addEventListener('DOMContentLoaded', () => {
         moonIcon.style.display = isLight ? 'block' : 'none';
     });
 });
+
+/* ========================================
+   JGPT NEURAL UPLINK (CHAT LOGIC)
+   ======================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('jgptInput');
+    const sendBtn = document.getElementById('jgptSendBtn');
+    const history = document.getElementById('chatHistory');
+    const tokenDisplay = document.getElementById('tokenCount');
+
+    if (!input || !sendBtn || !history) return;
+
+    // Auto-resize textarea
+    input.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+        if (this.value === '') this.style.height = 'auto';
+    });
+
+    // Send on Enter (Shift+Enter for new line)
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSend();
+        }
+    });
+
+    sendBtn.addEventListener('click', handleSend);
+
+    async function handleSend() {
+        const query = input.value.trim();
+        if (!query) return;
+
+        // 1. User Message
+        appendMessage('user', query);
+        input.value = '';
+        input.style.height = 'auto';
+
+        // 2. Bot Placeholder (Thinking...)
+        const botMsgContainer = document.createElement('div');
+        botMsgContainer.className = 'message bot';
+        botMsgContainer.innerHTML = `
+            <div class="msg-avatar">
+                <div class="core-nucleus-sm"></div>
+            </div>
+            <div class="msg-content-wrapper" style="flex-grow: 1; max-width: 100%;">
+                <!-- Dynamic Content Will Be Injected Here -->
+            </div>
+        `;
+        history.appendChild(botMsgContainer);
+        scrollToBottom();
+
+        const contentWrapper = botMsgContainer.querySelector('.msg-content-wrapper');
+        let currentThinkingDiv = null;
+        let currentResponseDiv = null;
+
+        // Ensure we have a response div ready
+        currentResponseDiv = document.createElement('div');
+        currentResponseDiv.className = 'msg-content';
+        contentWrapper.appendChild(currentResponseDiv);
+
+        // 3. Simulated Stream (or Real API)
+        // For demonstration of CoT UI, we will simulate a response with <think> tags.
+        // In production, replace with fetch() to your NeuroEngine API.
+
+        const isDemo = true; // Set to false to try real API
+
+        if (isDemo) {
+            await simulateCoTResponse(query, (chunk, type) => {
+                if (type === 'think') {
+                    // Ensure thinking div exists
+                    if (!currentThinkingDiv) {
+                        currentThinkingDiv = document.createElement('div');
+                        currentThinkingDiv.className = 'thinking-process expanded'; // Default expanded
+                        currentThinkingDiv.innerHTML = `
+                            <div class="thinking-header" onclick="this.parentElement.classList.toggle('expanded')">
+                                JGPT Reasoning Process
+                            </div>
+                            <div class="thinking-content"></div>
+                        `;
+                        // Insert before response div
+                        contentWrapper.insertBefore(currentThinkingDiv, currentResponseDiv);
+                    }
+                    const thinkContent = currentThinkingDiv.querySelector('.thinking-content');
+                    thinkContent.textContent += chunk;
+                } else {
+                    // Regular text
+                    currentResponseDiv.innerHTML += chunk.replace(/\n/g, '<br>');
+                }
+                scrollToBottom();
+            });
+        }
+    }
+
+    function appendMessage(role, text) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${role}`;
+
+        let avatarHTML = '';
+        if (role === 'bot') {
+            avatarHTML = `<div class="msg-avatar"><div class="core-nucleus-sm"></div></div>`;
+        } else {
+            avatarHTML = `<div class="msg-avatar">U</div>`;
+        }
+
+        msgDiv.innerHTML = `
+            ${avatarHTML}
+            <div class="msg-content">
+                ${text.replace(/\n/g, '<br>')}
+            </div>
+        `;
+        history.appendChild(msgDiv);
+        scrollToBottom();
+    }
+
+    function scrollToBottom() {
+        history.scrollTop = history.scrollHeight;
+    }
+
+    // Mock CoT Streamer
+    async function simulateCoTResponse(query, onChunk) {
+        const thoughts = [
+            "Analying query context: User is asking about " + query.substring(0, 20) + "...",
+            "Checking D365 Knowledge Base...",
+            "Retrieving architectural patterns for 'Enterprise Scale'...",
+            "Identified potential bottleneck in legacy specificiation...",
+            "Formulating comprehensive answer..."
+        ];
+
+        const finalAnswer = "Based on the Garnet Grid methodology, the optimal approach for this scenario involves a decoupled architecture. We recommend using a Service Bus for high-volume ingestion to prevent locking the X++ event loop. \n\nThis ensures that your ERP remains responsive even during peak load times.";
+
+        // Stream Request
+        onChunk("", "think"); // Initialize
+
+        // Stream Thoughts
+        for (const thought of thoughts) {
+            for (const char of thought) {
+                onChunk(char, "think");
+                await new Promise(r => setTimeout(r, 10 + Math.random() * 20));
+            }
+            onChunk("\n", "think");
+            await new Promise(r => setTimeout(r, 300));
+        }
+
+        // Collapse thinking after done (optional UX choice)
+        // document.querySelector('.thinking-process').classList.remove('expanded');
+
+        // Stream Final Answer
+        for (const char of finalAnswer) {
+            onChunk(char, "text");
+            // Simulate token counter update
+            tokenDisplay.innerText = parseInt(tokenDisplay.innerText) + 1;
+            await new Promise(r => setTimeout(r, 15 + Math.random() * 10));
+        }
+    }
+});

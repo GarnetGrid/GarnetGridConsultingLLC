@@ -164,6 +164,61 @@
             </div>
         </section>
 
+        <!-- JGPT Neural Uplink (Chat Interface) -->
+        <section class="jgpt-uplink" id="neural-uplink">
+            <div class="container">
+                <div class="uplink-header reveal">
+                    <h2>Neural Uplink <span class="status-dot"></span></h2>
+                    <p>Direct interface to the JGPT reasoning core. Submit a query to observe System 2 thinking in
+                        real-time.</p>
+                </div>
+
+                <div class="chat-terminal glass-card reveal">
+                    <div class="terminal-bar">
+                        <div class="terminal-controls">
+                            <span class="ctrl close"></span>
+                            <span class="ctrl min"></span>
+                            <span class="ctrl max"></span>
+                        </div>
+                        <div class="terminal-title">jgpt_core_v4.2 // active_session</div>
+                    </div>
+
+                    <div class="chat-history" id="chatHistory"
+                        style="min-height: 300px; max-height: 500px; overflow-y: auto; padding: 1rem;">
+                        <!-- Welcome Message -->
+                        <div class="message bot">
+                            <div class="msg-avatar">
+                                <div class="core-nucleus-sm"></div>
+                            </div>
+                            <div class="msg-content">
+                                <p>JGPT Neural Engine initialized. I am ready to process complex architectural queries.
+                                    How can I assist you with your data estate?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uplink-input-area">
+                        <div class="input-wrapper">
+                            <textarea id="jgptInput"
+                                placeholder="Enter your query related to D365, Azure, or Power BI..."
+                                rows="1"></textarea>
+                            <button id="jgptSendBtn" class="btn-send" aria-label="Send Query">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 0 0 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="uplink-footer">
+                            <span>MODE: <strong style="color:var(--jgpt-secondary);">CHAIN_OF_THOUGHT</strong></span>
+                            <span>TOKENS: <span id="tokenCount">0</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Feature Grid (Holographic Cards) -->
         <section class="container">
             <div class="holo-grid">
