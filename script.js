@@ -970,6 +970,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contentWrapper = botMsgContainer.querySelector('.msg-content-wrapper');
         let currentThinkingDiv = null;
         let currentResponseDiv = null;
+        let currentCritiqueDiv = null;
 
         // Ensure we have a response div ready
         currentResponseDiv = document.createElement('div');
@@ -980,32 +981,116 @@ document.addEventListener('DOMContentLoaded', () => {
         // For demonstration of CoT UI, we will simulate a response with <think> tags.
         // In production, replace with fetch() to your NeuroEngine API.
 
-        const isDemo = true; // Set to false to try real API
+        // 3. Real API Call with CoT capabilities
+        const API_KEY = "jgpt_demo_7d5293caf53a6d592190c7d44e4325c2"; // Demo Key
 
-        if (isDemo) {
-            await simulateCoTResponse(query, (chunk, type) => {
-                if (type === 'think') {
-                    // Ensure thinking div exists
-                    if (!currentThinkingDiv) {
-                        currentThinkingDiv = document.createElement('div');
-                        currentThinkingDiv.className = 'thinking-process expanded'; // Default expanded
-                        currentThinkingDiv.innerHTML = `
-                            <div class="thinking-header" onclick="this.parentElement.classList.toggle('expanded')">
-                                JGPT Reasoning Process
-                            </div>
-                            <div class="thinking-content"></div>
-                        `;
-                        // Insert before response div
-                        contentWrapper.insertBefore(currentThinkingDiv, currentResponseDiv);
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-Key': API_KEY
+                },
+                body: JSON.stringify({
+                    message: query,
+                    model: "mlx-neuro-small", // Request NeuroEngine model
+                    grade: true
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.status}`);
+            }
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = "";
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                const chunk = decoder.decode(value, { stream: true });
+                buffer += chunk;
+
+                const lines = buffer.split('\n\n');
+                buffer = lines.pop(); // Keep incomplete line in buffer
+
+                for (const line of lines) {
+                    if (line.startsWith('data: ')) {
+                        const data = JSON.parse(line.slice(6));
+
+                        if (data.error) {
+                            currentResponseDiv.innerHTML += `<span style="color:red">Error: ${data.error}</span>`;
+                        }
+
+                        // Handle Thinking Process
+                        if (data.type === 'thought' && data.text) {
+                            if (!currentThinkingDiv) {
+                                currentThinkingDiv = document.createElement('div');
+                                currentThinkingDiv.className = 'thinking-process expanded';
+                                currentThinkingDiv.innerHTML = `
+                                    <div class="thinking-header" onclick="this.parentElement.classList.toggle('expanded')">
+                                        JGPT Reasoning Process
+                                        <div class="loader-ring-sm"></div>
+                                    </div>
+                                    <div class="thinking-content"></div>
+                                `;
+                                contentWrapper.insertBefore(currentThinkingDiv, currentResponseDiv);
+                            }
+
+                            const thinkContent = currentThinkingDiv.querySelector('.thinking-content');
+                            thinkContent.textContent += data.text;
+                            // Auto-scroll logic if needed
+                        }
+
+                        // Handle Critique (Reflexion)
+                        if (data.type === 'critique' && data.text) {
+                            if (!currentCritiqueDiv) {
+                                currentCritiqueDiv = document.createElement('div');
+                                currentCritiqueDiv.className = 'thinking-process critique expanded';
+                                // Add distinct amber styling inline or via class
+                                currentCritiqueDiv.style.borderColor = 'rgba(255, 193, 7, 0.5)';
+                                currentCritiqueDiv.style.background = 'rgba(255, 193, 7, 0.05)';
+
+                                currentCritiqueDiv.innerHTML = `
+                                    <div class="thinking-header" style="color: #ffc107;" onclick="this.parentElement.classList.toggle('expanded')">
+                                        ⚠ Self-Correction (Critique)
+                                        <div class="loader-ring-sm"></div>
+                                    </div>
+                                    <div class="thinking-content" style="color: #ffe082;"></div>
+                                `;
+                                contentWrapper.insertBefore(currentCritiqueDiv, currentResponseDiv);
+                            }
+
+                            const critContent = currentCritiqueDiv.querySelector('.thinking-content');
+                            critContent.textContent += data.text;
+                        }
+
+                        // Handle Final Answer
+                        if (data.type === 'answer' && data.chunk) {
+                            // If we were thinking, maybe collapse it now? Optional.
+                            if (currentThinkingDiv && currentThinkingDiv.classList.contains('expanded')) {
+                                // currentThinkingDiv.classList.remove('expanded'); // Auto-collapse?
+                            }
+
+                            const text = data.chunk.replace(/\n/g, '<br>');
+                            currentResponseDiv.innerHTML += text;
+                        }
+
+                        if (data.type === 'done') {
+                            if (currentThinkingDiv) {
+                                currentThinkingDiv.querySelector('.loader-ring-sm').style.display = 'none';
+                            }
+                        }
                     }
-                    const thinkContent = currentThinkingDiv.querySelector('.thinking-content');
-                    thinkContent.textContent += chunk;
-                } else {
-                    // Regular text
-                    currentResponseDiv.innerHTML += chunk.replace(/\n/g, '<br>');
                 }
                 scrollToBottom();
-            });
+            }
+
+        } catch (error) {
+            console.error("Chat Error:", error);
+            currentResponseDiv.innerHTML += `<div class="error-msg">Connection to Neural Engine Lost. Retrying...</div>`;
         }
     }
 
